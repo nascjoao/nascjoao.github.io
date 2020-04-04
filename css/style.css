@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Heebo:400,500&display=swap');
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Heebo', sans-serif;
+    color: var(--dark);
+}
+
+:root {
+    --light: #f7f7f7;
+    --dark: #292929;
+    --light-gray: #ececec;
+    --dark-gray: #808080;
+    --primary: #9265db;
+}
+
+body {
+    background: var(--light);
+}
+
+/* Titles */
+
+h1 {
+    font-weight: 500;
+}
+
+h3 {
+    font-weight: 400;
+}
+
+/* Profile */
+
+header {
+    background: var(--light-gray);
+    text-align: center;
+    padding: 3rem 2rem;
+}
+
+.profile-avatar {
+    width: 15rem;
+    border-radius: 20rem;
+}
+
+header h3 {
+    color: var(--dark-gray);
+}
