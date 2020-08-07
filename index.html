@@ -1,121 +1,126 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://ik.imagekit.io/joaonasc/joaonascdev/favicon_MNmtMFvcD.png" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" href="img/joaonasc.jpg" type="image/x-icon">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#FFE457">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#FFE457">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#FFE457">
+    
+    <meta property="og:title" content="João Nasc | Web Developer">
+    <meta property="og:site_name" content="João Nasc">
+    <meta property="og:url" content="https://www.joaonasc.dev/">
+    <meta property="og:type" content="website">
     <title>João Nasc</title>
 </head>
 <body>
     <header>
-        <img src="img/joaonasc.jpg" alt="João Nasc" class="profile-avatar">
-        <h1>João Nasc</h1>
-        <h3>Desenvolvendo por diversão</h3>
-        <div class="icons">
-            <a href="http://github.com/nascjoao" target="_blank"><i class="fab fa-github-square"></i></a>
-            <a href="mailto:joaonasc@yahoo.com"><i class="fas fa-envelope-square"></i></a>
+        <div id="welcome">
+            <img src="https://avatars3.githubusercontent.com/u/56273267?s=460&u=5c36f05be0ec1a8717565e2d281685d1da9ec770&v=4" alt="">
+            <h1>I write because it gives life to things.</h1>
         </div>
+        <div class="shields">
+            <a href="https://github.com/nascjoao" target="_blank" id="github"><span class="shield">
+                <div class="icon">
+                    <i class="fab fa-github"></i>
+                </div>
+                <div class="label">
+                    Github
+                </div>
+            </span></a>
+            <a href="https://instagram.com/joaonasc.dev" target="_blank" id="instagram"><span class="shield">
+                <div class="icon">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <div class="label">
+                    Instagram
+                </div>
+            </span></a>
+            <a href="mailto:oi@joaonasc.dev" target="_blank" id="email"><span class="shield">
+                <div class="icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="label">
+                    oi@joaonasc.dev
+                </div>
+            </span></a>
+        </div>
+
+        <p id="scroll">Scroll to read more about me</p>
     </header>
 
-<main>
+    <main>
+        <section id="about-me">
+            <div class="content">
+                <h2>About me</h2>
+                <p>
+                    My name is João Victor Nascimento (aka João Nasc), I am 21 years old and I am a Brazilian web developer living in Vassouras, Rio de Janeiro. Since I was a child, I used to explore a lot about technologies. My father taught me a lot about computers and I grew up in a very informative environment.<br><br>
+    
+                    Recently, I started to learn more about code/development and started with web development, using the best technologies to build amazing solutions. I’m currently studying at Launchbase, an online bootcamp by Rocketseat. Working to be a fullstack developer.
+                </p>
+            </div>
+        </section>
 
-<div class="block">
-    <h1>Sobre</h1>
-    <p>
-        Olá! Não tenho muito o que falar sobre mim.
-        Sou metido a muita coisa: ator, programador, 
-        designer gráfico, criador de conteúdo e atleta 
-        (preciso construir um histórico, né?).
-        Adepto ao minimalismo, gosto de resumos. Vou me
-        resumir como estudante da vida e curioso nato.
-    </p>
-</div>
+        <section id="my-skills">
+            <div class="content">
+                <h2>My skills</h2>
+                <p>
+                    This is a work in progress, I like to learn about many things. Currently, I am focusing and improving myself in these technologies.
+                </p>
+                <div class="shields">
+                    <a href="https://github.com/topics/html" target="_blank">
+                    <span class="shield">
+                        <div class="icon">
+                            <i class="fab fa-html5"></i>
+                        </div>
+                        <div class="label">
+                            HTML
+                        </div>
+                    </span>
+                    </a>
+                    <a href="https://github.com/topics/css" target="_blank">
+                    <span class="shield">
+                        <div class="icon">
+                            <i class="fab fa-css3-alt"></i>
+                        </div>
+                        <div class="label">
+                            CSS
+                        </div>
+                    </span>
+                    </a>
+                    <a href="https://github.com/topics/javascript" target="_blank">
+                    <span class="shield">
+                        <div class="icon">
+                            <i class="fab fa-js-square"></i>
+                        </div>
+                        <div class="label">
+                            JavaScript
+                        </div>
+                    </span>
+                    </a>
+                    <a href="https://github.com/topics/nodejs" target="_blank">
+                    <span class="shield">
+                        <div class="icon">
+                            <i class="fab fa-node-js"></i>
+                        </div>
+                        <div class="label">
+                            NodeJS
+                        </div>
+                    </span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
 
-<div class="block">
-    <h1>Eu realmente não tenho o que dizer</h1>
-    <p>
-        Sendo assim, para encher a página, vou colocar
-        aqui embaixo uma receita de bolo de limão. Nunca
-        fiz, mas disseram que é fácil. Testa aí, se for
-        bom, me manda um email com o seu feedback.
-    </p>
-</div>
-
-<div class="block">
-
-    <h1>Bolo de Limão Clássico e Fácil</h1>
-    <ul class="info-receita">
-        <li><strong>Preparo:</strong> 30 minutos</li>
-        <li><strong>Tempo de cozimento:</strong> 40 minutos</li>
-        <li><strong>Tempo de espera:</strong> 60 minutos</li>
-        <li><strong>Rendimento:</strong> 10 pessoas</li>
-    </ul>
-
-</div>
-
-    <img src="img/bolodelimao.JPG" alt="Bolo de Limão">
-
-<div class="block">
-    <h2>Ingredientes: Massa</h2>
-    <ul class="info-receita">
-        <li><strong>3</strong> xícaras de FARINHA DE TRIGO</li>
-        <li><strong>1</strong> colher de sobremesa de FERMENTO QUÍMICO</li>
-        <li><strong>3</strong> OVOS</li>
-        <li><strong>1</strong> xícara de ÓLEO DE SOJA, DE GIRASSOL, MANTEIGA ou MARGARINA SEM SAL</li>
-        <li><strong>2</strong> xícaras de AÇÚCAR REFINADO</li>
-        <li><strong>1</strong> LIMÃO (Suco)</li>
-    </ul>
-</div>    
-
-<div class="block">
-    <h2>Ingredientes: Cobertura</h2>
-    <ul class="info-receita">
-        <li><strong>1</strong> caixa ou lata de LEITE CONDENSADO</li>
-        <li><strong>3</strong> LIMÕES (Suco)</li>
-        <li>Raspas de Limão</li>
-    </ul>
-</div>    
-
-<div class="block">
-    <h2>Modo de Preparo: Massa</h2>
-    <ul class="step-step">
-        <li>Preaqueça o forno em 180ºC</li>
-        <li>Coloque a farinha de trigo e o açúcar na vasilha que vai na batedeira elétrica e dê uma leve misturada manualmente.</li>
-        <li>Na mesma vasilha, coloque os ovos, o óleo e o leite. Mexa manualmente antes de bater.</li>
-        <li>Bata com a batedeira elétrica até os ingredientes se incorporarem.</li>
-        <li>Acrescente o fermento na vasilha e bata novamente.</li>
-        <li>Acrescente o suco de 1 limão e bata novamente.</li>
-        <li>Despeje a massa em uma forma untada*</li>
-        <li>Coloque a massa no forno e deixe assar por, aproximadamente, 40 minutos.</li>
-    </ul>
-    <p>*A massa não pode ultrapassar a metade da forma.</p>
-</div>    
-
-<div class="block">
-    <h2>Modo de Preparo: Cobertura</h2>
-    <ul class="step-step">
-        <li>No pote do mixer, coloque o leite condensado e metade do suco de 3 limões. Bata.</li>
-        <li>Depois, coloque a outra metade do suco e bata novamente com o mixer até a cobertura ficar bem consistente.</li>
-        <li>Coloque na geladeira enquanto o bolo está no forno.</li>
-    </ul>
-</div>    
-
-<div class="block">
-    <h2>Finalização</h2>
-    <ul class="step-step">
-        <li>Desenforme o bolo.</li>
-        <li>Depois do bolo esfriar, espalhe a cobertura sob o bolo.</li>
-        <li>Coloque um pouco de raspas de limão para finalizar... E pronto!</li>
-    </ul>
-    <p class="lil-txt">Receita por Lelê Gianetti<br>Fonte: <a href="http://web.archive.org/web/20200404204612/https://www.daninoce.com.br/receitas/bolo-de-limao-classico-e-facil/" target="_blank">Dani Noce</a></p>
-</div>    
-
-</main>
-
-
-<footer></footer>
-
+    <footer>© 2020 João Victor Nascimento</footer>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js"></script>
 </body>
 </html>

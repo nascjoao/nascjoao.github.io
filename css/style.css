@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Heebo:400,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
 
 *,
 *::before,
@@ -6,154 +6,170 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Heebo', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     -webkit-tap-highlight-color: transparent;
 }
 
 :root {
-    --light: #f7f7f7;
-    --dark: #292929;
-    --light-gray: #ececec;
-    --dark-gray: #808080;
-    --primary: #009e77;
+    --primary: #FFE457;
+    --secondary: #252525;
+    --gray: #9F9F9F;
+    --background: #343434;
 }
-
 
 body {
-    color: var(--dark);
-    background: var(--light);
-    line-height: 1.8;
+    background-color: var(--background);
 }
 
-a {
-    color: var(--dark);
+section {
+    padding: 52px 20px;
 }
 
-strong {
-    font-weight: 400;
-    background: var(--primary);
-    padding: 0 .4rem;
-    margin: 0 .1rem;
-    color: var(--light);
-    border-radius: .3rem;
+section .content {
+    max-width: 700px;
+    margin: auto;
 }
 
-.lil-txt {
-    font-size: .7rem;
-}
-
-/* Titles */
-
-h1 {
-    font-weight: 500;
-    line-height: 1.2;
-}
-
-h2 {
-    font-weight: 500;
-}
-
-h3 {
-    font-weight: 400;
-}
-
-/* Profile */
-
-header {
-    background: var(--light-gray);
-    text-align: center;
-    padding: 3rem 2rem;
-    margin-bottom: 3rem;
-}
-
-.profile-avatar {
-    width: 15rem;
-    border-radius: 20rem;
-}
-
-header h3 {
-    color: var(--dark-gray);
-}
-
-header .icons {
-    margin: .5rem 0;
-    font-size: 1.5rem;
-}
-
-header a {
-    margin-left: 1rem;
-}
-
-header a:first-child {
-    margin-left: 0;
-}
-
-header a:hover {
-    color: var(--primary);
-    transition: .2s;
-}
-
-/* Main */
-
-main {
-    text-align: center;
+section h2 {
+    font-size: 26px;
 }
 
 p {
-    margin: .7rem 0;
+    line-height: 1.7;
 }
 
-main img {
-    width: 100%;
-    max-width: 40rem;
-    border-radius: .7rem;
-    box-shadow: 5px 15px 20px rgba(0, 0, 0, 0.174);
+a {
+    text-decoration: none;
 }
 
-.block {
-    max-width: 44rem;
-    margin: 3.5rem auto;
-    padding: 0 2rem;
-    text-align: left;
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    position: relative;
+    padding: 0 20px;
 }
 
-.info-receita {
-    background: var(--light-gray);
-    width: fit-content;
-    padding: 1.5rem;
-    border: 1px solid var(--dark-gray);
-    list-style: none;
-    margin: 1rem 0;
+header #welcome {
+    display: flex;
+    align-items: center;
+    color: var(--gray);
 }
 
-.info-receita li {
-    margin-top: 1rem;
+header #welcome img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3.7px solid var(--primary);
+    margin-right: 29px;
 }
 
-.info-receita li:first-child {
-    margin-top: 0;
+header #welcome h1 {
+    font-size: 28px;
 }
 
-.step-step {
-    margin: .7rem 0;
-    list-style: decimal;
-    margin-left: 1rem;
+.shields, .shields .shield, .shield .icon, .shield .label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.step-step li {
-    margin-top: 1rem;
+.shields {
+    margin-top: 52px;
+    max-width: 100%;
+    display: grid;
+    grid-template-areas: 'github instagram''email email';
+    gap: 22px;
 }
 
-.step-step li:first-child {
-    margin-top: 0;
+.shield {
+    transition: filter .15s ease-in-out;
 }
+
+.shield:hover {
+    filter: brightness(120%);
+    cursor: pointer;
+}
+
+#github {
+    grid-area: github;
+}
+
+#instagram {
+    grid-area: instagram;
+}
+
+#email {
+    grid-area: email;
+}
+
+.shield .icon {
+    width: 39px;
+    height: 39px;
+    color: var(--primary);
+    background-color: var(--secondary);
+    border-radius: 5px 0 0 5px;
+}
+
+.label {
+    background-color: var(--primary);
+    color: var(--secondary);
+    border-radius: 0 5px 5px 0;
+    height: 39px;
+    padding: 0 11px;
+    font-weight: 600;
+}
+
+#scroll {
+    position: fixed;
+    bottom: 52px;
+    color: var(--gray);
+    z-index: -1;
+}
+
+/* ======================== ABOUT ME ======================== */
+
+#about-me {
+    background-color: var(--primary);
+    color: var(--secondary);
+}
+
+#about-me p {
+    margin-top: 10px;
+    font-size: 19px;
+}
+
+/* ======================== MY SKILLS ======================== */
+
+#my-skills {
+    background-color: var(--background);
+    color: var(--primary);
+}
+
+#my-skills p {
+    margin-top: 10px;
+    font-size: 19px;
+}
+
+#my-skills .shields {
+    margin-top: 22px;
+    justify-content: flex-start;
+}
+
+#my-skills a {
+    justify-self: left;
+}
+
+
+/* ======================== FOOTER ======================== */
 
 footer {
-    margin-top: 5rem;
-}
-
-@media screen and (max-width:660px){
-    main img {
-        border-radius: 0;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90px;
+    background-color: var(--secondary);
+    color: var(--primary);
 }
