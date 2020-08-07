@@ -141,6 +141,11 @@ header #welcome h1 {
     font-size: 19px;
 }
 
+#about-me a {
+    text-decoration: underline;
+    color: var(--secondary);
+}
+
 /* ======================== MY SKILLS ======================== */
 
 #my-skills {
