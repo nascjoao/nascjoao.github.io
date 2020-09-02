@@ -80,7 +80,7 @@ header #welcome h1 {
     margin-top: 52px;
     max-width: 100%;
     display: grid;
-    grid-template-areas: 'github instagram''email email';
+    grid-template-areas: 'github instagram''email email' 'linkedin linkedin';
     gap: 22px;
 }
 
@@ -93,21 +93,17 @@ header #welcome h1 {
     cursor: pointer;
 }
 
-#github {
-    grid-area: github;
-}
-
-#instagram {
-    grid-area: instagram;
-}
-
 #email {
     grid-area: email;
 }
 
+#linkedin {
+    grid-area: linkedin;
+}
+
 .shield .icon {
-    width: 39px;
-    height: 39px;
+    min-width: 39px;
+    min-height: 39px;
     color: var(--primary);
     background-color: var(--secondary);
     border-radius: 5px 0 0 5px;
@@ -177,4 +173,22 @@ footer {
     height: 90px;
     background-color: var(--secondary);
     color: var(--primary);
+}
+
+@media (max-width: 310px) {
+    .shield .label {
+        min-width: 100%;
+    }
+
+    .shields {
+        grid-template-areas: none;
+    }
+
+    #email, #linkedin {
+        grid-area: unset;
+    }
+
+    #scroll {
+        visibility: hidden;
+    }
 }
