@@ -1,59 +1,49 @@
-# Klisé
+![preview Long Haul](/preview.jpg)
 
-Klisé is minimalist Jekyll theme for running a personal site and blog running on Jekyll.<br>
-For demo <a href="https://klise.now.sh" target="_blank" rel="noopener">klise.now.sh</a>
+Long Haul is a minimal jekyll theme built with SASS / GULP / BROWSERSYNC / AUTOPREFIXER and focuses on long form blog posts. It is meant to be used as a starting point for a jekyll blog/website.
+
+If you really enjoy Long Haul and want to give me credit somewhere on the internet send or tweet out your experience with Long Haul and tag me [@brianmaierjr](https://twitter.com/brianmaierjr).
+
+#### [View Demo](http://brianmaierjr.com/long-haul)
 
 ## Features
 
-- [x] Light & Dark Mode support :waxing_crescent_moon:
-- [x] Customizable (using `.scss`)
-- [x] Responsive (desktop, tab and mobile)
-- [x] Mobile First Design
-- [x] SEO Optimized
-- [x] Images of post Organized ([`jekyll-postfiles`](https://github.com/nhoizey/jekyll-postfiles))
-- [x] Generate Sitemap ([`jekyll-sitemap`](https://github.com/jekyll/jekyll-sitemap))
-- [x] RSS Feed ([`jekyll-feed`](https://github.com/jekyll/jekyll-feed))
-- [x] Syntax Highlighter ([`rouge`](https://github.com/rouge-ruby/rouge))
-- [x] Next & Previous Post
-- [x] Comment layout, enable in frontmatter if you wish
-- [x] Google analytics
-- [x] HTML Minify ([`jekyll-compress-html`](https://github.com/penibelst/jekyll-compress-html))
-- [x] W3C **Validated**
-- [x] Lighthouse and PageSpeed **Passed**
+- Minimal, Type Focused Design
+- Built with GULP + SASS + BROWSERSYNC + AUTOPREFIXER
+- SVG Social Icons
+- Responsive Nav Menu
+- XML Feed for RSS Readers
+- Contact Form via Formspree
+- 5 Post Loop with excerpt on Home Page
+- Previous / Next Post Navigation
+- Estimated Reading Time for posts
+- Stylish Drop Cap on posts
+- A Better Type Scale for all devices
+- Comments powered by Disqus
 
-![Lighthouse Result](./lighthouse.png)
+## Setup
 
-## Backlogs
+1. [Install Jekyll](http://jekyllrb.com)
+2. Fork the [Long Haul repo](http://github.com/brianmaierjr/long-haul)
+3. Clone it
+4. [Install Bundler](http://bundler.io/)
+5. Run `bundle install`
+6. Install gulp dependencies by running `npm install`
+7. Run Jekyll and watch files by running `bundle exec gulp`
+8. Customize and watch the magic happen!
 
-- [ ] Intergrated with PhotoSwipe.
-- [ ] Add schema.org meta information.
-- [ ] Transform class selector to BEM metodology.
+## Site Settings
 
-## Installation
+The main settings can be found inside the `_config.yml` file:
 
-Run local server:
-
-```bash
-$ git clone https://github.com/piharpi/jekyll-klise.git
-$ cd jekyll-klise
-$ bundle install
-$ bundle exec jekyll serve
-```
-
-Navigate to `localhost:4000`. You're Welcome, Fork and be Stargazer.
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/piharpi/jekyll-klise) [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/piharpi/jekyll-klise)
-
-## Limitation
-
-- Since [`jekyll-postfiles`](https://github.com/nhoizey/jekyll-postfiles#compatibility) plugin isn't supported by github pages, this cause will make your site problems, path broken or post images won't show up, you can host alternatively using likes [netlify.com](https://netlify.com), [vercel.com](https://vercel.com) or [surge.sh](https://surge.sh) services, which support 3rd party.
-
-## Contributing
-
-If you see any typos or formatting errors in a post, or want to helping reduce backlogs or any other issue that needs to be addressed, please do not hesitate to open a pull request and fix it!, please read [contributing](./CONTRIBUTING.md) before PR.
-
-Yeaaa feel free to open a pull request.
+- **title:** title of your site
+- **description:** description of your site
+- **url:** your url
+- **paginate:** the amount of posts displayed on homepage
+- **navigation:** these are the links in the main site navigation
+- **social** diverse social media usernames (optional)
+- **google_analytics** Google Analytics key (optional)
 
 ## License
 
-This project is open source and available under the [MIT License](LICENSE).
+This is [MIT](LICENSE) with no added caveats, so feel free to use this Jekyll theme on your site without linking back to me or using a disclaimer.
