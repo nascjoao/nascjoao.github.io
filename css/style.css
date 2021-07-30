@@ -116,6 +116,10 @@ header #welcome h1 {
     grid-area: linkedin;
 }
 
+#instagram {
+    grid-area: instagram;
+}
+
 .shield .icon {
     min-width: 39px;
     min-height: 39px;
