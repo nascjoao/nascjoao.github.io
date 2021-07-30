@@ -95,7 +95,7 @@ header #welcome h1 {
     margin-top: 52px;
     max-width: 100%;
     display: grid;
-    grid-template-areas: 'blog linkedin''email email' 'github instagram';
+    grid-template-areas: 'github linkedin''email email' 'instagram instagram';
     gap: 22px;
 }
 
