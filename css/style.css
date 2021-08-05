@@ -1,267 +1,236 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+@import url('./shields.css');
 
 *,
-*::before,
 *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Open Sans', sans-serif;
-    -webkit-tap-highlight-color: transparent;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+  -webkit-tap-highlight-color: transparent;
 }
 
 :root {
-    --primary: #FFE457;
-    --secondary: #252525;
-    --gray: #DDDDDD;
-    --background: #343434;
+  --primary: #FFE457;
+  --secondary: #252525;
+  --gray: #DDDDDD;
+  --background: #343434;
 }
 
 body {
-    background-color: var(--background);
+  background-color: var(--background);
 }
 
 section {
-    padding: 52px 20px;
+  padding: 52px 20px;
 }
 
 section .content {
-    max-width: 700px;
-    margin: auto;
+  max-width: 700px;
+  margin: auto;
 }
 
 section h2 {
-    font-size: 26px;
+  font-size: 26px;
 }
 
 p {
-    line-height: 1.7;
+  line-height: 1.7;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 button {
-    font-weight: bold;
-    background-color: var(--primary);
-    color: var(--secondary);
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: filter .15s ease-in-out;
-    cursor: pointer;
+  font-weight: bold;
+  background-color: var(--primary);
+  color: var(--secondary);
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: filter .15s ease-in-out;
+  cursor: pointer;
 }
 
 button:hover {
-    filter: brightness(120%);
+  filter: brightness(120%);
 }
 
 header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 100vh;
-    position: relative;
-    padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  position: relative;
+  padding: 0 20px;
 }
 
 header #welcome {
-    display: flex;
-    align-items: center;
-    color: var(--gray);
+  display: flex;
+  align-items: center;
+  color: var(--gray);
 }
 
 header #welcome img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 3.7px solid var(--primary);
-    margin-right: 29px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3.7px solid var(--primary);
+  margin-right: 29px;
 }
 
 header #welcome h1 {
-    font-size: 28px;
-}
-
-.shields, .shields .shield, .shield .icon, .shield .label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.shields {
-    margin-top: 52px;
-    max-width: 100%;
-    display: grid;
-    grid-template-areas: 'github linkedin''email email' 'instagram instagram';
-    gap: 22px;
-}
-
-.shield {
-    transition: filter .15s ease-in-out;
-}
-
-.shield:hover {
-    filter: brightness(120%);
-    cursor: pointer;
+  font-size: 28px;
 }
 
 #email {
-    grid-area: email;
+  grid-area: email;
 }
 
 #linkedin {
-    grid-area: linkedin;
+  grid-area: linkedin;
 }
 
 #instagram {
-    grid-area: instagram;
-}
-
-.shield .icon {
-    min-width: 39px;
-    min-height: 39px;
-    color: var(--primary);
-    background-color: var(--secondary);
-    border-radius: 5px 0 0 5px;
+  grid-area: instagram;
 }
 
 .label {
-    background-color: var(--primary);
-    color: var(--secondary);
-    border-radius: 0 5px 5px 0;
-    height: 39px;
-    padding: 0 11px;
-    font-weight: 600;
+  background-color: var(--primary);
+  color: var(--secondary);
+  border-radius: 0 5px 5px 0;
+  height: 39px;
+  padding: 0 11px;
+  font-weight: 600;
 }
 
 #scroll {
-    position: fixed;
-    bottom: 52px;
-    color: var(--gray);
-    z-index: -1;
+  position: fixed;
+  bottom: 52px;
+  color: var(--gray);
+  z-index: -1;
 }
 
 /* ======================== ABOUT ME ======================== */
 
 #about-me {
-    background-color: var(--primary);
-    color: var(--secondary);
+  background-color: var(--primary);
+  color: var(--secondary);
 }
 
 #about-me p {
-    margin-top: 10px;
-    font-size: 19px;
+  margin-top: 10px;
+  font-size: 19px;
 }
 
 #about-me a {
-    text-decoration: underline;
-    color: var(--secondary);
+  text-decoration: underline;
+  color: var(--secondary);
 }
 
 /* ======================== MY SKILLS ======================== */
 
 #my-skills {
-    background-color: var(--background);
-    color: var(--primary);
+  background-color: var(--background);
+  color: var(--primary);
 }
 
 #my-skills p {
-    margin-top: 10px;
-    font-size: 19px;
+  margin-top: 10px;
+  font-size: 19px;
 }
 
 #my-skills .shields {
-    margin-top: 22px;
-    justify-content: flex-start;
+  margin-top: 22px;
+  justify-content: flex-start;
 }
 
 #my-skills a {
-    justify-self: left;
+  justify-self: left;
 }
 
 /* ======================== CONTACT ======================== */
 
 #contact {
-    background-color: var(--background);
-    color: var(--primary);
+  background-color: var(--background);
+  color: var(--primary);
 }
 
 #contact h2 {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 #contact label {
-    font-size: 19px;
+  font-size: 19px;
 }
 
 #contact form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 #contact form input, #contact form textarea {
-    width: 100%;
-    padding: 15px 20px;
-    border-radius: 5px;
-    border: none;
-    margin-top: 5px;
-    margin-bottom: 25px;
-    background-color: var(--secondary);
-    color: var(--primary);
-    outline: none;
-    font-size: 16px;
-
-    transition: .2s;
+  width: 100%;
+  padding: 15px 20px;
+  border-radius: 5px;
+  border: none;
+  margin-top: 5px;
+  margin-bottom: 25px;
+  background-color: var(--secondary);
+  color: var(--primary);
+  outline: none;
+  font-size: 16px;
+  
+  transition: .2s;
 }
 
 #contact form textarea {
-    min-height: 89px;
-    resize: vertical;
+  min-height: 89px;
+  resize: vertical;
 }
 
 #contact form input:focus, #contact form textarea:focus {
-    background-color: var(--primary);
-    color: var(--secondary);
+  background-color: var(--primary);
+  color: var(--secondary);
 }
 
 #contact form button {
-    width: fit-content;
-    padding: 10px 15px;
+  width: fit-content;
+  padding: 10px 15px;
 }
 
 #contact form button .fa-paper-plane {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 
 /* ======================== FOOTER ======================== */
 
 footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 90px;
-    background-color: var(--secondary);
-    color: var(--primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90px;
+  background-color: var(--secondary);
+  color: var(--primary);
 }
 
 @media (max-width: 310px) {
-    .shield .label {
-        min-width: 100%;
-    }
-
-    .shields {
-        grid-template-areas: none;
-    }
-
-    #email, #linkedin {
-        grid-area: unset;
-    }
-
-    #scroll {
-        visibility: hidden;
-    }
+  .shield .label {
+    min-width: 100%;
+  }
+  
+  .shields {
+    grid-template-areas: none;
+  }
+  
+  #email, #linkedin {
+    grid-area: unset;
+  }
+  
+  #scroll {
+    visibility: hidden;
+  }
 }

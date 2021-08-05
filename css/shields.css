@@ -1,0 +1,23 @@
+.media-shields {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 350px;
+}
+
+.media-shields shield-button {
+  margin: 18px 9px;
+  margin-top: 0;
+}
+
+.media-shields shield-button:last-child {
+  margin-bottom: 0;
+}
+
+.skills-shields {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(2, max-content);
+  padding: 0;
+  padding-top: 18px;
+}
