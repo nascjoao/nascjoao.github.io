@@ -21,7 +21,7 @@ export default class Shield extends HTMLElement {
   getSources() {
     const css = document.createElement('link');
     css.setAttribute('rel', 'stylesheet');
-    css.setAttribute('href', './scripts/components/shield/styles.css');
+    css.setAttribute('href', '/scripts/components/shield/styles.css');
     
     const fontAwesome = document.createElement('link');
     fontAwesome.setAttribute('rel', 'stylesheet');
