@@ -1,3 +1,6 @@
+import { FaGithub, FaLinkedin, FaEnvelope, FaInstagram } from 'react-icons/fa'
+import ShieldButton from "../components/ShieldButton"
+
 export default function Home() {
   return (
     <>
@@ -8,33 +11,29 @@ export default function Home() {
       <h1>Eu escrevo porque isso dá vida às coisas.</h1>
     </div>
     <section className="media-shields">
-      <shield-button
-        icon="fab fa-github"
+      <ShieldButton
+        icon={FaGithub}
         href="https://github.com/nascjoao"
         openInNewTab
-      >
-        GitHub
-      </shield-button>
-      <shield-button
-        icon="fab fa-linkedin"
+        text="GitHub"
+      />
+      <ShieldButton
+        icon={FaLinkedin}
         href="https://linkedin.com/in/nascjoao"
         openInNewTab
-      >
-        LinkedIn
-      </shield-button>
-      <shield-button
-        icon="fas fa-envelope"
+        text="LinkedIn"
+      />
+      <ShieldButton
+        icon={FaEnvelope}
         href="mailto:oi@joaonasc.dev"
-      >
-        oi@joaonasc.dev
-      </shield-button>
-      <shield-button
-        icon="fab fa-instagram"
+        text="oi@joaonasc.dev"
+      />
+      <ShieldButton
+        icon={FaInstagram}
         href="https://instagram.com/joaonasc.dev"
         openInNewTab
-      >
-        Instagram
-      </shield-button>
+        text="Instagram"
+      />
     </section>
 
     <p id="scroll">Deslize para ler mais sobre mim</p>
@@ -91,7 +90,7 @@ export default function Home() {
       </div>
     </section>
 
-    <section id="contact">
+    {/* <section id="contact">
       <div className="content">
         <form action="https://formspree.io/f/xgepleoo" method="POST">
           <h2>Entre em contato</h2>
@@ -111,7 +110,7 @@ export default function Home() {
           <button type="submit"><i className="fas fa-paper-plane"></i>Enviar</button>
         </form>
       </div>
-    </section>
+    </section> */}
   </main>
 
   <footer>© 2021 João Victor Nascimento</footer>
