@@ -5,12 +5,12 @@
   max-width: 350px;
 }
 
-.media-shields shield-button {
+.media-shields a {
   margin: 18px 9px;
   margin-top: 0;
 }
 
-.media-shields shield-button:last-child {
+.media-shields a:last-child {
   margin-bottom: 0;
 }
 
