@@ -13,13 +13,33 @@ import {
   SiChakraui
 } from 'react-icons/si'
 import dayjs from 'dayjs'
+import Head from 'next/head'
 import ShieldButton from "../components/ShieldButton"
 import Form from '../components/Form'
 
 export default function Home() {
   return (
     <>
-      <header>
+    <Head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <link rel="shortcut icon" href="https://ik.imagekit.io/joaonasc/joaonascdev/favicon_MNmtMFvcD.png"
+        type="image/x-icon"/>
+      {/* <!-- Chrome, Firefox OS and Opera --> */}
+      <meta name="theme-color" content="#FFE457"/>
+      {/* <!-- Windows Phone --> */}
+      <meta name="msapplication-navbutton-color" content="#FFE457"/>
+      {/* <!-- iOS Safari --> */}
+      <meta name="apple-mobile-web-app-status-bar-style" content="#FFE457"/>
+
+      <meta property="og:title" content="João Nasc | Desenvolvedor Web"/>
+      <meta property="og:site_name" content="João Nasc"/>
+      <meta property="og:url" content="https://www.joaonasc.dev/"/>
+      <meta property="og:type" content="website"/>
+      <meta name="description" content="Utilizando as melhores tecnologias para construir grandes soluções."/>
+      <title>João Nasc</title>
+    </Head>
+    <header>
     <div id="welcome">
       <img src="https://avatars3.githubusercontent.com/u/56273267?s=460&u=5c36f05be0ec1a8717565e2d281685d1da9ec770&v=4"
         alt="João Nasc"/>
