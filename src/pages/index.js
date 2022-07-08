@@ -12,8 +12,9 @@ import {
   SiNextdotjs,
   SiChakraui
 } from 'react-icons/si'
-import ShieldButton from "../components/ShieldButton"
 import dayjs from 'dayjs'
+import ShieldButton from "../components/ShieldButton"
+import Form from '../components/Form'
 
 export default function Home() {
   return (
@@ -112,23 +113,8 @@ export default function Home() {
 
     <section id="contact">
       <div className="content">
-        <form action="https://formspree.io/f/xgepleoo" method="POST">
-          <h2>Entre em contato</h2>
-          <label>
-            Seu nome:
-            <input type="text" name="name"/>
-          </label>
-          <label>
-            Seu e-mail:
-            <input type="text" name="_replyto"/>
-          </label>
-          <label>
-            Sua mensagem:
-            <textarea name="message"></textarea>
-          </label>
-
-          <button type="submit"><FaPaperPlane />Enviar</button>
-        </form>
+        <h2>Entre em contato</h2>
+        <Form />
       </div>
     </section>
   </main>
