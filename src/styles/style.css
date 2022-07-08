@@ -53,8 +53,12 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+button:hover:not(:disabled) {
   filter: brightness(120%);
+}
+
+button:disabled {
+  cursor: not-allowed;
 }
 
 header {
