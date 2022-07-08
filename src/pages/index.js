@@ -13,6 +13,7 @@ import {
   SiChakraui
 } from 'react-icons/si'
 import ShieldButton from "../components/ShieldButton"
+import dayjs from 'dayjs'
 
 export default function Home() {
   return (
@@ -57,10 +58,14 @@ export default function Home() {
       <div className="content">
         <h2>Sobre mim</h2>
         <p>
-          Meu nome é João Victor Nascimento (também conhecido como João Nasc), eu tenho 22 anos e sou Desenvolvedor Web. Desde criança eu exploro muito sobre tecnologias. Meu pai me ensinou bastante sobre computadores e eu cresci em um ambiente bem informativo.<br/><br/>
+          Meu nome é João Victor Nascimento (também conhecido como Nasc), eu tenho {dayjs().diff('1999-06-17', 'years')} anos e sou Desenvolvedor Web.<br/><br/>
 
-          Atualmente eu estudo e trabalho na <a
-          href="https://betrybe.com" target="_blank">Trybe</a>, o que me possibilita a aprender mais sobre programação, utilizando as melhores tecnologias para construir grandes soluções.</p>
+          Atualmente trabalho na <a
+          href="https://betrybe.com" target="_blank">Trybe</a> como Instrutor do módulo de Fundamentos.<br /><br />
+        
+          De vez em quando também publico vídeos no <a href="https://youtube.com/nascjoao" target="_blank">YouTube</a>.
+        </p>
+
       </div>
     </section>
 
