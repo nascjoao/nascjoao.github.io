@@ -200,6 +200,10 @@ header #welcome h1 {
   color: var(--secondary);
 }
 
+#contact form input:disabled, #contact form textarea:disabled {
+  cursor: not-allowed;
+}
+
 #contact form button {
   width: fit-content;
   padding: 10px 15px;
