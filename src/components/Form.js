@@ -52,7 +52,7 @@ export default function Form() {
       <p>Obrigado por entrar em contato! 😊</p>
       <button 
         style={{ display: 'flex', alignItems: 'center', padding: '10px 15px', marginTop: '25px' }}
-        onClick={() => setFormSubmited(false)}
+        onClick={() => { setFormSubmited(false); setRecaptchaValidated(false) }}
       >
         <IoReloadOutline style={{ marginRight: '10px' }} />
         Enviar outra mensagem
@@ -64,15 +64,35 @@ export default function Form() {
     <form onSubmit={handleSubmit}>
       <label>
         Seu nome:
-        <input disabled={formIsBeingSent} type="text" name="name" value={fields.name} onChange={({ target: { value: name } }) => setFields((current) => ({...current, name }))} />
+        <input
+          disabled={formIsBeingSent}
+          type="text"
+          name="name"
+          value={fields.name}
+          required
+          onChange={({ target: { value: name } }) => setFields((current) => ({...current, name }))}
+        />
       </label>
       <label>
         Seu e-mail:
-        <input disabled={formIsBeingSent} type="text" name="email" value={fields.email} onChange={({ target: { value: email } }) => setFields((current) => ({...current, email }))} />
+        <input
+          disabled={formIsBeingSent}
+          type="email"
+          name="email"
+          value={fields.email}
+          required
+          onChange={({ target: { value: email } }) => setFields((current) => ({...current, email }))}
+        />
       </label>
       <label>
         Sua mensagem:
-        <textarea disabled={formIsBeingSent} name="message" value={fields.message} onChange={({ target: { value: message } }) => setFields((current) => ({...current, message }))} />
+        <textarea
+          disabled={formIsBeingSent}
+          name="message"
+          value={fields.message}
+          required
+          onChange={({ target: { value: message } }) => setFields((current) => ({...current, message }))}
+        />
       </label>
       <ReCAPTCHA
         onChange={recaptchaChange}

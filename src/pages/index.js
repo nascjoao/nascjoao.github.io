@@ -60,7 +60,7 @@ export default function Home() {
       />
       <ShieldButton
         icon={FaEnvelope}
-        href="mailto:oi@joaonasc.dev"
+        href="#contact"
         text="oi@joaonasc.dev"
       />
       <ShieldButton
