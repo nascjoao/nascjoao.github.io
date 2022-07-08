@@ -1,10 +1,12 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { FaPaperPlane } from 'react-icons/fa'
+import { ReCAPTCHA } from 'react-google-recaptcha'
 
 export default function Form() {
   const inputName = useRef()
   const inputEmail = useRef()
   const inputMessage = useRef()
+  const [recaptchaValidated, setRecaptchaValidated] = useState(false)
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -23,6 +25,15 @@ export default function Form() {
     }
   }
 
+  async function recaptchaChange(value) {
+    const response = await fetch('/api/recaptchaVerify', {
+      method: 'POST',
+      body: JSON.stringify({ value }),
+    });
+    const validation = await response.json();
+    if (validation.success) setRecaptchaValidated(true);
+  }
+
   return (
     <form onSubmit={handleSubmit}>
       <label>
@@ -37,8 +48,12 @@ export default function Form() {
         Sua mensagem:
         <textarea name="message" ref={inputMessage} />
       </label>
-
-      <button type="submit"><FaPaperPlane />Enviar</button>
+      <ReCAPTCHA
+        onChange={recaptchaChange}
+        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+        theme="light"
+      />
+      <button type="submit" disabled={!recaptchaValidated}><FaPaperPlane />Enviar</button>
     </form>
   )
 }
