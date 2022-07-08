@@ -1,4 +1,17 @@
-import { FaGithub, FaLinkedin, FaEnvelope, FaInstagram } from 'react-icons/fa'
+import {
+  FaGithub,
+  FaLinkedin,
+  FaEnvelope,
+  FaInstagram,
+  FaCss3,
+  FaReact,
+  FaNodeJs,
+  FaPaperPlane
+} from 'react-icons/fa'
+import {
+  SiNextdotjs,
+  SiChakraui
+} from 'react-icons/si'
 import ShieldButton from "../components/ShieldButton"
 
 export default function Home() {
@@ -58,39 +71,41 @@ export default function Home() {
           Eu adoro aprender sobre muitas coisas. Atualmente eu estou focando e melhorando minhas habilidades nessas tecnologias.
         </p>
         <section className="skills-shields">
-          <shield-button
-            icon="fab fa-html5"
-            href="https://github.com/topics/html"
-            openInNewTab
-          >
-            HTML
-          </shield-button>
-          <shield-button
-            icon="fab fa-css3-alt"
-            href="https://github.com/topics/css"
-            openInNewTab
-          >
-            CSS
-          </shield-button>
-          <shield-button
-            icon="fab fa-js-square"
-            href="https://github.com/topics/javascript"
-            openInNewTab
-          >
-            JavaScript
-          </shield-button>
-          <shield-button
-            icon="fab fa-react"
+          <ShieldButton
+            icon={FaReact}
             href="https://github.com/topics/react"
             openInNewTab
-          >
-            React
-          </shield-button>
+            text="React"
+          />
+          <ShieldButton
+            icon={SiNextdotjs}
+            href="https://github.com/topics/nextjs"
+            openInNewTab
+            text="Next.js"
+          />
+          <ShieldButton
+            icon={SiChakraui}
+            href="https://chakra-ui.com/"
+            openInNewTab
+            text="Chakra UI"
+          />
+          <ShieldButton
+            icon={FaCss3}
+            href="https://github.com/topics/css"
+            openInNewTab
+            text="CSS"
+          />
+          <ShieldButton
+            icon={FaNodeJs}
+            href="https://github.com/topics/nodejs"
+            openInNewTab
+            text="Node.js"
+          />
         </section>
       </div>
     </section>
 
-    {/* <section id="contact">
+    <section id="contact">
       <div className="content">
         <form action="https://formspree.io/f/xgepleoo" method="POST">
           <h2>Entre em contato</h2>
@@ -107,10 +122,10 @@ export default function Home() {
             <textarea name="message"></textarea>
           </label>
 
-          <button type="submit"><i className="fas fa-paper-plane"></i>Enviar</button>
+          <button type="submit"><FaPaperPlane />Enviar</button>
         </form>
       </div>
-    </section> */}
+    </section>
   </main>
 
   <footer>© 2021 João Victor Nascimento</footer>
