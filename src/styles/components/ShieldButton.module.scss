@@ -1,34 +1,31 @@
-.shield {
-  transition: filter .15s;
-}
-
 .shield:hover {
   filter: brightness(120%);
 }
 
-.shield button {
+.shield {
+  transition: filter .15s;
   background: var(--primary);
-  border: none;
   border-radius: 5px;
   color: var(--secondary);
   cursor: pointer;
-  font-family: Open Sans, sans-serif;
-  font-size: 16px;
+  font-size: 0;
   font-weight: 600;
-  padding: 0;
+  display: flex;
+  align-items: center;
 }
 
 
-.shield i {
+.shield svg {
   background: var(--secondary);
   border-radius: 4px 0 0 4px;
   color: var(--primary);
-  font-size: 16px;
+  font-size: 36px;
   padding: 10px;
 }
 
-.shield p {
+.shield span {
   display: inline-block;
   margin: 0;
   padding: 0 7px;
+  font-size: 16px;
 }

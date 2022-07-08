@@ -53,8 +53,12 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+button:hover:not(:disabled) {
   filter: brightness(120%);
+}
+
+button:disabled {
+  cursor: not-allowed;
 }
 
 header {
@@ -199,9 +203,11 @@ header #welcome h1 {
 #contact form button {
   width: fit-content;
   padding: 10px 15px;
+  display: flex;
+  align-items: center;
 }
 
-#contact form button .fa-paper-plane {
+#contact form button svg {
   margin-right: 10px;
 }
 

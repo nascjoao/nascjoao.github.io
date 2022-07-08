@@ -1,0 +1,24 @@
+{
+  "name": "nascjoao.github.io",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:nascjoao/nascjoao.github.io.git",
+  "author": "nascjoao <oi@joaonasc.dev>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.3",
+    "next": "^12.2.0",
+    "nodemailer": "^6.7.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-google-recaptcha": "^2.1.0",
+    "react-icons": "^4.4.0",
+    "sass": "^1.53.0"
+  }
+}
