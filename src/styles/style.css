@@ -199,9 +199,11 @@ header #welcome h1 {
 #contact form button {
   width: fit-content;
   padding: 10px 15px;
+  display: flex;
+  align-items: center;
 }
 
-#contact form button .fa-paper-plane {
+#contact form button svg {
   margin-right: 10px;
 }
 
