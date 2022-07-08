@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import { FaPaperPlane } from 'react-icons/fa'
-import { ReCAPTCHA } from 'react-google-recaptcha'
+import ReCAPTCHA  from 'react-google-recaptcha'
 
 export default function Form() {
   const inputName = useRef()
@@ -51,7 +51,8 @@ export default function Form() {
       <ReCAPTCHA
         onChange={recaptchaChange}
         sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-        theme="light"
+        theme="dark"
+        style={{ marginBottom: '25px' }}
       />
       <button type="submit" disabled={!recaptchaValidated}><FaPaperPlane />Enviar</button>
     </form>
