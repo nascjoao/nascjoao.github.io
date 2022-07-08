@@ -8,6 +8,7 @@
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
   -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
 }
 
 :root {
