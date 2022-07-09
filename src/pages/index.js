@@ -6,7 +6,6 @@ import {
   FaCss3,
   FaReact,
   FaNodeJs,
-  FaPaperPlane
 } from 'react-icons/fa'
 import {
   SiNextdotjs,
@@ -16,6 +15,7 @@ import dayjs from 'dayjs'
 import Head from 'next/head'
 import ShieldButton from "../components/ShieldButton"
 import Form from '../components/Form'
+import ProjectCard from '../components/ProjectCard'
 
 export default function Home() {
   return (
@@ -87,6 +87,34 @@ export default function Home() {
           De vez em quando também publico vídeos no <a href="https://youtube.com/nascjoao" target="_blank">YouTube</a>.
         </p>
 
+      </div>
+    </section>
+
+    <section id="projects">
+      <div className="content">
+        <h2>Meus projetos</h2>
+        <div className="grid">
+          <ProjectCard
+            href="https://n-ask.joaonasc.dev/"
+            imageSrc="/projects/n-ask.png"
+            title="n-ask"
+          />
+          <ProjectCard
+            href="https://pop.joaonasc.dev/"
+            imageSrc="/projects/popping-monsters.png"
+            title="Popping Monsters"
+          />
+          <ProjectCard
+            href="https://parenteses.joaonasc.dev/"
+            imageSrc="/projects/parenteses.png"
+            title="Nem tudo é parênteses"
+          />
+          <ProjectCard
+            href="https://trybe-countdown.joaonasc.dev/"
+            imageSrc="/projects/trybe-countdown.png"
+            title="Trybe Countdown"
+          />
+        </div>
       </div>
     </section>
 
