@@ -188,7 +188,7 @@ header #welcome h1 {
   flex-direction: column;
 }
 
-#contact form input, #contact form textarea {
+#contact form input:not(.emoji-search), #contact form textarea {
   width: 100%;
   padding: 15px 20px;
   border-radius: 5px;
