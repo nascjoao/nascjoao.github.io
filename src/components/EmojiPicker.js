@@ -24,7 +24,7 @@ export default function EmojiPicker({ onEmojiClick }) {
             pickerStyle={{
               boxShadow: 'none'
             }}
-            onEmojiClick={(_, { emoji }) => { onEmojiClick(emoji); setActive(false) }}
+            onEmojiClick={(_, { emoji }) => onEmojiClick(emoji)}
             />
         </div>
       ) }
