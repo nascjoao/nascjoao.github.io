@@ -53,7 +53,7 @@ export default function Home() {
       <meta name="twitter:image:alt" content="nasc - joaonasc.dev"/>
       <meta name="twitter:image:width" content="1200"/>
       <meta name="twitter:image:height" content="630"/>
-      <link rel="canonical" href="https://joaonasc.dev" data-baseprotocol="https:" data-basehost="joaonasc.dev"/>
+      <link rel="canonical" href="https://www.joaonasc.dev" data-baseprotocol="https:" data-basehost="www.joaonasc.dev"/>
       <title>João Nasc | Desenvolvedor Web</title>
     </Head>
     <header>
