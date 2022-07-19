@@ -1,7 +1,9 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { FaPaperPlane } from 'react-icons/fa'
 import { IoReloadOutline } from 'react-icons/io5'
 import ReCAPTCHA  from 'react-google-recaptcha'
+import EmojiPicker from './EmojiPicker'
+import styles from '../styles/components/Form.module.scss'
 
 export default function Form() {
   const [fields, setFields] = useState({
@@ -12,6 +14,7 @@ export default function Form() {
   const [recaptchaValidated, setRecaptchaValidated] = useState(false)
   const [formIsBeingSent, setFormIsBeingSent] = useState(false)
   const [formSubmited, setFormSubmited] = useState(false)
+  const messageTextAreaRef = useRef()
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -61,7 +64,7 @@ export default function Form() {
   )
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={styles.form}>
       <label>
         Seu nome:
         <input
@@ -86,13 +89,22 @@ export default function Form() {
       </label>
       <label>
         Sua mensagem:
-        <textarea
-          disabled={formIsBeingSent}
-          name="message"
-          value={fields.message}
-          required
-          onChange={({ target: { value: message } }) => setFields((current) => ({...current, message }))}
-        />
+        <div className="emojiTriggerLocation">
+          <textarea
+            disabled={formIsBeingSent}
+            name="message"
+            value={fields.message}
+            required
+            onChange={({ target: { value: message } }) => setFields((current) => ({...current, message }))}
+            ref={messageTextAreaRef}
+          />
+          <EmojiPicker 
+            onEmojiClick={(emoji) => {
+              setFields((current) => ({ ...current, message: `${current.message}${emoji}` }))
+              messageTextAreaRef.current.focus()
+            }}
+          />
+        </div>
       </label>
       <ReCAPTCHA
         onChange={recaptchaChange}
