@@ -1,0 +1,30 @@
+.projectCard {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  background-color: var(--secondary);
+  border-radius: 10px;
+  color: var(--primary);
+  transition: .3s;
+  
+  img {
+    width: 400px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+  }
+
+  strong, span {
+    padding: 10px 15px;
+  }
+
+  strong {
+    font-size: 24px;
+  }
+
+  &:hover {
+    transform: scale(1.02);
+    color: var(--secondary);
+    background: var(--primary);
+  }
+}

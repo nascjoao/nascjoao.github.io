@@ -156,6 +156,18 @@ header #welcome h1 {
   justify-self: left;
 }
 
+#projects .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  margin-top: 25px;
+}
+
+#projects {
+  background: var(--background);
+  color: var(--primary)
+}
+
 /* ======================== CONTACT ======================== */
 
 #contact {
