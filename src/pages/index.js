@@ -39,12 +39,20 @@ export default function Home() {
       <meta property="og:locale" content="pt_BR"/>
       <meta property="og:description" content="Desenvolvedor Web com habilidades em React, Next.js, Chakra UI, CSS, Node.js e mais!"/>
       <meta name="description" content="Desenvolvedor Web com habilidades em React, Next.js, Chakra UI, CSS, Node.js e mais!"/>
+      <meta name="image" content="https://joaonasc.dev/og-image.png"/>
       <meta property="og:image" content="https://joaonasc.dev/og-image.png"/>
       <meta property="og:image:secure_url" content="https://joaonasc.dev/og-image.png"/>
       <meta property="og:image:alt" content="nasc - joaonasc.dev"/>
       <meta property="og:image:type" content="image/png"/>
       <meta property="og:image:width" content="1200"/>
       <meta property="og:image:height" content="630"/>
+      <meta name="twitter:card" content="summary_large_image"/>
+      <meta name="twitter:title" content="João Nasc | Desenvolvedor Web"/>
+      <meta name="twitter:image" content="https://joaonasc.dev/og-image.png"/>
+      <meta name="twitter:image:src" content="https://joaonasc.dev/og-image.png"/>
+      <meta name="twitter:image:alt" content="nasc - joaonasc.dev"/>
+      <meta name="twitter:image:width" content="1200"/>
+      <meta name="twitter:image:height" content="630"/>
       <link rel="canonical" href="https://joaonasc.dev" data-baseprotocol="https:" data-basehost="joaonasc.dev"/>
       <title>João Nasc | Desenvolvedor Web</title>
     </Head>
