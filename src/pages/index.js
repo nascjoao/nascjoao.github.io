@@ -33,11 +33,20 @@ export default function Home() {
       <meta name="apple-mobile-web-app-status-bar-style" content="#FFE457"/>
 
       <meta property="og:title" content="João Nasc | Desenvolvedor Web"/>
-      <meta property="og:site_name" content="João Nasc"/>
+      <meta property="og:site_name" content="João Nasc | Desenvolvedor Web"/>
       <meta property="og:url" content="https://www.joaonasc.dev/"/>
       <meta property="og:type" content="website"/>
-      <meta name="description" content="Utilizando as melhores tecnologias para construir grandes soluções."/>
-      <title>João Nasc</title>
+      <meta property="og:locale" content="pt_BR"/>
+      <meta property="og:description" content="Desenvolvedor Web com habilidades em React, Next.js, Chakra UI, CSS, Node.js e mais!"/>
+      <meta name="description" content="Desenvolvedor Web com habilidades em React, Next.js, Chakra UI, CSS, Node.js e mais!"/>
+      <meta property="og:image" content="https://joaonasc.dev/og-image.png"/>
+      <meta property="og:image:secure_url" content="https://joaonasc.dev/og-image.png"/>
+      <meta property="og:image:alt" content="nasc - joaonasc.dev"/>
+      <meta property="og:image:type" content="image/png"/>
+      <meta property="og:image:width" content="1200"/>
+      <meta property="og:image:height" content="630"/>
+      <link rel="canonical" href="https://joaonasc.dev" data-baseprotocol="https:" data-basehost="joaonasc.dev"/>
+      <title>João Nasc | Desenvolvedor Web</title>
     </Head>
     <header>
     <div id="welcome">
