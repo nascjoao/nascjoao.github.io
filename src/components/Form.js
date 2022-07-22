@@ -106,12 +106,14 @@ export default function Form() {
           />
         </div>
       </label>
-      <ReCAPTCHA
-        onChange={recaptchaChange}
-        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-        theme="dark"
-        style={{ marginBottom: '25px' }}
-      />
+      { Object.values(fields).some((field) => field !== '') && (
+        <ReCAPTCHA
+          onChange={recaptchaChange}
+          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+          theme="dark"
+          style={{ marginBottom: '25px' }}
+        />
+      ) }
       <button type="submit" disabled={!recaptchaValidated || formIsBeingSent}><FaPaperPlane />{ formIsBeingSent ? 'Enviando' : 'Enviar'}</button>
     </form>
   )
