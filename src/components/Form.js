@@ -14,6 +14,7 @@ export default function Form() {
   const [recaptchaValidated, setRecaptchaValidated] = useState(false)
   const [formIsBeingSent, setFormIsBeingSent] = useState(false)
   const [formSubmited, setFormSubmited] = useState(false)
+  const [textAreaIsActive, setTextAreaIsActive] = useState(false)
   const messageTextAreaRef = useRef()
 
   async function handleSubmit(event) {
@@ -97,13 +98,16 @@ export default function Form() {
             required
             onChange={({ target: { value: message } }) => setFields((current) => ({...current, message }))}
             ref={messageTextAreaRef}
+            onFocus={() => setTextAreaIsActive(true)}
           />
-          <EmojiPicker 
-            onEmojiClick={(emoji) => {
-              setFields((current) => ({ ...current, message: `${current.message}${emoji}` }))
-              messageTextAreaRef.current.focus()
-            }}
-          />
+          { textAreaIsActive && (
+            <EmojiPicker 
+              onEmojiClick={(emoji) => {
+                setFields((current) => ({ ...current, message: `${current.message}${emoji}` }))
+                messageTextAreaRef.current.focus()
+              }}
+            />
+          ) }
         </div>
       </label>
       { Object.values(fields).some((field) => field !== '') && (
