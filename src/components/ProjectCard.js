@@ -5,7 +5,7 @@ export default function ProjectCard({ imageSrc, title, href, description }) {
   return (
     <a href={href} target="_blank">
       <section className={styles.projectCard}>
-        <Image src={imageSrc} alt={title} width={400} height={200} />
+        <Image src={imageSrc} alt={title} width={400} height={200} layout="responsive" />
         <strong>{title}</strong>
         { description && (
           <p>{description}</p>
