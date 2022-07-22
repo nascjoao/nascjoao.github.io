@@ -16,6 +16,7 @@ import Head from 'next/head'
 import ShieldButton from "../components/ShieldButton"
 import Form from '../components/Form'
 import ProjectCard from '../components/ProjectCard'
+import Image from 'next/future/image'
 
 export default function Home() {
   return (
@@ -58,8 +59,7 @@ export default function Home() {
     </Head>
     <header>
     <div id="welcome">
-      <img src="https://avatars3.githubusercontent.com/u/56273267?s=460&u=5c36f05be0ec1a8717565e2d281685d1da9ec770&v=4"
-        alt="João Nasc"/>
+      <Image src="https://www.github.com/nascjoao.png" width={93} height={93} alt="João Nasc" />
       <h1>Eu escrevo porque isso dá vida às coisas.</h1>
     </div>
     <section className="media-shields">
