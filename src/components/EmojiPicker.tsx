@@ -5,7 +5,7 @@ import { FaRegSmile } from 'react-icons/fa'
 import { IoMdClose } from 'react-icons/io'
 import { useState } from 'react'
 
-export default function EmojiPicker({ onEmojiClick }) {
+export default function EmojiPicker({ onEmojiClick }: { onEmojiClick: (emoji: string) => void }) {
   const [active, setActive] = useState(false)
   
   return (

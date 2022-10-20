@@ -1,12 +1,13 @@
 import { createTransport } from 'nodemailer';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 const { NEXT_PUBLIC_SMTP_MAIL, NEXT_PUBLIC_SMTP_PASS } = process.env;
 
-export default async function(req, res) {
+export default async function(req: NextApiRequest, res: NextApiResponse) {
   try {
     const transporter = createTransport({
       host: 'smtp.umbler.com',
-      port: '587',
+      port: 587,
       secure: false,
       auth: {
         user: NEXT_PUBLIC_SMTP_MAIL,
@@ -27,6 +28,8 @@ export default async function(req, res) {
     await transporter.sendMail(data);
     res.status(200).json({ message: 'sent' });
   } catch (error) {
-    res.status(400).json(error.message)
+    if (error instanceof Error) {
+      res.status(400).json(error.message)
+    }
   }
 }
