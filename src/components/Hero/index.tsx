@@ -13,7 +13,7 @@ export default function Hero() {
       <div>
         <img src={nascImage.src} alt="João Nasc sorrindo" />
         <h3>Desenvolvedor Web</h3>
-        <h3>Instrutor na Trybe</h3>
+        <h3>Instrutor na <a href="https://betrybe.com" target="_blank">Trybe</a></h3>
       </div>
     </section>
   )
