@@ -11,10 +11,10 @@
 }
 
 :root {
-  --primary: #FFE457;
-  --secondary: #252525;
-  --gray: #DDDDDD;
-  --background: #343434;
+  --primary: #FCD34D;
+  --secondary: #292524;
+  --white: #FAFAFA;
+  --background: #1C1917;
 }
 
 body {
@@ -39,7 +39,7 @@ p {
 }
 
 a {
-  text-decoration: none;
+  color: inherit;
 }
 
 button {
