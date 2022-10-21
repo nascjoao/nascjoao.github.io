@@ -1,13 +1,11 @@
 import Head from 'next/head'
 import Form from '../components/Form'
+import Hero from '../components/Hero'
 
 export default function Home() {
   return (
     <>
     <Head>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-      <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" /> 
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <link rel="shortcut icon" href="https://ik.imagekit.io/joaonasc/joaonascdev/favicon_MNmtMFvcD.png"
@@ -44,7 +42,7 @@ export default function Home() {
       <title>João Nasc | Desenvolvedor Web</title>
     </Head>
     <main>
-      Hello World
+      <Hero />
       <section id="contact">
         <div className="content">
           <h2>Entre em contato</h2>
