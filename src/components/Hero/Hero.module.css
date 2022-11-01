@@ -8,7 +8,8 @@
   padding: 0;
   color: #FAFAFA;
   background-color: #1C1917;
-  padding: 0 11.375rem;
+  padding: 5rem 11.375rem;
+  padding-bottom: 0;
 }
 
 .container h1 {

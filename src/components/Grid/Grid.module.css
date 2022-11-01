@@ -1,0 +1,17 @@
+.grid {
+  background-color: var(--primary);
+  border-radius: 5px;
+  padding: 4.0625rem;
+  padding-right: 3.0625rem;
+  max-width: 44.625rem;
+  width: 100%;
+  overflow: scroll;
+  overflow-x: hidden;
+  scrollbar-width: 1rem;
+  scrollbar-color: var(--secondary) transparent;
+  scrollbar-gutter: stable;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: auto;
+}

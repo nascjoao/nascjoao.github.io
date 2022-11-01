@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Form from '../components/Form'
 import Hero from '../components/Hero'
+import SkillsSection from '../components/SkillsSection'
 
 export default function Home() {
   return (
@@ -43,9 +44,10 @@ export default function Home() {
     </Head>
     <main>
       <Hero />
+      <SkillsSection />
       <section id="contact">
         <div className="content">
-          <h2>Entre em contato</h2>
+          <h1>entre em contato</h1>
           <Form />
         </div>
       </section>
