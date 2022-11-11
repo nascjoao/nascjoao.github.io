@@ -74,16 +74,6 @@ button:disabled {
   cursor: not-allowed;
 }
 
-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  height: 100vh;
-  position: relative;
-  padding: 0 20px;
-}
-
 header #welcome {
   display: flex;
   align-items: center;
@@ -239,34 +229,4 @@ header #welcome h1 {
 
 #contact form button svg {
   margin-right: 10px;
-}
-
-
-/* ======================== FOOTER ======================== */
-
-footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 90px;
-  background-color: var(--secondary);
-  color: var(--primary);
-}
-
-@media (max-width: 310px) {
-  .shield .label {
-    min-width: 100%;
-  }
-  
-  .shields {
-    grid-template-areas: none;
-  }
-  
-  #email, #linkedin {
-    grid-area: unset;
-  }
-  
-  #scroll {
-    visibility: hidden;
-  }
 }

@@ -1,0 +1,70 @@
+.footer {
+  background-color: var(--secondary);
+  padding: 4rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 57.375rem;
+  margin: 0 auto;
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+}
+
+.footer section {
+  padding: 0;
+}
+
+.footer header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer header img {
+  width: 3.25rem;
+  border-radius: 50%;
+}
+
+.footer header h1 {
+  font-size: 3.25rem;
+}
+
+.footer header h1 span {
+  color: var(--primary);
+}
+
+.footer h2 {
+  font-size: 1.1875rem;
+  color: var(--primary);
+  text-align: left;
+}
+
+.footer p {
+  font-size: 0.875rem;
+  color: #939393;
+}
+
+.loveMessage {
+  border-left: 2px solid var(--primary);
+  padding-left: 1rem;
+}
+
+.container section:first-child {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.findMe {
+  width: 100%;
+}
+
+.findMe h1 {
+  font-size: 1.1875rem;
+  text-align: right;
+}
+

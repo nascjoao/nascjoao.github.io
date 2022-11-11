@@ -1,6 +1,8 @@
 import Head from 'next/head'
+import Footer from '../components/Footer'
 import Form from '../components/Form'
 import Hero from '../components/Hero'
+import ProjectsSection from '../components/ProjectsSection'
 import SkillsSection from '../components/SkillsSection'
 
 export default function Home() {
@@ -44,6 +46,7 @@ export default function Home() {
     </Head>
     <main>
       <Hero />
+      <ProjectsSection />
       <SkillsSection />
       <section id="contact">
         <div className="content">
@@ -53,7 +56,7 @@ export default function Home() {
       </section>
     </main>
 
-    <footer>© 2021 João Victor Nascimento</footer>
+    <Footer />
     </>
   )
 }

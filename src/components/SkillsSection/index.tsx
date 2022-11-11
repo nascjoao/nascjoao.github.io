@@ -1,4 +1,4 @@
-import Grid from "../Grid";
+import SkillsGrid from "../SkillsGrid";
 import styles from './SkillsSection.module.css';
 
 export default function SkillsSection() {
@@ -9,7 +9,7 @@ export default function SkillsSection() {
         <h2>O aprendizado é contínuo e sempre haverá um próximo nível.</h2>
       </div>
       <div className={styles.grid}>
-        <Grid />
+        <SkillsGrid />
       </div>
     </section>
   )
