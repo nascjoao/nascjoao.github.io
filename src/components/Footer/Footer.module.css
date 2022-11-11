@@ -1,9 +1,9 @@
 .footer {
   background-color: var(--secondary);
-  padding: 4rem;
 }
 
 .container {
+  padding: 4rem;
   width: 100%;
   max-width: 57.375rem;
   margin: 0 auto;
