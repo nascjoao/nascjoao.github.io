@@ -17,3 +17,11 @@
 .container .grid {
   margin-top: -7.03125rem;
 }
+
+@media screen and (max-width: 590px) {
+  .container .heading {
+    padding: 2rem;
+    background-color: var(--secondary);
+    padding-bottom: 9.40625rem;
+  }
+}

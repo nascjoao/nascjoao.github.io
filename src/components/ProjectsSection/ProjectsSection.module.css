@@ -11,6 +11,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(22.75rem, 1fr));
   max-width: 57.375rem;
+  width: 100%;
   gap: 1rem;
   margin: 0 auto;
   padding: 4rem;
@@ -77,9 +78,30 @@
   transform: translateX(0);
 }
 
-@media screen and (max-width: 590px) {
+@media screen and (max-width: 810px) {
   .projectCard .externalLinkSymbol {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .container h1, .grid {
+    padding: 2rem;
+  }
+
+  .container h1 {
+    padding-bottom: 1rem;
+  }
+}
+
+@media screen and (max-width: 493px) {
+  .grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .grid .projectCard .info span {
+    font-size: 0.875rem;
   }
 }
