@@ -1,4 +1,5 @@
-import type Repo from "../@types/repo";
+import type GitHubV4Repo from "../@types/GitHubV4Repo";
+import type Repo from "../@types/Repo";
 
 export default async function getPinnedRepos(gitHubToken: string) {
   const response = await fetch('https://api.github.com/graphql', {
@@ -16,6 +17,7 @@ export default async function getPinnedRepos(gitHubToken: string) {
                 stargazers {
                   totalCount
                 }
+                homepageUrl
               }
             } 
           } 
@@ -28,11 +30,11 @@ export default async function getPinnedRepos(gitHubToken: string) {
     }
   })
   const data = await response.json();
-  const repos = data.data.user.pinnedItems.nodes.map(
-    ({ openGraphImageUrl, stargazers, ...repo }: Repo) => ({
+  const repos: Repo[] = data.data.user.pinnedItems.nodes.map(
+    ({ openGraphImageUrl, stargazers, ...repo }: GitHubV4Repo) => ({
       ...repo,
       imageURL: openGraphImageUrl,
-      stars: stargazers.totalCount
+      stars: stargazers.totalCount,
     }),
   )
   return repos;

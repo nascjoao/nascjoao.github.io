@@ -1,4 +1,5 @@
-import type Repo from "../@types/repo";
+import type GitHubV4Repo from "../@types/GitHubV4Repo";
+import type Repo from "../@types/Repo";
 
 export default async function getRepos(gitHubToken: string) {
   const response = await fetch('https://api.github.com/graphql', {
@@ -28,8 +29,8 @@ export default async function getRepos(gitHubToken: string) {
     }
   })
   const data = await response.json();
-  const repos = data.data.user.repositories.nodes.map(
-    ({ openGraphImageUrl, stargazers, ...repo }: Repo) => ({
+  const repos: Repo[] = data.data.user.repositories.nodes.map(
+    ({ openGraphImageUrl, stargazers, ...repo }: GitHubV4Repo) => ({
       ...repo,
       imageURL: openGraphImageUrl,
       stars: stargazers.totalCount
