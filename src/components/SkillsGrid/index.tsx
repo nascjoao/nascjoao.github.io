@@ -1,5 +1,5 @@
 import { FaNodeJs, FaReact } from 'react-icons/fa';
-import { SiJavascript, SiNextdotjs } from 'react-icons/si';
+import { SiJavascript, SiNextdotjs, SiTypescript } from 'react-icons/si';
 import Skill from '../Skill';
 import styles from './SkillsGrid.module.css';
 
@@ -23,9 +23,9 @@ export default function SkillsGrid() {
             title="Node"
           />
           <Skill
-            icon={SiJavascript}
-            color="#EFD81D"
-            title="JavaScript"
+            icon={SiTypescript}
+            color="#2F74C0"
+            title="TypeScript"
           />
       </div>
     </>
