@@ -1,0 +1,107 @@
+.container {
+  padding: 0;
+}
+
+.container h1 {
+  padding: 5.375rem;
+  padding-bottom: 2.375rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(22.75rem, 1fr));
+  max-width: 57.375rem;
+  width: 100%;
+  gap: 1rem;
+  margin: 0 auto;
+  padding: 4rem;
+}
+
+.grid .projectCard {
+  background-color: var(--secondary);
+  border-radius: 5px;
+  color: var(--white);
+  display: grid;
+  grid-template-rows: auto 1fr;
+  align-items: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid var(--secondary);
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+}
+
+.grid .projectCard:hover {
+  transform: translateY(-1%);
+  box-shadow: 0 0 50px -20px var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.grid .projectCard img {
+  border-radius: 5px 5px 0 0;
+  object-fit: cover;
+}
+
+.grid .projectCard .info {
+  padding: 1rem;
+  display: grid;
+}
+
+.grid .projectCard .info span {
+  text-decoration: underline;
+}
+
+.externalLinkSymbol {
+  background-color: var(--primary);
+  color: var(--secondary);
+  width: fit-content;
+  font-size: 0;
+  border-radius: 50%;
+  border: 1px solid var(--secondary);
+  padding: 0.5rem;
+  right: .875rem;
+  top: .875rem;
+  z-index: 1;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+  pointer-events: none;
+  transform: translateX(105%);
+}
+
+.externalLinkSymbol svg {
+  font-size: 1rem;
+}
+
+.projectCard:hover .externalLinkSymbol {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media screen and (max-width: 810px) {
+  .projectCard .externalLinkSymbol {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .container h1, .grid {
+    padding: 2rem;
+  }
+
+  .container h1 {
+    padding-bottom: 1rem;
+  }
+}
+
+@media screen and (max-width: 493px) {
+  .grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .grid .projectCard .info span {
+    font-size: 0.875rem;
+  }
+}

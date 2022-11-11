@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, FormEvent } from 'react'
 import { FaPaperPlane } from 'react-icons/fa'
 import { IoReloadOutline } from 'react-icons/io5'
 import ReCAPTCHA  from 'react-google-recaptcha'
@@ -11,44 +11,54 @@ export default function Form() {
     email: '',
     message: ''
   })
-  const [recaptchaValidated, setRecaptchaValidated] = useState(false)
+  const [recaptchaFailed, setRecaptchaFailed] = useState(false)
   const [formIsBeingSent, setFormIsBeingSent] = useState(false)
   const [formSubmited, setFormSubmited] = useState(false)
   const [textAreaIsActive, setTextAreaIsActive] = useState(false)
-  const messageTextAreaRef = useRef()
+  const messageTextAreaRef = useRef<HTMLTextAreaElement>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
-  async function handleSubmit(event) {
+  async function handleSubmit(event: FormEvent) {
     event.preventDefault();
-    const entries = [fields.name, fields.email, fields.message];
-    const hasEmptyField = entries.some((entry) => entry === '');
-
-    if (!hasEmptyField) {
-      setFormIsBeingSent(true)
-      setFields({
-        name: '',
-        email: '',
-        message: ''
-      })
-      await fetch('/api/email', {
-        method: 'POST',
-        body: JSON.stringify({
-          name: entries[0],
-          email: entries[1],
-          message: entries[2]
+    try {
+      await recaptchaValidation();
+      const entries = [fields.name, fields.email, fields.message];
+      const hasEmptyField = entries.some((entry) => entry === '');
+  
+      if (!hasEmptyField) {
+        setFormIsBeingSent(true)
+        setFields({
+          name: '',
+          email: '',
+          message: ''
         })
-      })
-      setFormSubmited(true)
-      setFormIsBeingSent(false)
+        await fetch('/api/email', {
+          method: 'POST',
+          body: JSON.stringify({
+            name: entries[0],
+            email: entries[1],
+            message: entries[2]
+          })
+        })
+        setFormSubmited(true)
+        setFormIsBeingSent(false)
+      } 
+    } catch (error) {
+      if (error instanceof Error && error.message === 'ReCAPTCHA precisa ser resolvido') {
+        setRecaptchaFailed(true)
+      }
     }
   }
 
-  async function recaptchaChange(value) {
+  async function recaptchaValidation() {
+    const token = recaptchaRef.current!.getValue();
     const response = await fetch('/api/recaptchaVerify', {
       method: 'POST',
-      body: JSON.stringify({ value }),
+      body: JSON.stringify({ value: token }),
     });
     const validation = await response.json();
-    if (validation.success) setRecaptchaValidated(true);
+    if (validation.success) console.log(validation.success);
+    else throw new Error('ReCAPTCHA precisa ser resolvido')
   }
 
   if (formSubmited) return (
@@ -56,7 +66,7 @@ export default function Form() {
       <p>Obrigado por entrar em contato! 😊</p>
       <button 
         style={{ display: 'flex', alignItems: 'center', padding: '10px 15px', marginTop: '25px' }}
-        onClick={() => { setFormSubmited(false); setRecaptchaValidated(false) }}
+        onClick={() => { setFormSubmited(false) }}
       >
         <IoReloadOutline style={{ marginRight: '10px' }} />
         Enviar outra mensagem
@@ -104,7 +114,9 @@ export default function Form() {
             <EmojiPicker 
               onEmojiClick={(emoji) => {
                 setFields((current) => ({ ...current, message: `${current.message}${emoji}` }))
-                messageTextAreaRef.current.focus()
+                if (messageTextAreaRef.current) {
+                  messageTextAreaRef.current.focus()
+                }
               }}
             />
           ) }
@@ -112,13 +124,18 @@ export default function Form() {
       </label>
       { Object.values(fields).some((field) => field !== '') && (
         <ReCAPTCHA
-          onChange={recaptchaChange}
-          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+          ref={recaptchaRef}
+          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
           theme="dark"
-          style={{ marginBottom: '25px' }}
+          onChange={() => setRecaptchaFailed(false)}
+          style={{
+            marginBottom: '25px',
+            boxShadow: recaptchaFailed ? '0 0 20px -5px red' : 'none',
+            width: 'fit-content'
+          }}
         />
       ) }
-      <button type="submit" disabled={!recaptchaValidated || formIsBeingSent}><FaPaperPlane />{ formIsBeingSent ? 'Enviando' : 'Enviar'}</button>
+      <button type="submit" disabled={formIsBeingSent}><FaPaperPlane />{ formIsBeingSent ? 'Enviando' : 'Enviar'}</button>
     </form>
   )
 }

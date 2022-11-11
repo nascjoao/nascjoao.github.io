@@ -1,0 +1,27 @@
+.container {
+  padding: 0;
+}
+
+.container h2 {
+  max-width: 25.5rem;
+  margin: 2.375rem auto;
+  margin-bottom: 0;
+}
+
+.container .heading {
+  padding: 5.375rem;
+  background-color: var(--secondary);
+  padding-bottom: 9.40625rem;
+}
+
+.container .grid {
+  margin-top: -7.03125rem;
+}
+
+@media screen and (max-width: 590px) {
+  .container .heading {
+    padding: 2rem;
+    background-color: var(--secondary);
+    padding-bottom: 9.40625rem;
+  }
+}
