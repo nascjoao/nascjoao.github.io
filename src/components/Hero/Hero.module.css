@@ -167,14 +167,34 @@
   }
 }
 
-@media screen and (max-width: 375px) {
+
+@media screen and (max-width: 480px) {
+  .container div:last-child img {
+    max-height: 21rem;
+  }
+
   .container div:last-child h3 {
     top: 55%;
     left: 0;
+    padding: 1rem 0.7rem;
   }
 
   .container div:last-child h3 + h3 {
-    top: 70%;
+    top: 75%;
     right: 3%;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  @keyframes levitation {
+    from {
+      transform: translateY(0%);
+    } to {
+      transform: translateY(10%);
+    }
+  }
+
+  .container div:last-child img {
+    max-height: 20rem;
   }
 }
