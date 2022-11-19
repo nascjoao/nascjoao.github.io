@@ -10,5 +10,14 @@ module.exports = {
     images: {
       allowFutureImage: true
     }
+  },
+  async redirects() {
+    return [
+      {
+        source: '/youtube',
+        destination: 'https://www.youtube.com/@nascjoao?sub_confirmation=1',
+        permanent: false
+      }
+    ]
   }
 }
