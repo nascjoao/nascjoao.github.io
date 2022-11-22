@@ -1,0 +1,92 @@
+.alert {
+  background-color: var(--primary);
+  padding: 1rem;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 25px -10px var(--primary);
+}
+
+.alert a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.alert strong {
+  text-decoration: underline;
+}
+
+@keyframes pulse {
+  from {
+    opacity: 0;
+  } to {
+    opacity: 1;
+  }
+}
+
+.alert span {
+  content: 'NOVO!';
+  background-color: crimson;
+  border-radius: 5px;
+  padding: 0.2rem;
+  font-size: 0.75rem;
+  color: var(--white);
+  animation: pulse 1s infinite linear alternate;
+}
+
+.youtubeIcon {
+  color: crimson;
+  font-size: 1.5rem;
+}
+
+.close {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0;
+}
+
+.close svg {
+  font-size: 1.5rem;
+}
+
+@media screen and (max-width: 440px) {
+  .alert a {
+    display: grid;
+    grid-template-areas: 'youtubeIcon newBadge .' 'title title title';
+  }
+
+  .youtubeIcon {
+    grid-area: youtubeIcon;
+    margin-left: auto;
+  }
+
+  .alert span {
+    grid-area: newBadge;
+  }
+
+  .alert strong {
+    grid-area: title;
+  }
+
+  .close {
+    right: 1rem;
+    top: 1rem;
+    transform: none;
+  }
+}
+
+@media screen and (max-width: 625px) {
+  .alert a {
+    padding-right: 2rem;
+  }
+  .youtubeIcon {
+    order: -1;
+  }
+}

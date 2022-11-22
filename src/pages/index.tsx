@@ -4,8 +4,10 @@ import Form from '../components/Form'
 import Hero from '../components/Hero'
 import ProjectsSection from '../components/ProjectsSection'
 import SkillsSection from '../components/SkillsSection'
+import useYouTubeAlert from '../hooks/useYouTubeAlert'
 
 export default function Home() {
+  const { shouldBeVisible, YouTubeAlert } = useYouTubeAlert();
   return (
     <>
     <Head>
@@ -45,6 +47,7 @@ export default function Home() {
       <title>João Nasc | Desenvolvedor Web</title>
     </Head>
     <main>
+      { shouldBeVisible && <YouTubeAlert /> }
       <Hero />
       <ProjectsSection />
       <SkillsSection />
