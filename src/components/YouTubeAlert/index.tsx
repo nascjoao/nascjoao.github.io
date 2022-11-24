@@ -7,7 +7,10 @@ export default function YouTubeAlert({ video, close }: { video: YouTubeVideo | u
   return (
     <div className={styles.alert}>
       <a href={`https://www.youtube.com/watch?v=${video?.id}`} target="_blank">
-        <span>NOVO!</span>
+        <div>
+          <img src={video?.thumbnail} aria-hidden="true" className={styles.thumb} />
+          <span className={styles.newVideoBadge}>NOVO!</span>
+        </div>
         <strong>{video?.title}</strong>
         <FaYoutube className={styles.youtubeIcon} />
       </a>
