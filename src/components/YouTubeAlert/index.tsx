@@ -5,7 +5,7 @@ import styles from './YouTubeAlert.module.css';
 
 export default function YouTubeAlert({ video, close }: { video: YouTubeVideo | undefined, close: Function }) {
   return (
-    <div className={styles.alert}>
+    <div className={styles.alert} style={{ backgroundImage: `url(${video?.thumbnail})` }}>
       <a href={`https://www.youtube.com/watch?v=${video?.id}`} target="_blank">
         <span>NOVO!</span>
         <strong>{video?.title}</strong>
