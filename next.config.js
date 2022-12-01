@@ -1,3 +1,5 @@
+const getYouTubeRedirects = require('./src/services/getYouTubeRedirects');
+
 module.exports = {
   i18n: {
     locales: ["pt"],
@@ -14,10 +16,16 @@ module.exports = {
   async redirects() {
     return [
       {
+        source: '/_error',
+        destination: '/',
+        permanent: false
+      },
+      {
         source: '/youtube',
         destination: 'https://www.youtube.com/@nascjoao?sub_confirmation=1',
-        permanent: false
-      }
+        permanent: true
+      },
+      ...await getYouTubeRedirects(),
     ]
   }
 }

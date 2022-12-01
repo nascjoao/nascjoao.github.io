@@ -1,0 +1,60 @@
+.container {
+  width: 100%;
+  max-width: 54.6825rem;
+  height: 100vh;
+  position: relative;
+  margin: 0 auto;
+  padding: 8rem;
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.container * {
+  z-index: 1;
+}
+
+.container a {
+  color: var(--primary)
+}
+
+.container h1 {
+  font-size: 8rem;
+}
+
+@keyframes spin {
+  0% {
+    rotate: 0;
+    opacity: .6;
+  } 50% {
+    opacity: .2;
+    rotate: 360deg;
+  } 100% {
+    rotate: 720deg;
+    opacity: .6;
+  }
+}
+
+.container::after {
+  content: '';
+  width: 60vh;
+  height: 60vh;
+  background: linear-gradient(transparent, #FCD34D);
+  border: 2px solid #FCD34D;
+  animation: spin 10s infinite linear;
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  border-radius: 50%;
+}
+
+@media screen and (max-width: 555px) {
+  .container {
+    padding: 2rem;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    text-align: center;
+  }
+}
