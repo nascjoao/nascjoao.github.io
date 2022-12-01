@@ -16,6 +16,11 @@ module.exports = {
   async redirects() {
     return [
       {
+        source: '/_error',
+        destination: '/',
+        permanent: false
+      },
+      {
         source: '/youtube',
         destination: 'https://www.youtube.com/@nascjoao?sub_confirmation=1',
         permanent: true
