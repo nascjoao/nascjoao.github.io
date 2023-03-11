@@ -4,7 +4,12 @@ module.exports = {
     defaultLocale: "pt"
   },
   images: {
-    domains: ['www.github.com', 'opengraph.githubassets.com', 'repository-images.githubusercontent.com']
+    domains: [
+      'www.github.com',
+      'opengraph.githubassets.com',
+      'repository-images.githubusercontent.com',
+      'www.gravatar.com'
+    ]
   },
   experimental: {
     images: {
