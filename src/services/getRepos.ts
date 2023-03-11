@@ -1,5 +1,5 @@
-import type GitHubV4Repo from "../@types/GitHubV4Repo";
-import type Repo from "../@types/Repo";
+import type GitHubV4Repo from "../types/GitHubV4Repo";
+import type Repo from "../types/repo";
 
 export default async function getRepos(gitHubToken: string) {
   const response = await fetch('https://api.github.com/graphql', {

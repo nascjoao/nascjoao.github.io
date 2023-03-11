@@ -1,6 +1,6 @@
 import { FaYoutube } from 'react-icons/fa';
 import { IoClose } from 'react-icons/io5';
-import type YouTubeVideo from '../../@types/YouTubeVideo';
+import type YouTubeVideo from '../../types/YouTubeVideo';
 import styles from './YouTubeAlert.module.css';
 
 export default function YouTubeAlert({ video, close }: { video: YouTubeVideo | undefined, close: Function }) {

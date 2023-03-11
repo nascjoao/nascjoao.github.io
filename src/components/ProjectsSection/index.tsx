@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Repo from '../../@types/Repo';
+import Repo from '../../types/repo';
 import styles from './ProjectsSection.module.css';
 import Image from 'next/image';
 import { FaExternalLinkAlt } from 'react-icons/fa';

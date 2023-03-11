@@ -1,7 +1,7 @@
 import { writeFileSync, readFileSync } from 'fs';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import path from 'path';
-import type YouTubeVideo from '../../@types/YouTubeVideo';
+import type YouTubeVideo from '../../types/YouTubeVideo';
 import getYouTubeVideo from '../../services/getYouTubeVideo';
 
 const { YOUTUBE_API_KEY, YOUTUBE_CHANNEL_ID } = process.env;

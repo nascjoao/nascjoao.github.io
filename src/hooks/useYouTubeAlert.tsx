@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import type YouTubeVideo from '../@types/YouTubeVideo';
+import type YouTubeVideo from '../types/YouTubeVideo';
 import { useEffect, useState } from 'react';
 import YouTubeAlert from '../components/YouTubeAlert';
 

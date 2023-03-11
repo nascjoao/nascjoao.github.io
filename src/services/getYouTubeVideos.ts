@@ -1,4 +1,4 @@
-import type YouTubeAPIVideo from "../@types/YouTubeAPIVideo";
+import type YouTubeAPIVideo from "../types/YouTubeAPIVideo";
 
 export default async function getYouTubeVideos(apiKey: string) {
   const response = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=UCZKYsMOyURRGeI80WAKeUpA&part=snippet,id&order=date&maxResults=20`)

@@ -1,4 +1,4 @@
-import YouTubeVideo from "../@types/YouTubeVideo";
+import YouTubeVideo from "../types/YouTubeVideo";
 
 export default async function getYouTubeVideos(apiKey: string, videoId: string): Promise<YouTubeVideo> { 
   const response = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${apiKey}`)
