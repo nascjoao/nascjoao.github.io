@@ -1,6 +1,6 @@
 import axios from "axios";
 
-type Link = {
+export type Link = {
   title: string,
   url: string,
 }
