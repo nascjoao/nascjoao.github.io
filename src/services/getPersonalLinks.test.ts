@@ -39,3 +39,17 @@ test('Deve ser capaz de extrair os links do arquivo', async () => {
     },
   ])
 })
+
+test('Deve retornar um array vazio se não conseguir extrair informações de links', async () => {
+  (axios.get as jest.Mock).mockResolvedValueOnce({
+    data: `
+    ### Where you can reach me
+    <p>
+      <a href="https://linkedin.com/in/nascjoao"><img src="https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white&color=0073B1"></a>
+      <a href="https://dev.to/joaonasc"><img src="https://img.shields.io/badge/DEV.to-blue?logo=dev.to&logoColor=white&color=black"></a>
+      <a href="mailto:oi@joaonasc.dev"><img src="https://img.shields.io/badge/Email-oi@joaonasc.dev-white"></a>
+    </p>
+    `
+  })
+  expect(await getPersonalLinks()).toEqual([])
+})
