@@ -51,5 +51,17 @@ test('Deve retornar um array vazio se não conseguir extrair informações de li
     </p>
     `
   })
+  .mockResolvedValueOnce({
+    data: `
+    ### Where you can reach me
+    <p>
+      <a href="https://linkedin.com/in/nascjoao"><img src="https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white&color=0073B1"></a>
+      <a href="https://dev.to/joaonasc"><img src="https://img.shields.io/badge/DEV.to-blue?logo=dev.to&logoColor=white&color=black"></a>
+      <a href="mailto:oi@joaonasc.dev"><img src="https://img.shields.io/badge/Email-oi@joaonasc.dev-white"></a>
+    </p>
+    ### Links
+    `
+  })
+  expect(await getPersonalLinks()).toEqual([])
   expect(await getPersonalLinks()).toEqual([])
 })
