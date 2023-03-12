@@ -3,6 +3,8 @@ import { GetServerSidePropsContext } from "next"
 import { Link } from "../services/getPersonalLinks"
 import styles from '../styles/pages/links.module.css'
 import Head from "next/head";
+import { BiConfused } from 'react-icons/bi';
+import NextLink from "next/link";
 
 export default function Links({ links = [] }: { links: Link[] }) {
   return (
@@ -52,13 +54,22 @@ export default function Links({ links = [] }: { links: Link[] }) {
         />
         <h1 className={styles.heading}>João Nasc</h1>
         <ul className={styles.linksList}>
-          { links.map((link) => (
+          { links.length ? links.map((link) => (
             <a href={link.url} key={link.url}>
               <li>
                 {link.title}
               </li>
             </a>
-          )) }
+          )) : (
+            <>
+              <span className={styles.notFoundLinks}>
+                <BiConfused />
+                <strong>Ops, parece que tem algo errado.</strong>
+                <p>Deveria ter alguns links por aqui...</p>
+              <NextLink href="/" className={styles.linkToHome}>Voltar para a Home</NextLink>
+              </span>
+            </>
+          ) }
         </ul>
       </main>
     </>

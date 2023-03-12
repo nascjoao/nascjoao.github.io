@@ -32,3 +32,34 @@
   text-align: center;
   margin: 1rem 0;
 }
+
+.notFoundLinks {
+  color: var(--white);
+  display: grid;
+  grid-template-areas: "icon strong" "text text" "link link";
+  gap: 0.5rem;
+}
+
+.notFoundLinks svg {
+  grid-area: icon;
+  font-size: 2rem;
+  color: var(--primary);
+}
+
+.notFoundLinks strong {
+  grid-area: strong;
+  align-self: center;
+  color: var(--primary);
+}
+
+.notFoundLinks p {
+  grid-area: text;
+  justify-self: center;
+}
+
+.notFoundLinks a {
+  color: var(--primary);
+  grid-area: link;
+  justify-self: center;
+  margin-top: 2rem;
+}
