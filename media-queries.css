@@ -24,4 +24,29 @@
   #about {
     font-size: 1.15rem;
   }
+
+  footer {
+    padding: 0;
+  }
+
+  footer .container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  footer .container > div {
+    grid-template-columns: auto auto;
+  }
+
+  footer .container > div img {
+    justify-self: flex-end;
+  }
+
+  footer .container > div ~ div {
+    align-items: center;
+  }
+
+  footer .container > div ~ div ul li a {
+    gap: 0.7rem;
+  }
 }
