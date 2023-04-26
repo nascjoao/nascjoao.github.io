@@ -104,6 +104,6 @@ footer > div div strong {
   font-size: 3.25rem;
 }
 
-footer > div div strong span {
+a, footer > div div strong span {
   color: #fcd34d;
 }
