@@ -44,7 +44,11 @@
         <p>Orgulhosamente, essa página tem menos de 100kB</p>
       </div>
       <div>
-        <img src="nasc-hero.png" alt="Nasc sorrindo">
+        <picture>
+          <source media="(min-width:  791px)" srcset="./assets/images/nasc-hero-large.png">
+          <source media="(min-width: 721px)" srcset="./assets/images/nasc-hero-medium.png">
+          <img src="./assets/images/nasc-hero-small.png" alt="Nasc sorrindo">
+        </picture>
       </div>
     </div>
   </section>
