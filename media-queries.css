@@ -20,4 +20,8 @@
   #hero .container img {
     width: 200px;
   }
+
+  #about {
+    font-size: 1.15rem;
+  }
 }
