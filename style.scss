@@ -18,57 +18,57 @@ h1, h2, h3, h4, h5, h6 {
 #hero {
   border-bottom: 2px solid #fcd34d;
   overflow: hidden;
-}
 
-#hero .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5rem;
-  padding: 0 2rem;
-  margin: 0 auto;
-}
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+    padding: 0 2rem;
+    margin: 0 auto;
 
-#hero .container >:nth-child(1) {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
+    >:nth-child(1) {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
 
-#hero .container h1 {
-  font-size: 4rem;
-  line-height: 0.9;
-}
+      *:nth-child(3) {
+        font-style: italic;
+        opacity: .4;
+      }
+    }
 
-#hero .container h1 span {
-  color: #fcd34d;
-}
+    h1 {
+      font-size: 4rem;
+      line-height: 0.9;
 
-#hero .container >:nth-child(1) *:nth-child(3) {
-  font-style: italic;
-  opacity: .4;
-}
+      span {
+        color: #fcd34d;
+      }
+    }
 
-#hero .container >:nth-child(2) {
-  font-size: 0;
-  position: relative;
-}
+    >:nth-child(2) {
+      font-size: 0;
+      position: relative;
 
-#hero .container >:nth-child(2) img {
-  filter: saturate(0);
-}
+      img {
+        filter: saturate(0);
+      }
 
-#hero .container >:nth-child(2)::before {
-  content: '';
-  background: #fcd34d;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: -1;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 10%;
-  transform: translateY(30%);
+      &::before {
+        content: '';
+        background: #fcd34d;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: -1;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 10%;
+        transform: translateY(30%);
+      }
+    }
+  }
 }
 
 #about {
@@ -91,6 +91,69 @@ p + p {
 footer {
   background: #292524;
   padding: 2rem;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+
+  > .container div {
+    display: grid;
+    grid-template-areas: 'img name' 'fullname fullname';
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    column-gap: 1rem;
+    row-gap: 1rem;
+
+    img {
+      width: 3.25rem;
+      border-radius: 50%;
+      grid-area: img;
+    }
+
+    strong {
+      font-size: 3.25rem;
+      grid-area: name;
+    }
+
+    span {
+      grid-area: fullname;
+    }
+
+    ~ div {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      h1 {
+        font-size: 1.1875rem;
+      }
+
+      ul {
+        list-style-type: none;
+      }
+
+      li {
+        + li {
+          margin-top: 0.7rem;
+        }
+
+        a {
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          gap: 0.3rem;
+        }
+
+        svg {
+          fill: #fcd34d;
+          width: 1.2rem;
+        }
+      }
+    }
+  }
 }
 
 .container {
@@ -98,67 +161,6 @@ footer {
   max-width: 80rem;
 }
 
-footer .container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0 auto;
-}
-
-footer > .container div {
-  display: grid;
-  grid-template-areas: 'img name' 'fullname fullname';
-  grid-template-columns: auto 1fr;
-  align-items: center;
-  column-gap: 1rem;
-  row-gap: 1rem;
-}
-
-footer > .container div img {
-  width: 3.25rem;
-  border-radius: 50%;
-  grid-area: img;
-}
-
-footer > .container div strong {
-  font-size: 3.25rem;
-  grid-area: name;
-}
-
-footer > .container div span{
-  grid-area: fullname;
-}
-
 a, footer > .container div strong span {
   color: #fcd34d;
-}
-
-footer > .container div ~ div {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-footer > .container div ~ div h1 {
-  font-size: 1.1875rem;
-}
-
-footer > .container div ~ div ul {
-  list-style-type: none;
-}
-
-footer > .container div ~ div ul li + li {
-  margin-top: 0.7rem;
-}
-
-footer > .container div ~ div ul li a {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  gap: 0.3rem;
-}
-
-footer > .container div ~ div ul li svg {
-  fill: #fcd34d;
-  width: 1.2rem;
 }

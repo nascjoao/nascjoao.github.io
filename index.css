@@ -19,7 +19,6 @@ h1, h2, h3, h4, h5, h6 {
   border-bottom: 2px solid #fcd34d;
   overflow: hidden;
 }
-
 #hero .container {
   display: flex;
   align-items: center;
@@ -28,36 +27,29 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0 2rem;
   margin: 0 auto;
 }
-
 #hero .container > :nth-child(1) {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-
-#hero .container h1 {
-  font-size: 4rem;
-  line-height: 0.9;
-}
-
-#hero .container h1 span {
-  color: #fcd34d;
-}
-
 #hero .container > :nth-child(1) *:nth-child(3) {
   font-style: italic;
   opacity: 0.4;
 }
-
+#hero .container h1 {
+  font-size: 4rem;
+  line-height: 0.9;
+}
+#hero .container h1 span {
+  color: #fcd34d;
+}
 #hero .container > :nth-child(2) {
   font-size: 0;
   position: relative;
 }
-
 #hero .container > :nth-child(2) img {
   filter: saturate(0);
 }
-
 #hero .container > :nth-child(2)::before {
   content: "";
   background: #fcd34d;
@@ -92,19 +84,12 @@ footer {
   background: #292524;
   padding: 2rem;
 }
-
-.container {
-  padding: 2rem;
-  max-width: 80rem;
-}
-
 footer .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
 }
-
 footer > .container div {
   display: grid;
   grid-template-areas: "img name" "fullname fullname";
@@ -114,54 +99,50 @@ footer > .container div {
        column-gap: 1rem;
   row-gap: 1rem;
 }
-
 footer > .container div img {
   width: 3.25rem;
   border-radius: 50%;
   grid-area: img;
 }
-
 footer > .container div strong {
   font-size: 3.25rem;
   grid-area: name;
 }
-
 footer > .container div span {
   grid-area: fullname;
 }
-
-a, footer > .container div strong span {
-  color: #fcd34d;
-}
-
 footer > .container div ~ div {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
-
 footer > .container div ~ div h1 {
   font-size: 1.1875rem;
 }
-
 footer > .container div ~ div ul {
   list-style-type: none;
 }
-
-footer > .container div ~ div ul li + li {
+footer > .container div ~ div li + li {
   margin-top: 0.7rem;
 }
-
-footer > .container div ~ div ul li a {
+footer > .container div ~ div li a {
   display: flex;
   align-items: center;
   text-decoration: none;
   gap: 0.3rem;
 }
-
-footer > .container div ~ div ul li svg {
+footer > .container div ~ div li svg {
   fill: #fcd34d;
   width: 1.2rem;
+}
+
+.container {
+  padding: 2rem;
+  max-width: 80rem;
+}
+
+a, footer > .container div strong span {
+  color: #fcd34d;
 }
 
 @media screen and (max-width: 720px) {
