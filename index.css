@@ -49,6 +49,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 #hero .container > :nth-child(2) img {
   filter: saturate(0);
+  width: 430px;
+  height: 502px;
 }
 #hero .container > :nth-child(2)::before {
   content: "";
@@ -145,6 +147,12 @@ a, footer > .container div strong span {
   color: #fcd34d;
 }
 
+@media screen and (max-width: 790px) {
+  #hero .container > :nth-child(2) img {
+    width: 348px;
+    height: 406px;
+  }
+}
 @media screen and (max-width: 720px) {
   #hero .container {
     flex-direction: column;
@@ -177,6 +185,12 @@ a, footer > .container div strong span {
   }
   footer .container > div ~ div ul li a {
     gap: 0.7rem;
+  }
+}
+@media screen and (max-width: 720px) {
+  #hero .container > :nth-child(2) img {
+    width: 202px;
+    height: 235px;
   }
 }
 /*# sourceMappingURL=index.css.map */

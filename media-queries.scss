@@ -1,3 +1,12 @@
+@media screen and (max-width: 790px) {
+  #hero {
+    .container > :nth-child(2) img {
+      width: 348px;
+      height: 406px;
+    }
+  }
+}
+
 @media screen and (max-width: 720px) {
   #hero {
     .container {
@@ -39,6 +48,15 @@
           }
         }
       }
+    }
+  }
+}
+
+@media screen and (max-width: 720px) {
+  #hero {
+    .container > :nth-child(2) img {
+      width: 202px;
+      height: 235px;
     }
   }
 }
