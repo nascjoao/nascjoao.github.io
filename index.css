@@ -1,3 +1,10 @@
+:root {
+  --primary: #fcd34d;
+  --light-text: #e6e6e6;
+  --background: #1c1917;
+  --darker-background: #292524;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -65,7 +72,7 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(30%);
 }
 
-#about {
+#about, #projects {
   width: 100%;
   max-width: 60rem;
   line-height: 1.5;
@@ -139,12 +146,62 @@ footer > .container div ~ div li svg {
 }
 
 .container {
+  display: block;
   padding: 2rem;
   max-width: 80rem;
+  width: 100%;
 }
 
 a, footer > .container div strong span {
   color: #fcd34d;
+}
+
+#projects noscript {
+  display: inline-block;
+}
+#projects noscript .disclaimer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 40rem;
+}
+#projects noscript .disclaimer header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+#projects noscript .disclaimer header svg {
+  width: 2rem;
+  fill: var(--primary);
+  stroke: var(--primary);
+}
+#projects noscript .disclaimer header strong {
+  color: var(--primary);
+  font-size: 1.1875rem;
+}
+#projects noscript .disclaimer #github-alternative a {
+  display: inline-flex;
+  align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  gap: 0.2rem;
+}
+#projects noscript .disclaimer #github-alternative svg {
+  width: 1rem;
+  fill: var(--primary);
+  stroke: var(--primary);
+}
+#projects noscript .projects-list li {
+  list-style-type: none;
+  margin-top: 2rem;
+}
+#projects noscript .projects-list li a article {
+  display: flex;
+  flex-direction: column;
+}
+#projects noscript .projects-list li a article span {
+  font-size: 0.876rem;
 }
 
 @media screen and (max-width: 790px) {

@@ -1,3 +1,10 @@
+:root {
+  --primary: #fcd34d;
+  --light-text: #e6e6e6;
+  --background: #1c1917;
+  --darker-background: #292524;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -73,7 +80,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-#about {
+#about, #projects {
   width: 100%;
   max-width: 60rem;
   line-height: 1.5;
@@ -159,8 +166,10 @@ footer {
 }
 
 .container {
+  display: block;
   padding: 2rem;
   max-width: 80rem;
+  width: 100%;
 }
 
 a, footer > .container div strong span {
