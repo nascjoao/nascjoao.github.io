@@ -195,6 +195,9 @@ a, footer > .container div strong span {
 #projects noscript .projects-list li {
   list-style-type: none;
   margin-top: 2rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 #projects noscript .projects-list li a article {
   display: flex;
