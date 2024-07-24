@@ -1,21 +1,78 @@
 ---
 import Layout from "layouts/Layout.astro";
+import { cva } from "class-variance-authority";
+
+const styles = {
+    hero: cva([
+        "py-20",
+        "rounded-lg",
+        "transition-colors",
+        "[transition-duration:250ms]",
+        "cursor-default",
+    ]),
+    button: cva([
+        "text-xl",
+        "text-white",
+        "font-semibold",
+        "antialiased",
+        "bg-blue-600",
+        "p-3",
+        "px-4",
+        "rounded-md",
+    ]),
+};
 ---
 
 <Layout title="João Nascimento">
-    <div class="max-w-screen-md mx-auto">
-        <section
-            id="hero"
-            class="p-4 py-36 rounded-lg m-4 transition-colors [transition-duration:250ms] hover:bg-gray-50 [&:hover>h1>span]:text-blue-600 cursor-default"
-        >
-            <h1 class="text-3xl">
+    <div class="max-w-screen-md mx-auto px-4 py-10">
+        <section id="hero" class={styles.hero()}>
+            <h1
+                class="text-3xl font-bold antialiased [&:hover>span]:text-blue-600"
+            >
                 João
                 <span class="transition-colors [transition-duration:250ms]">
-                    Nasc
-                </span>
-                imento
+                    Nasc</span
+                >imento
             </h1>
-            <p class="text-lg">Desenvolvedor Full Stack</p>
+            <p class="text-lg text-gray-500">Desenvolvedor Full Stack</p>
+            <p class="mt-4 text-xl leading-relaxed">
+                Atuo principalmente com o desenvolvimento de aplicações web
+                utilizando tecnologias como React, Next.js, Node.js e outras.
+            </p>
+            <br />
+            <button class={styles.button()}>Fale comigo</button>
+        </section>
+        <section>
+            <a
+                href="#como-trabalho"
+                class="relative before:content-['#'] before:text-gray-400 before:hidden [&:hover::before]:block before:absolute before:-left-2 before:-translate-x-full text-xl font-semibold antialiased"
+            >
+                <h2 id="como-trabalho">Como trabalho</h2>
+            </a>
+            <p class="mt-4 text-xl leading-relaxed">
+                Hoje eu estou focado em utilizar a tecnologia de forma
+                consciente para produzir páginas, aplicações e soluções que
+                atendam as necessidades de forma satisfatória e, principalmente,
+                eficiente.
+            </p>
+            <br />
+            <a
+                href="/como-trabalho"
+                class="flex w-fit gap-1 items-center text-blue-600 text-lg [&:hover>svg]:translate-x-1"
+            >
+                Saiba mais
+                <i data-lucide="arrow-right" class="size-5 transition-transform"
+                ></i>
+            </a>
         </section>
     </div>
 </Layout>
+<script>
+    import { ArrowRight, createIcons } from "lucide";
+
+    createIcons({
+        icons: {
+            ArrowRight,
+        },
+    });
+</script>
