@@ -17,8 +17,7 @@ import { ViewTransitions } from "astro:transitions";
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
         <ViewTransitions />
-        <script is:inline src="https://www.google.com/recaptcha/api.js"
-        ></script>
+        <slot name="header" />
     </head>
     <body>
         <slot />
