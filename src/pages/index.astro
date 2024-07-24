@@ -19,6 +19,7 @@ const styles = {
         "p-3",
         "px-4",
         "rounded-md",
+        "inline-block",
     ]),
 };
 ---
@@ -28,6 +29,7 @@ const styles = {
         <section id="hero" class={styles.hero()}>
             <h1
                 class="text-3xl font-bold antialiased [&:hover>span]:text-blue-600"
+                transition:name="heading-1"
             >
                 João
                 <span class="transition-colors [transition-duration:250ms]">
@@ -40,7 +42,7 @@ const styles = {
                 utilizando tecnologias como React, Next.js, Node.js e outras.
             </p>
             <br />
-            <button class={styles.button()}>Fale comigo</button>
+            <a href="/contato" class={styles.button()}>Fale comigo</a>
         </section>
         <section>
             <a
