@@ -14,6 +14,12 @@ dependencies:
   astro:
     specifier: ^4.12.2
     version: 4.12.2(typescript@5.5.4)
+  class-variance-authority:
+    specifier: ^0.7.0
+    version: 0.7.0
+  lucide:
+    specifier: ^0.414.0
+    version: 0.414.0
   tailwindcss:
     specifier: ^3.4.6
     version: 3.4.6
@@ -1493,6 +1499,12 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
+  /class-variance-authority@0.7.0:
+    resolution: {integrity: sha512-jFI8IQw4hczaL4ALINxqLEXQbWcNjoSkloa4IaufXCJr6QawJyw7tuRysRsrE8w2p/4gGaxKIt/hX3qz/IbD1A==}
+    dependencies:
+      clsx: 2.0.0
+    dev: false
+
   /cli-boxes@3.0.0:
     resolution: {integrity: sha512-/lzGpEWL/8PfI0BmBOPRwp0c/wFNX1RdUML3jK/RcSBA9T8mZDdQpqYBKtCFTOfQbwPqWEOpjqW+Fnayc0969g==}
     engines: {node: '>=10'}
@@ -1517,6 +1529,11 @@ packages:
       string-width: 4.2.3
       strip-ansi: 6.0.1
       wrap-ansi: 7.0.0
+    dev: false
+
+  /clsx@2.0.0:
+    resolution: {integrity: sha512-rQ1+kcj+ttHG0MKVGBUXwayCCF1oh39BF5COIpRzuCEv8Mwjv0XucrI2ExNTOn9IlLifGClWQcU9BrZORvtw6Q==}
+    engines: {node: '>=6'}
     dev: false
 
   /clsx@2.1.1:
@@ -2285,6 +2302,10 @@ packages:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
     dependencies:
       yallist: 3.1.1
+    dev: false
+
+  /lucide@0.414.0:
+    resolution: {integrity: sha512-MbICQp9Q70RnxCUYITcJ4owWjWLZAtNJZpCqyBK1WhwO2PDX8zxwAy97IiIAjl+6kFjKxXlOhepGl5AMN7UXYQ==}
     dev: false
 
   /magic-string@0.30.10:
