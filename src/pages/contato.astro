@@ -1,0 +1,103 @@
+---
+import Layout from "layouts/Layout.astro";
+import nodemailer from "nodemailer";
+
+export const prerender = false;
+
+const transporter = nodemailer.createTransport({
+    host: "smtp.mail.yahoo.com",
+    port: 465,
+    secure: true,
+    auth: {
+        user: import.meta.env.SMTP_USER,
+        pass: import.meta.env.SMTP_PASS,
+    },
+});
+
+if (Astro.request.method === "POST") {
+    try {
+        const data = await Astro.request.formData();
+        const name = String(data.get("name"));
+        const email = String(data.get("email"));
+        const message = String(data.get("message"));
+        transporter.sendMail({
+            from: {
+                name: "NASC.DEV",
+                address: import.meta.env.SMTP_USER,
+            },
+            to: "João Nascimento <oi@nasc.dev>",
+            subject: "nasc.dev - Contato de " + name,
+            text: `Nome: ${name}\nE-mail: ${email}\nMensagem: ${message}`,
+        });
+        console.log("E-mail enviado com sucesso!");
+    } catch (error) {
+        if (error instanceof Error) {
+            console.error(error.message);
+        }
+    }
+}
+---
+
+<Layout title="Contato">
+    <div class="max-w-screen-md mx-auto px-4 py-10">
+        <h1 transition:name="heading-1" class="antialiased text-xl font-bold">
+            Contato
+        </h1>
+        <form method="POST">
+            <label for="name" class="block mt-4 text-lg font-semibold">
+                Nome
+            </label>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                class="w-full p-3 mt-1 border border-gray-300 rounded-md"
+                required
+            />
+            <label for="email" class="block mt-4 text-lg font-semibold">
+                E-mail
+            </label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                class="w-full p-3 mt-1 border border-gray-300 rounded-md"
+                required
+            />
+            <label for="message" class="block mt-4 text-lg font-semibold">
+                Mensagem
+            </label>
+            <textarea
+                id="message"
+                name="message"
+                class="w-full p-3 mt-1 border border-gray-300 rounded-md min-h-32"
+                required></textarea>
+            <button
+                type="submit"
+                class="g-recaptcha mt-4 text-xl text-white font-semibold antialiased bg-blue-600 p-3 px-4 rounded-md inline-block"
+                data-sitekey={import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY}
+                data-callback="onSubmit"
+                data-action="submit"
+            >
+                Enviar
+            </button>
+        </form>
+    </div>
+    <script is:inline>
+        function onSubmit(token) {
+            fetch("/recaptcha", {
+                method: "POST",
+                body: JSON.stringify({ recaptcha: token }),
+            })
+                .then((response) => response.json())
+                .then((gResponse) => {
+                    if (gResponse.success) {
+                        const form = document.querySelector("form");
+                        form.submit();
+                    } else {
+                        console.error("Captcha verification failed");
+                    }
+                });
+        }
+    </script>
+</Layout>
