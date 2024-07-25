@@ -34,6 +34,18 @@ const { pathname } = Astro.url;
                 }
             </li>
             <li class="relative">
+                <a href="/sobre">Sobre</a>
+                {
+                    pathname === "/sobre" && (
+                        <div
+                            aria-hidden="true"
+                            class="absolute bottom-0 left-0 w-full h-0.5 bg-black"
+                            transition:name="tab-underline"
+                        />
+                    )
+                }
+            </li>
+            <li class="relative">
                 <a href="/contato">Contato</a>
                 {
                     pathname === "/contato" && (
