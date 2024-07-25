@@ -7,6 +7,7 @@ import { cva } from "class-variance-authority";
 const styles = {
     hero: cva([
         "py-20",
+        "pt-0",
         "rounded-lg",
         "transition-colors",
         "[transition-duration:250ms]",
@@ -29,7 +30,7 @@ const styles = {
 <Layout title="João Nascimento">
     <Header showBrandOnScroll />
     <div
-        class="max-w-screen-md mx-auto px-8 py-10"
+        class="max-w-screen-md mx-auto px-8 py-36"
         transition:name="container"
         transition:animate="slide"
     >
@@ -53,6 +54,73 @@ const styles = {
         </section>
         <section>
             <a
+                href="#projects"
+                class="relative before:content-['#'] before:text-gray-400 before:hidden [&:hover::before]:block before:absolute before:-left-2 before:-translate-x-full text-xl font-semibold antialiased"
+            >
+                <h2 id="projects">Projetos</h2>
+            </a>
+            <div
+                class="mt-4 grid [grid-template-columns:repeat(auto-fit,minmax(242px,1fr))] gap-4"
+            >
+                <a
+                    href="https://pop.nasc.dev"
+                    class="border rounded-lg p-4 hover:bg-gray-50"
+                    target="_blank"
+                >
+                    <article class="grid gap-2">
+                        <h3 class="text-2xl font-semibold antialiased">
+                            Popping Monsters
+                        </h3>
+                        <p class="text-md text-gray-500 leading-relaxed">
+                            Jogo estilo arcade.
+                        </p>
+                        <span class="flex gap-1 underline">
+                            Acessar
+                            <Icon
+                                name="external-link"
+                                class="size-3 transition-transform"
+                            />
+                        </span>
+                    </article>
+                </a>
+                <a
+                    href="https://coolumns.com.br"
+                    class="flex gap-1 border rounded-lg p-4 hover:bg-gray-50"
+                    target="_blank"
+                >
+                    <article class="grid gap-2">
+                        <h3 class="text-2xl font-semibold antialiased">
+                            coolumns
+                        </h3>
+                        <p class="text-md text-gray-500 leading-relaxed">
+                            Gerenciador de projetos.
+                        </p>
+                        <span class="flex gap-1 underline">
+                            Acessar (Pré-cadastro)
+                            <Icon
+                                name="external-link"
+                                class="size-3 transition-transform"
+                            />
+                        </span>
+                    </article>
+                </a>
+            </div>
+            <br />
+            <a
+                href="/projetos"
+                class="flex w-fit gap-1 items-center text-blue-600 text-lg [&:hover>svg]:translate-x-1"
+            >
+                Ver mais
+                <Icon
+                    transition:persist
+                    name="arrow-right"
+                    class="size-5 transition-transform"
+                />
+            </a>
+        </section>
+        <hr class="my-20" />
+        <section>
+            <a
                 href="#como-trabalho"
                 class="relative before:content-['#'] before:text-gray-400 before:hidden [&:hover::before]:block before:absolute before:-left-2 before:-translate-x-full text-xl font-semibold antialiased"
             >
@@ -70,23 +138,20 @@ const styles = {
                 class="flex w-fit gap-1 items-center text-blue-600 text-lg [&:hover>svg]:translate-x-1"
             >
                 Saiba mais
-                <Icon
-                    transition:persist
-                    name="arrow-right"
-                    class="size-5 transition-transform"
-                />
+                <Icon name="arrow-right" class="size-5 transition-transform" />
             </a>
         </section>
     </div>
-</Layout>
-<script>
-    import { ArrowRight, createIcons } from "lucide";
+    <script>
+        import { ArrowRight, ExternalLink, createIcons } from "lucide";
 
-    document.addEventListener("astro:page-load", () => {
-        createIcons({
-            icons: {
-                ArrowRight,
-            },
+        document.addEventListener("astro:page-load", () => {
+            createIcons({
+                icons: {
+                    ArrowRight,
+                    ExternalLink,
+                },
+            });
         });
-    });
-</script>
+    </script>
+</Layout>
