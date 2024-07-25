@@ -10,13 +10,12 @@ const { pathname } = Astro.url;
 
 <header>
     <nav
-        class="fixed flex items-center justify-between left-0 p-4 top-0 z-10 w-full"
+        class="transition-all border-b border-b-transparent duration-500 fixed flex items-center justify-between left-0 p-4 top-0 z-10 w-full"
     >
         <strong
             class={cx(
+                "transition-all duration-700",
                 showBrandOnScroll ? "opacity-0" : "opacity-100",
-                "transition-all",
-                "[transition-duration:500ms]",
             )}
         >
             <a href="/">João Nascimento</a>
@@ -59,13 +58,14 @@ const { pathname } = Astro.url;
             "backdrop-blur-md",
             "shadow-xl",
             "shadow-[rgba(0,0,0,0.03)]",
-            "border-b",
         ];
         if (window.scrollY > 0) {
             nav?.classList.add(...classes);
+            nav?.classList.remove("border-b-transparent");
             brand?.classList.remove("opacity-0");
         } else {
             nav?.classList.remove(...classes);
+            nav?.classList.add("border-b-transparent");
             brand?.classList.add("opacity-0");
         }
     };
