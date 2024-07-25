@@ -1,0 +1,72 @@
+---
+interface Props {
+    showBrandOnScroll?: boolean;
+}
+
+const { showBrandOnScroll } = Astro.props;
+import { cx } from "class-variance-authority";
+const { pathname } = Astro.url;
+---
+
+<header>
+    <nav
+        class="fixed flex items-center justify-between left-0 p-4 top-0 z-10 w-full"
+    >
+        <strong
+            class={cx(
+                showBrandOnScroll ? "opacity-0" : "opacity-100",
+                "transition-all",
+                "[transition-duration:500ms]",
+            )}
+        >
+            <a href="/">João Nascimento</a>
+        </strong>
+        <ul class="flex gap-4 ml-auto justify-end">
+            <li class="relative">
+                <a href="/">Início</a>
+                {
+                    pathname === "/" && (
+                        <div
+                            aria-hidden="true"
+                            class="absolute bottom-0 left-0 w-full h-0.5 bg-black"
+                            transition:name="tab-underline"
+                        />
+                    )
+                }
+            </li>
+            <li class="relative">
+                <a href="/contato">Contato</a>
+                {
+                    pathname === "/contato" && (
+                        <div
+                            aria-hidden="true"
+                            class="absolute bottom-0 left-0 w-full h-0.5 bg-black"
+                            transition:name="tab-underline"
+                        />
+                    )
+                }
+            </li>
+        </ul>
+    </nav>
+</header>
+<script>
+    document.body.onscroll = () => {
+        const nav = document.querySelector("nav");
+        const brand = document.querySelector("strong");
+        const classes = [
+            "bg-white",
+            "bg-opacity-50",
+            "backdrop-blur-md",
+            "shadow-xl",
+            "shadow-[rgba(0,0,0,0.03)]",
+            "border-b",
+        ];
+        if (window.scrollY > 0) {
+            nav?.classList.add(...classes);
+            brand?.classList.remove("opacity-0");
+        } else {
+            nav?.classList.remove(...classes);
+            brand?.classList.add("opacity-0");
+        }
+    };
+</script>
