@@ -3,6 +3,7 @@ import Layout from "layouts/Layout.astro";
 import Header from "components/header.astro";
 import Icon from "components/icon.astro";
 import nodemailer from "nodemailer";
+import { cx } from "class-variance-authority";
 
 export const prerender = false;
 
@@ -18,12 +19,55 @@ const transporter = nodemailer.createTransport({
     },
 });
 
+const errors: Record<"name" | "email" | "message", string | null> = {
+    name: null,
+    email: null,
+    message: null,
+};
+
+const formState = {
+    name: "",
+    email: "",
+    message: "",
+};
+
 if (Astro.request.method === "POST") {
     try {
+        errors.name = null;
+        errors.email = null;
+        errors.message = null;
         const data = await Astro.request.formData();
         const name = String(data.get("name"));
         const email = String(data.get("email"));
         const message = String(data.get("message"));
+
+        formState.name = name;
+        formState.email = email;
+        formState.message = message;
+
+        if (!name.trim()) {
+            errors.name = "Antes de enviar, qual é o seu nome?";
+        }
+
+        if (!email.trim()) {
+            errors.email = "Preciso do seu e-mail para responder. 😅";
+        }
+
+        if (
+            email.trim() &&
+            /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email) === false
+        ) {
+            errors.email = "Hmm... parece que seu e-mail não está correto. 🤔";
+        }
+
+        if (!message.trim()) {
+            errors.message = "Mas e a mensagem? 😅";
+        }
+
+        if (Object.values(errors).some((error) => error !== null)) {
+            throw new Error("Existem erros no formulário.");
+        }
+
         transporter.sendMail({
             from: {
                 name: "NASC.DEV",
@@ -35,6 +79,9 @@ if (Astro.request.method === "POST") {
         });
         console.log("E-mail enviado com sucesso!");
         emailSent = true;
+        formState.name = "";
+        formState.email = "";
+        formState.message = "";
     } catch (error) {
         if (error instanceof Error) {
             console.error(error.message);
@@ -58,34 +105,80 @@ if (Astro.request.method === "POST") {
             Contato
         </h1>
         <form method="POST">
-            <label for="name" class="block mt-4 text-lg font-semibold">
+            <label
+                for="name"
+                class="grid [grid-template-columns:1fr_auto] mt-4 text-lg font-semibold"
+            >
                 Nome
+                {
+                    errors.name !== null && (
+                        <span class="text-amber-600 text-sm ml-auto inline-flex items-center gap-2">
+                            <Icon name="mail-warning" class="size-4" />{" "}
+                            {errors.name}
+                        </span>
+                    )
+                }
             </label>
             <input
                 type="text"
                 id="name"
                 name="name"
-                class="w-full p-3 mt-1 border border-gray-300 rounded-md"
-                required
+                class={cx("w-full p-3 mt-1 border border-gray-300 rounded-md", {
+                    "outline-amber-300 outline": errors.name !== null,
+                })}
+                placeholder="Como posso te chamar?"
+                value={formState.name}
             />
-            <label for="email" class="block mt-4 text-lg font-semibold">
+            <label
+                for="email"
+                class="grid [grid-template-columns:1fr_auto] mt-4 text-lg font-semibold"
+            >
                 E-mail
+                {
+                    errors.email !== null && (
+                        <span class="text-amber-600 text-sm ml-auto inline-flex items-center gap-2">
+                            <Icon name="mail-warning" class="size-4" />{" "}
+                            {errors.email}
+                        </span>
+                    )
+                }
             </label>
             <input
                 type="email"
                 id="email"
                 name="email"
-                class="w-full p-3 mt-1 border border-gray-300 rounded-md"
-                required
+                class={cx("w-full p-3 mt-1 border border-gray-300 rounded-md", {
+                    "outline-amber-300 outline": errors.email !== null,
+                })}
+                placeholder="Seu melhor e-mail"
+                value={formState.email}
             />
-            <label for="message" class="block mt-4 text-lg font-semibold">
+            <label
+                for="message"
+                class="grid [grid-template-columns:1fr_auto] mt-4 text-lg font-semibold"
+            >
                 Mensagem
+                {
+                    errors.message !== null && (
+                        <span class="text-amber-600 text-sm ml-auto inline-flex items-center gap-2">
+                            <Icon name="mail-warning" class="size-4" />{" "}
+                            {errors.message}
+                        </span>
+                    )
+                }
             </label>
             <textarea
                 id="message"
                 name="message"
-                class="w-full p-3 mt-1 border border-gray-300 rounded-md min-h-32"
-                required></textarea>
+                class={cx(
+                    "w-full p-3 mt-1 border border-gray-300 rounded-md min-h-32",
+                    {
+                        "outline-amber-300 outline": errors.message !== null,
+                    },
+                )}
+                placeholder="Insira sua mensagem aqui"
+                >{formState.message}</textarea
+            >
             <div class="flex flex-wrap items-center">
                 <button
                     type="submit"
@@ -109,11 +202,12 @@ if (Astro.request.method === "POST") {
     </div>
 </Layout>
 <script>
-    import { MailCheck, createIcons } from "lucide";
+    import { MailCheck, MailWarning, createIcons } from "lucide";
 
     createIcons({
         icons: {
             MailCheck,
+            MailWarning,
         },
     });
 </script>
