@@ -106,17 +106,13 @@ const styles = {
                 </a>
             </div>
             <br />
-            <a
-                href="/projetos"
-                class="flex w-fit gap-1 items-center text-blue-600 text-lg [&:hover>svg]:translate-x-1"
+            <button
+                disabled
+                class="relative after:absolute after:bottom-0 after:translate-y-full after:content-['Em_breve'] after:text-sm flex w-fit gap-1 items-center text-blue-600 opacity-60 cursor-not-allowed text-lg"
             >
                 Ver mais
-                <Icon
-                    transition:persist
-                    name="arrow-right"
-                    class="size-5 transition-transform"
-                />
-            </a>
+                <Icon name="arrow-right" class="size-5 transition-transform" />
+            </button>
         </section>
         <hr class="my-20" />
         <section>
