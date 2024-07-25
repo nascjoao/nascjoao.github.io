@@ -1,5 +1,7 @@
 ---
 import Layout from "layouts/Layout.astro";
+import Header from "components/header.astro";
+import Icon from "components/icon.astro";
 import nodemailer from "nodemailer";
 
 export const prerender = false;
@@ -42,11 +44,16 @@ if (Astro.request.method === "POST") {
 ---
 
 <Layout title="Contato">
+    <Header />
     <script
         is:inline
         src="https://www.google.com/recaptcha/api.js"
         slot="header"></script>
-    <div class="max-w-screen-md mx-auto px-4 py-10">
+    <div
+        class="max-w-screen-md mx-auto px-8 py-10 pt-20"
+        transition:name="container"
+        transition:animate="slide"
+    >
         <h1 transition:name="heading-1" class="antialiased text-2xl font-bold">
             Contato
         </h1>
@@ -92,7 +99,7 @@ if (Astro.request.method === "POST") {
                 {
                     emailSent && (
                         <span class="flex flex-wrap items-center gap-2 mt-4 text-lg text-green-600">
-                            <i data-lucide="mail-check" class="size-5" />
+                            <Icon name="mail-check" class="size-5" />
                             E-mail enviado com sucesso!
                         </span>
                     )
