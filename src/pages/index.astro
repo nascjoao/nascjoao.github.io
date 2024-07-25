@@ -1,5 +1,7 @@
 ---
 import Layout from "layouts/Layout.astro";
+import Header from "components/header.astro";
+import Icon from "components/icon.astro";
 import { cva } from "class-variance-authority";
 
 const styles = {
@@ -25,7 +27,12 @@ const styles = {
 ---
 
 <Layout title="João Nascimento">
-    <div class="max-w-screen-md mx-auto px-4 py-10">
+    <Header showBrandOnScroll />
+    <div
+        class="max-w-screen-md mx-auto px-8 py-10"
+        transition:name="container"
+        transition:animate="slide"
+    >
         <section id="hero" class={styles.hero()}>
             <h1
                 class="text-3xl font-bold antialiased [&:hover>span]:text-blue-600"
@@ -63,8 +70,11 @@ const styles = {
                 class="flex w-fit gap-1 items-center text-blue-600 text-lg [&:hover>svg]:translate-x-1"
             >
                 Saiba mais
-                <i data-lucide="arrow-right" class="size-5 transition-transform"
-                ></i>
+                <Icon
+                    transition:persist
+                    name="arrow-right"
+                    class="size-5 transition-transform"
+                />
             </a>
         </section>
     </div>
@@ -72,9 +82,11 @@ const styles = {
 <script>
     import { ArrowRight, createIcons } from "lucide";
 
-    createIcons({
-        icons: {
-            ArrowRight,
-        },
+    document.addEventListener("astro:page-load", () => {
+        createIcons({
+            icons: {
+                ArrowRight,
+            },
+        });
     });
 </script>
