@@ -1,0 +1,28 @@
+---
+interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+const { pathname } = Astro.url;
+import { ViewTransitions } from "astro:transitions";
+import Header from "components/header.astro";
+---
+
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Desenvolvedor Full Stack" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+        <ViewTransitions />
+        <slot name="header" />
+    </head>
+    <body>
+        <Header showBrandOnScroll={pathname === "/"} />
+        <slot />
+    </body>
+</html>

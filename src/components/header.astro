@@ -1,0 +1,87 @@
+---
+interface Props {
+    showBrandOnScroll?: boolean;
+}
+
+const { showBrandOnScroll } = Astro.props;
+import { cx } from "class-variance-authority";
+const { pathname } = Astro.url;
+
+const pages = [
+    { name: "Início", href: "/" },
+    { name: "Sobre", href: "/sobre" },
+    { name: "Contato", href: "/contato" },
+];
+
+const styles = {
+    nav: cx([
+        "transition-all",
+        "border-b",
+        "border-b-transparent",
+        "duration-500",
+        "fixed",
+        "flex",
+        "items-center",
+        "justify-between",
+        "left-0",
+        "p-4",
+        "top-0",
+        "z-10",
+        "w-full",
+    ]),
+    brand: cx([
+        "transition-all",
+        "duration-700",
+        showBrandOnScroll ? "opacity-0" : "opacity-100",
+    ]),
+    menu: cx(["flex", "gap-4", "ml-auto", "justify-end"]),
+};
+---
+
+<header>
+    <nav class={styles.nav}>
+        <strong class={styles.brand}>
+            <a href="/">João Nascimento</a>
+        </strong>
+        <ul class={styles.menu} transition:name="global-menu">
+            {
+                pages.map((page) => (
+                    <li class="relative">
+                        <a
+                            href={page.href}
+                            class={cx(
+                                pathname === page.href
+                                    ? "opacity-1"
+                                    : "opacity-60",
+                            )}
+                        >
+                            {page.name}
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+    </nav>
+</header>
+<script>
+    document.body.onscroll = () => {
+        const nav = document.querySelector("nav");
+        const brand = document.querySelector("strong");
+        const classes = [
+            "bg-white",
+            "bg-opacity-50",
+            "backdrop-blur-md",
+            "shadow-xl",
+            "shadow-[rgba(0,0,0,0.03)]",
+        ];
+        if (window.scrollY > 0) {
+            nav?.classList.add(...classes);
+            nav?.classList.remove("border-b-transparent");
+            brand?.classList.remove("opacity-0");
+        } else {
+            nav?.classList.remove(...classes);
+            nav?.classList.add("border-b-transparent");
+            brand?.classList.add("opacity-0");
+        }
+    };
+</script>

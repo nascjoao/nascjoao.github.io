@@ -1,0 +1,21 @@
+---
+import Layout from "layouts/Layout.astro";
+---
+
+<Layout title="Não encontrado">
+    <div
+        class="max-w-screen-md mx-auto px-8 py-10 pt-20 select-none"
+        transition:name="container"
+        transition:animate="slide"
+    >
+        <h1
+            transition:name="heading-1"
+            class="relative leading-none antialiased text-9xl font-bold before:bg-gradient-to-t before:from-white before:to-transparent before:content-[''] before:absolute before:w-full before:bottom-0 before:left-0 before:h-full after:content-[''] after:absolute after:w-full after:bottom-0 after:left-0 after:h-full after:[mask-image:linear-gradient(to_top,black,transparent)] after:backdrop-blur-sm"
+        >
+            404
+        </h1>
+        <h2 class="text-6xl antialiased font-thin text-gray-500">
+            Página não encontrada
+        </h2>
+    </div>
+</Layout>
