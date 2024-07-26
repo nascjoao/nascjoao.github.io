@@ -6,47 +6,60 @@ interface Props {
 const { showBrandOnScroll } = Astro.props;
 import { cx } from "class-variance-authority";
 const { pathname } = Astro.url;
+
+const pages = [
+    { name: "Início", href: "/" },
+    { name: "Sobre", href: "/sobre" },
+    { name: "Contato", href: "/contato" },
+];
+
+const styles = {
+    nav: cx([
+        "transition-all",
+        "border-b",
+        "border-b-transparent",
+        "duration-500",
+        "fixed",
+        "flex",
+        "items-center",
+        "justify-between",
+        "left-0",
+        "p-4",
+        "top-0",
+        "z-10",
+        "w-full",
+    ]),
+    brand: cx([
+        "transition-all",
+        "duration-700",
+        showBrandOnScroll ? "opacity-0" : "opacity-100",
+    ]),
+    menu: cx(["flex", "gap-4", "ml-auto", "justify-end"]),
+};
 ---
 
 <header>
-    <nav
-        class="transition-all border-b border-b-transparent duration-500 fixed flex items-center justify-between left-0 p-4 top-0 z-10 w-full"
-    >
-        <strong
-            class={cx(
-                "transition-all duration-700",
-                showBrandOnScroll ? "opacity-0" : "opacity-100",
-            )}
-        >
+    <nav class={styles.nav}>
+        <strong class={styles.brand}>
             <a href="/">João Nascimento</a>
         </strong>
-        <ul
-            class="flex gap-4 ml-auto justify-end"
-            transition:name="global-menu"
-        >
-            <li class="relative">
-                <a
-                    href="/"
-                    class={cx(pathname === "/" ? "opacity-1" : "opacity-60")}
-                    >Início</a
-                >
-            </li>
-            <li class="relative">
-                <a
-                    href="/sobre"
-                    class={cx(
-                        pathname === "/sobre" ? "opacity-1" : "opacity-60",
-                    )}>Sobre</a
-                >
-            </li>
-            <li class="relative">
-                <a
-                    href="/contato"
-                    class={cx(
-                        pathname === "/contato" ? "opacity-1" : "opacity-60",
-                    )}>Contato</a
-                >
-            </li>
+        <ul class={styles.menu} transition:name="global-menu">
+            {
+                pages.map((page) => (
+                    <li class="relative">
+                        <a
+                            href={page.href}
+                            class={cx(
+                                pathname === page.href
+                                    ? "opacity-1"
+                                    : "opacity-60",
+                            )}
+                        >
+                            {page.name}
+                        </a>
+                    </li>
+                ))
+            }
         </ul>
     </nav>
 </header>
