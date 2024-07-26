@@ -11,10 +11,18 @@ import Layout from "layouts/Layout.astro";
         <h1 transition:name="heading-1" class="antialiased text-2xl font-bold">
             Sobre
         </h1>
-        <p class="mt-4 text-2xl leading-relaxed">
-            Meu nome é João Nascimento e sou desenvolvedor Full Stack. Atuo
-            principalmente com o desenvolvimento de aplicações web utilizando
-            tecnologias como React, Next.js, Node.js e outras.
+        <p
+            class="mt-4 text-2xl leading-relaxed"
+            itemscope
+            itemtype="https://schema.org/Person"
+        >
+            Meu nome é <span itemprop="name">João Nascimento</span> e sou <span
+                itemprop="jobTitle">desenvolvedor Full Stack</span
+            >. Atuo principalmente com o <span itemprop="description"
+                >desenvolvimento de aplicações web</span
+            > utilizando tecnologias como <span itemprop="knowsAbout"
+                >React, Next.js, Node.js e outras</span
+            >.
         </p>
         <section class="mt-4 text-lg leading-relaxed">
             <h2 class="text-xl font-semibold mb-4">Bio</h2>

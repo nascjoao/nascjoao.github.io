@@ -32,20 +32,35 @@ const styles = {
         transition:name="container"
         transition:animate="slide"
     >
-        <section id="hero" class={styles.hero()}>
+        <section
+            id="hero"
+            class={styles.hero()}
+            itemscope
+            itemtype="https://schema.org/Person"
+        >
             <h1
                 class="text-3xl font-bold antialiased [&:hover>span]:text-blue-600"
                 transition:name="heading-1"
+                itemprop="name"
             >
                 João
-                <span class="transition-colors [transition-duration:250ms]">
+                <span
+                    itemprop="additionalName"
+                    class="transition-colors [transition-duration:250ms]"
+                >
                     Nasc</span
                 >imento
             </h1>
-            <p class="text-lg text-gray-500">Desenvolvedor Full Stack</p>
+            <p class="text-lg text-gray-500" itemprop="jobTitle">
+                Desenvolvedor Full Stack
+            </p>
             <p class="mt-4 text-xl leading-relaxed">
-                Atuo principalmente com o desenvolvimento de aplicações web
-                utilizando tecnologias como React, Next.js, Node.js e outras.
+                Atuo principalmente com o <span itemprop="description"
+                    >desenvolvimento de aplicações web</span
+                >
+                utilizando tecnologias como <span itemprop="knowsAbout"
+                    >React, Next.js, Node.js e outras</span
+                >.
             </p>
             <br />
             <a href="/contato" class={styles.button()}>Fale comigo</a>
