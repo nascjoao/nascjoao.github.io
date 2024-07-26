@@ -1,6 +1,5 @@
 ---
 import Layout from "layouts/Layout.astro";
-import Header from "components/header.astro";
 import Icon from "components/icon.astro";
 import nodemailer from "nodemailer";
 import { cx } from "class-variance-authority";
@@ -91,7 +90,6 @@ if (Astro.request.method === "POST") {
 ---
 
 <Layout title="Contato">
-    <Header />
     <script
         is:inline
         src="https://www.google.com/recaptcha/api.js"
