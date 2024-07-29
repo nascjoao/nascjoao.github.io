@@ -1,0 +1,56 @@
+---
+const { frontmatter } = Astro.props;
+const { pathname } = Astro.url;
+import { ViewTransitions } from "astro:transitions";
+import Header from "components/header.astro";
+import { SEO } from "astro-seo";
+---
+
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <meta name="author" content="João Nascimento" />
+        <title>{frontmatter.title}</title>
+        <ViewTransitions />
+        <SEO
+            title={frontmatter.title}
+            description={frontmatter.description}
+            openGraph={{
+                basic: {
+                    title: frontmatter.title,
+                    url: `https://nasc.dev${pathname}`,
+                    image: "",
+                    type: "",
+                },
+            }}
+            twitter={{
+                title: frontmatter.title,
+                description: frontmatter.description,
+                site: "https://nasc.dev",
+            }}
+        />
+        <slot name="header" />
+    </head>
+    <body>
+        <Header showBrandOnScroll={pathname === "/"} />
+        <div
+            class="max-w-screen-md mx-auto px-8 py-40"
+            transition:name="container"
+            transition:animate="slide"
+        >
+            <h1
+                transition:name="heading-1"
+                class="antialiased text-2xl font-bold"
+            >
+                {frontmatter.title}
+            </h1>
+            <section class="mt-4 text-lg leading-relaxed">
+                <slot />
+            </section>
+        </div>
+    </body>
+</html>
