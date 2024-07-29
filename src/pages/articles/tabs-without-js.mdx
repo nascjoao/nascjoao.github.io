@@ -1,0 +1,1136 @@
+---
+layout: layouts/ArticleLayout.astro
+title: Tabs sem JavaScript
+description: Criando um componente de abas para web com HTML e CSS.
+---
+
+import Heading from "components/ui/heading.astro";
+import Code from "components/ui/code.astro";
+
+Tabs (ou abas) são um componente comum em interfaces. Elas permitem que o usuário
+navegue entre diferentes seções de conteúdo sem precisar recarregar a página.
+Por padrão, no HTML, não existe um elemento específico para criar abas. Portanto,
+é comum vermos abas sendo implementadas com JavaScript, para controlar o conteúdo 
+a ser exibido e, claro, CSS para estilizar.
+
+<br />
+Mas e se eu te disser que é possível criar abas sem JavaScript? Neste artigo,
+vamos ver como fazer isso e ainda adicionar uma animação muito interessante.
+<br />
+Ao final desse artigo, você chegará a esse resultado:
+<br />
+<div id="sample-final" class="p-4 rounded-lg border">
+    <div id="nav-final" style="position: relative;">
+        <nav>
+            <ul>
+                <li>
+                    <label>
+                        <input type="radio" name="tab-final" checked />
+                        <span>Tab 1</span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" name="tab-final" />
+                        <span>Tab 2</span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" name="tab-final" />
+                        <span>Tab 3</span>
+                    </label>
+                </li>
+            </ul>
+        </nav>
+        <nav aria-hidden="true">
+            <ul>
+                <li>
+                    <label>
+                        <input type="radio" disabled="true" />
+                        <span>Tab 1</span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" disabled="true" />
+                        <span>Tab 2</span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" disabled="true" />
+                        <span>Tab 3</span>
+                    </label>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div style="position: relative;">
+        <section class="tab-content">
+            <h3>Tab 1</h3>
+            <p>Conteúdo da aba 1</p>
+        </section>
+        <section class="tab-content">
+            <h3>Tab 2</h3>
+            <p>Conteúdo da aba 2</p>
+        </section>
+        <section class="tab-content">
+            <h3>Tab 3</h3>
+            <p>Conteúdo da aba 3</p>
+        </section>
+    </div>
+    <style>
+        {`
+            #sample-final .tab-content {
+                opacity: 0;
+                visibility: hidden;
+                position: absolute;
+                top: 0;
+                transform: translateY(-1rem);
+                transition: transform 0.25s, opacity 0.5s;
+                margin-top: 1rem;
+            }
+
+            #sample-final nav {
+                padding: 0.5rem 0;
+            }
+
+            #sample-final nav[aria-hidden="true"] {
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: #22272e;
+                color: white;
+                z-index: 1;
+                pointer-events: none;
+                transition: 0.25s cubic-bezier(.5,.01,0,.97);
+            }
+
+            #sample-final nav:has(li:nth-of-type(1) input:checked) ~ nav[aria-hidden="true"] {
+                clip-path: inset(0 66% 0 0 round 99px);
+            }
+
+            #sample-final nav:has(li:nth-of-type(2) input:checked) ~ nav[aria-hidden="true"] {
+                clip-path: inset(0 33% 0 33% round 99px);
+            }
+
+            #sample-final nav:has(li:nth-of-type(3) input:checked) ~ nav[aria-hidden="true"] {
+                clip-path: inset(0 0 0 66% round 99px);
+            }
+
+            #sample-final #nav-final:has(li:nth-of-type(1) input:checked) ~ div .tab-content:nth-of-type(1),
+            #sample-final #nav-final:has(li:nth-of-type(2) input:checked) ~ div .tab-content:nth-of-type(2),
+            #sample-final #nav-final:has(li:nth-of-type(3) input:checked) ~ div .tab-content:nth-of-type(3) {
+                opacity: 1;
+                position: relative;
+                visibility: visible;
+                transform: translateY(0);
+            }
+
+            #sample-final nav ul li input {
+                display: none;
+            }
+
+            #sample-final nav ul li {
+                display: inline-block;
+            }
+
+            #sample-final nav ul li label {
+                cursor: pointer;
+                transition: 0.25s;
+                border-radius: 99px;
+                padding: 0 1rem;
+            }
+        `}
+    </style>
+
+</div>
+<br />
+<Heading as="h2" class="mb-2">
+    O básico
+</Heading>
+O princípio é: precisamos conseguir alternar a visibilidade de diferentes
+seções. Como não utilizaremos JavaScript, precisamos de uma forma para definir o
+estado de cada aba. Para isso, vamos utilizar
+<Code>inputs</Code> do tipo _radio_.
+<br />
+O que faz o _radio_ ser uma boa escolha é, além da possibilidade de verificar pelo CSS
+se está selecionado, a garantia de que apenas um deles pode estar selecionado por vez.
+<br />
+O HTML então pode ser estruturado dessa forma:
+<br />
+<div class="p-4 rounded-lg rounded-b-none border">
+    <nav>
+        <ul>
+            <li>
+                <label>
+                    <input type="radio" name="tab-0" checked />
+                    <span>Tab 1</span>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="tab-0" />
+                    <span>Tab 2</span>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="tab-0" />
+                    <span>Tab 3</span>
+                </label>
+            </li>
+        </ul>
+    </nav>
+</div>
+<div
+    class="p-4 rounded-lg rounded-t-none"
+    style="background-color:#22272e;color:#adbac7;overflow-x:auto"
+>
+    ```html
+    <nav>
+        <ul>
+            <li>
+                <label>
+                    <input type="radio" name="tab" checked />
+                    <span>Tab 1</span>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="tab" />
+                    <span>Tab 2</span>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="tab" />
+                    <span>Tab 3</span>
+                </label>
+            </li>
+        </ul>
+    </nav>
+    ```
+</div>
+<br />
+Temos então uma navegação com três abas. Cada aba é representada por um 
+<Code>label</Code> que contém um <Code>input</Code> do tipo _radio_. O atributo 
+_name_ dos inputs deve ser o mesmo para que eles se comportem como um grupo. 
+<br />
+<Heading as="h2" class="mb-2">
+    Conteúdo
+</Heading>
+Agora que temos a navegação, precisamos exibir o conteúdo de cada aba. Para
+isso, vamos utilizar o seletor _:checked_ do CSS. Isso nos permite estilizar
+elementos que estão selecionados ou, como você verá adiante, verificar se um
+elemento pai contém um elemento filho que está selecionado.
+<br />
+Primeiro vamos criar o conteúdo de cada aba:
+<br />
+<div class="p-4 rounded-lg rounded-b-none border">
+    <nav>
+        <ul>
+            <li>
+                <label>
+                    <input type="radio" name="tab-1" checked />
+                    <span>Tab 1</span>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="tab-1" />
+                    <span>Tab 2</span>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="tab-1" />
+                    <span>Tab 3</span>
+                </label>
+            </li>
+        </ul>
+    </nav>
+    <div style="position: relative;">
+        <section class="tab-content">
+            <h3>Tab 1</h3>
+            <p>Conteúdo da aba 1</p>
+        </section>
+        <section class="tab-content">
+            <h3>Tab 2</h3>
+            <p>Conteúdo da aba 2</p>
+        </section>
+        <section class="tab-content">
+            <h3>Tab 3</h3>
+            <p>Conteúdo da aba 3</p>
+        </section>
+    </div>
+</div>
+<div
+    class="p-4 rounded-lg rounded-t-none"
+    style="background-color:#22272e;color:#adbac7;overflow-x:auto"
+>
+    ```html
+    <nav>
+        <ul>
+            <li>
+                <label>
+                    <input type="radio" name="tab" checked />
+                    <span>Tab 1</span>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="tab" />
+                    <span>Tab 2</span>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="tab" />
+                    <span>Tab 3</span>
+                </label>
+            </li>
+        </ul>
+    </nav>
+    <div style="position: relative;">
+        <section class="tab-content">
+            <h3>Tab 1</h3>
+            <p>Conteúdo da aba 1</p>
+        </section>
+        <section class="tab-content">
+            <h3>Tab 2</h3>
+            <p>Conteúdo da aba 2</p>
+        </section>
+        <section class="tab-content">
+            <h3>Tab 3</h3>
+            <p>Conteúdo da aba 3</p>
+        </section>
+    </div>
+    ```
+</div>
+<br />
+Agora é preciso esconder todo o conteúdo e exibir apenas o conteúdo da aba que
+está selecionada.
+<br />
+<div id="sample-2" class="p-4 rounded-lg rounded-b-none border">
+    <nav>
+        <ul>
+            <li>
+                <label>
+                    <input type="radio" name="tab-2" checked />
+                    <span>Tab 1</span>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="tab-2" />
+                    <span>Tab 2</span>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="tab-2" />
+                    <span>Tab 3</span>
+                </label>
+            </li>
+        </ul>
+    </nav>
+    <div style="position: relative;">
+        <section class="tab-content">
+            <h3>Tab 1</h3>
+            <p>Conteúdo da aba 1</p>
+        </section>
+        <section class="tab-content">
+            <h3>Tab 2</h3>
+            <p>Conteúdo da aba 2</p>
+        </section>
+        <section class="tab-content">
+            <h3>Tab 3</h3>
+            <p>Conteúdo da aba 3</p>
+        </section>
+    </div>
+    <style>
+        {`
+            #sample-2 .tab-content {
+                display: none;
+            }
+            
+            #sample-2 nav:has(li:nth-of-type(1) input:checked) ~ div .tab-content:nth-of-type(1),
+            #sample-2 nav:has(li:nth-of-type(2) input:checked) ~ div .tab-content:nth-of-type(2),
+            #sample-2 nav:has(li:nth-of-type(3) input:checked) ~ div .tab-content:nth-of-type(3) {
+                display: block;
+            }
+        `}
+    </style>
+</div>
+<div
+    class="p-4 rounded-lg rounded-t-none"
+    style="background-color:#22272e;color:#adbac7;overflow-x:auto"
+>
+    ```css
+    .tab-content {
+        display: none;
+    }
+            
+    nav:has(li:nth-of-type(1) input:checked) ~ div .tab-content:nth-of-type(1),
+    nav:has(li:nth-of-type(2) input:checked) ~ div .tab-content:nth-of-type(2),
+    nav:has(li:nth-of-type(3) input:checked) ~ div .tab-content:nth-of-type(3) {
+        display: block;
+    }
+    ```
+</div>
+<br />
+Perceba que aqui estou utilizando a ordenação dos elementos como critério para
+exibir o conteúdo. Isso é feito com o seletor _nth-of-type_. O seletor
+_:has_ é utilizado para verificar se um elemento pai contém um elemento filho
+que corresponde a um seletor. No caso, estamos verificando se o _nav_ contém um
+_input_ que está selecionado (_checked_). Se sim, exibimos o conteúdo da aba
+correspondente.
+<br />
+Aqui por si só já temos um sistema de abas funcional sem JavaScript.
+<br />
+
+<Heading as="h2" class="mb-2">
+    Estilização
+</Heading>
+
+Para começar a estilização, podemos deixar as abas com a aparência de botões.
+Nesse caso, vou esconder os inputs e estilizar os labels.
+
+<br />
+<div id="sample-3" class="p-4 rounded-lg rounded-b-none border">
+    <nav>
+        <ul>
+            <li>
+                <label>
+                    <input type="radio" name="tab-3" checked />
+                    <span>Tab 1</span>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="tab-3" />
+                    <span>Tab 2</span>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="tab-3" />
+                    <span>Tab 3</span>
+                </label>
+            </li>
+        </ul>
+    </nav>
+    <div style="position: relative;">
+        <section class="tab-content">
+            <h3>Tab 1</h3>
+            <p>Conteúdo da aba 1</p>
+        </section>
+        <section class="tab-content">
+            <h3>Tab 2</h3>
+            <p>Conteúdo da aba 2</p>
+        </section>
+        <section class="tab-content">
+            <h3>Tab 3</h3>
+            <p>Conteúdo da aba 3</p>
+        </section>
+    </div>
+    <style>
+        {`
+            #sample-3 .tab-content {
+                display: none;
+                margin-top: 1rem;
+            }
+            
+            #sample-3 nav:has(li:nth-of-type(1) input:checked) ~ div .tab-content:nth-of-type(1),
+            #sample-3 nav:has(li:nth-of-type(2) input:checked) ~ div .tab-content:nth-of-type(2),
+            #sample-3 nav:has(li:nth-of-type(3) input:checked) ~ div .tab-content:nth-of-type(3) {
+                display: block;
+            }
+
+            #sample-3 nav ul li input {
+                display: none;
+            }
+
+            #sample-3 nav ul li {
+                display: inline-block;
+            }
+
+            #sample-3 nav ul li label {
+                cursor: pointer;
+                padding: 0.5rem 1rem;
+                border-radius: 99px;
+            }
+
+            #sample-3 nav ul li label:has(input:checked) {
+                background-color: #22272e;
+                color: white;
+            }
+        `}
+    </style>
+
+</div>
+<div
+    class="p-4 rounded-lg rounded-t-none"
+    style="background-color:#22272e;color:#adbac7;overflow-x:auto"
+>
+    ```css
+    .tab-content {
+        ...
+        margin-top: 1rem;
+    }
+    
+    ...
+
+    nav ul li input {
+        display: none;
+    }
+
+    nav ul li {
+        display: inline-block;
+    }
+
+    nav ul li label {
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        border-radius: 99px;
+    }
+
+    nav ul li label:has(input:checked) {
+        background-color: #22272e;
+        color: white;
+    }
+    ```
+
+</div>
+<br />
+Aqui estou escondendo os inputs e estilizando os labels para que pareçam botões.
+Também adicionei um pouco de espaçamento entre o conteúdo das abas.
+<br />
+Um pouco de animação pode deixar o componente mais interessante. Vamos adicionar
+uma transição ao conteúdo das abas e ao fundo dos botões.
+<br />
+<div id="sample-4" class="p-4 rounded-lg rounded-b-none border">
+    <nav>
+        <ul>
+            <li>
+                <label>
+                    <input type="radio" name="tab-4" checked />
+                    <span>Tab 1</span>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="tab-4" />
+                    <span>Tab 2</span>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="tab-4" />
+                    <span>Tab 3</span>
+                </label>
+            </li>
+        </ul>
+    </nav>
+    <div style="position: relative;">
+        <section class="tab-content">
+            <h3>Tab 1</h3>
+            <p>Conteúdo da aba 1</p>
+        </section>
+        <section class="tab-content">
+            <h3>Tab 2</h3>
+            <p>Conteúdo da aba 2</p>
+        </section>
+        <section class="tab-content">
+            <h3>Tab 3</h3>
+            <p>Conteúdo da aba 3</p>
+        </section>
+    </div>
+    <style>
+        {`
+            #sample-4 .tab-content {
+                opacity: 0;
+                visibility: hidden;
+                position: absolute;
+                top: 0;
+                transform: translateY(-1rem);
+                transition: transform 0.25s, opacity 0.5s;
+                margin-top: 1rem;
+            }
+            
+            #sample-4 nav:has(li:nth-of-type(1) input:checked) ~ div .tab-content:nth-of-type(1),
+            #sample-4 nav:has(li:nth-of-type(2) input:checked) ~ div .tab-content:nth-of-type(2),
+            #sample-4 nav:has(li:nth-of-type(3) input:checked) ~ div .tab-content:nth-of-type(3) {
+                opacity: 1;
+                position: relative;
+                visibility: visible;
+                transform: translateY(0);
+            }
+
+            #sample-4 nav ul li input {
+                display: none;
+            }
+
+            #sample-4 nav ul li {
+                display: inline-block;
+            }
+
+            #sample-4 nav ul li label {
+                cursor: pointer;
+                padding: 0.5rem 1rem;
+                transition: 0.25s;
+                border-radius: 99px;
+            }
+
+            #sample-4 nav ul li label:has(input:checked) {
+                background-color: #22272e;
+                color: white;
+            }
+        `}
+    </style>
+
+</div>
+<div
+    class="p-4 rounded-lg rounded-t-none"
+    style="background-color:#22272e;color:#adbac7;overflow-x:auto"
+>
+    ```css
+    .tab-content {
+        ...
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        top: 0;
+        transform: translateY(-1rem);
+        transition: transform 0.25s, opacity 0.5s;
+    }
+
+    nav:has(li:nth-of-type(1) input:checked) ~ div .tab-content:nth-of-type(1),
+    nav:has(li:nth-of-type(2) input:checked) ~ div .tab-content:nth-of-type(2),
+    nav:has(li:nth-of-type(3) input:checked) ~ div .tab-content:nth-of-type(3) {
+        opacity: 1;
+        position: relative;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    ...
+
+    nav ul li label {
+        ...
+        transition: 0.25s;
+    }
+
+    ...
+    ```
+
+</div>
+<br />
+Agora o conteúdo das abas está escondido
+com _opacity_ e _visibility_. Quando uma aba é selecionada, o conteúdo é
+exibido com uma transição suave. Os botões também possuem uma transição no
+fundo.
+<br />
+Aqui já temos um resultado muito interessante. Mas eu vou além utilizando uma animação
+de slide do fundo dos botões. Nosso melhor amigo aqui será o <Code>clip-path</Code>.
+Com o <Code>clip-path</Code> podemos definir uma máscara para um elemento.
+O que eu vou fazer é duplicar a navegação deixando a cor de fundo dos botões e sobrepô-la
+aos botões originais. A máscara será um retângulo que vai se mover de acordo com a aba selecionada.
+<br />
+Primeiro, envolvo a navegação em um elemento pai com id "nav" e a duplico. A navegação duplicada
+leva o atributo <Code>aria-hidden="true"</Code> para que ela não seja acessível. Seus
+inputs também são desabilitados.
+<br />
+<div id="sample-5" class="p-4 rounded-lg rounded-b-none border">
+    <div id="nav-5" style="position: relative;">
+        <nav>
+            <ul>
+                <li>
+                    <label>
+                        <input type="radio" name="tab-5" checked />
+                        <span>Tab 1</span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" name="tab-5" />
+                        <span>Tab 2</span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" name="tab-5" />
+                        <span>Tab 3</span>
+                    </label>
+                </li>
+            </ul>
+        </nav>
+        <nav aria-hidden="true">
+            <ul>
+                <li>
+                    <label>
+                        <input type="radio" disabled="true" />
+                        <span>Tab 1</span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" disabled="true" />
+                        <span>Tab 2</span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" disabled="true" />
+                        <span>Tab 3</span>
+                    </label>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div style="position: relative;">
+        <section class="tab-content">
+            <h3>Tab 1</h3>
+            <p>Conteúdo da aba 1</p>
+        </section>
+        <section class="tab-content">
+            <h3>Tab 2</h3>
+            <p>Conteúdo da aba 2</p>
+        </section>
+        <section class="tab-content">
+            <h3>Tab 3</h3>
+            <p>Conteúdo da aba 3</p>
+        </section>
+    </div>
+    <style>
+        {`
+            #sample-5 .tab-content {
+                opacity: 0;
+                visibility: hidden;
+                position: absolute;
+                top: 0;
+                transform: translateY(-1rem);
+                transition: transform 0.25s, opacity 0.5s;
+                margin-top: 1rem;
+            }
+            
+            #sample-5 nav:has(li:nth-of-type(1) input:checked) ~ div .tab-content:nth-of-type(1),
+            #sample-5 nav:has(li:nth-of-type(2) input:checked) ~ div .tab-content:nth-of-type(2),
+            #sample-5 nav:has(li:nth-of-type(3) input:checked) ~ div .tab-content:nth-of-type(3) {
+                opacity: 1;
+                position: relative;
+                visibility: visible;
+                transform: translateY(0);
+            }
+
+            #sample-5 nav ul li input {
+                display: none;
+            }
+
+            #sample-5 nav ul li {
+                display: inline-block;
+            }
+
+            #sample-5 nav ul li label {
+                cursor: pointer;
+                padding: 0.5rem 1rem;
+                transition: 0.25s;
+                border-radius: 99px;
+            }
+
+            #sample-5 nav ul li label:has(input:checked) {
+                background-color: #22272e;
+                color: white;
+            }
+        `}
+    </style>
+
+</div>
+<div
+    class="p-4 rounded-lg rounded-t-none"
+    style="background-color:#22272e;color:#adbac7;overflow-x:auto"
+>
+    ```html
+    <div id="nav" style="position: relative;">
+        <nav>
+            <ul>
+                <li>
+                    <label>
+                        <input type="radio" name="tab" checked />
+                        <span>Tab 1</span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" name="tab" />
+                        <span>Tab 2</span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" name="tab" />
+                        <span>Tab 3</span>
+                    </label>
+                </li>
+            </ul>
+        </nav>
+        <nav aria-hidden="true">
+            <ul>
+                <li>
+                    <label>
+                        <input type="radio" disabled="true" />
+                        <span>Tab 1</span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" disabled="true" />
+                        <span>Tab 2</span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" disabled="true" />
+                        <span>Tab 3</span>
+                    </label>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    ...
+    ```
+</div>
+<br />
+Agora a navegação duplicada recebe o fundo dos botões. Repare nas outras mudanças
+como o <Code>padding</Code> e <Code>border-radius</Code> que foram removidos dos labels e
+adicionados ao nav pai. Perceba também que o conteúdo deixou de ser exibido. Isso
+acontece porque o seletor que controla a exibição do conteúdo das abas considera que
+a navegação está no mesmo nível. Para corrigir isso, substituiremos <Code>nav</Code>
+no seletor por <Code>#nav</Code>, que é o id do elemento pai.
+<br />
+Aplicando o <Code>clip-path</Code> com o <Code>transition</Code> temos o efeito desejado.
+<br />
+<div id="sample-6" class="p-4 rounded-lg rounded-b-none border">
+    <div id="nav-6" style="position: relative;">
+        <nav>
+            <ul>
+                <li>
+                    <label>
+                        <input type="radio" name="tab-6" checked />
+                        <span>Tab 1</span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" name="tab-6" />
+                        <span>Tab 2</span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" name="tab-6" />
+                        <span>Tab 3</span>
+                    </label>
+                </li>
+            </ul>
+        </nav>
+        <nav aria-hidden="true">
+            <ul>
+                <li>
+                    <label>
+                        <input type="radio" disabled="true" />
+                        <span>Tab 1</span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" disabled="true" />
+                        <span>Tab 2</span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" disabled="true" />
+                        <span>Tab 3</span>
+                    </label>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div style="position: relative;">
+        <section class="tab-content">
+            <h3>Tab 1</h3>
+            <p>Conteúdo da aba 1</p>
+        </section>
+        <section class="tab-content">
+            <h3>Tab 2</h3>
+            <p>Conteúdo da aba 2</p>
+        </section>
+        <section class="tab-content">
+            <h3>Tab 3</h3>
+            <p>Conteúdo da aba 3</p>
+        </section>
+    </div>
+    <style>
+        {`
+            #sample-6 .tab-content {
+                opacity: 0;
+                visibility: hidden;
+                position: absolute;
+                top: 0;
+                transform: translateY(-1rem);
+                transition: transform 0.25s, opacity 0.5s;
+                margin-top: 1rem;
+            }
+
+            #sample-6 nav {
+                padding: 0.5rem 0;
+            }
+
+            #sample-6 nav[aria-hidden="true"] {
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: #22272e;
+                color: white;
+                z-index: 1;
+                pointer-events: none;
+                transition: 0.25s cubic-bezier(.5,.01,0,.97);
+            }
+
+            #sample-6 nav:has(li:nth-of-type(1) input:checked) ~ nav[aria-hidden="true"] {
+                clip-path: inset(0 66% 0 0 round 99px);
+            }
+
+            #sample-6 nav:has(li:nth-of-type(2) input:checked) ~ nav[aria-hidden="true"] {
+                clip-path: inset(0 33% 0 33% round 99px);
+            }
+
+            #sample-6 nav:has(li:nth-of-type(3) input:checked) ~ nav[aria-hidden="true"] {
+                clip-path: inset(0 0 0 66% round 99px);
+            }
+
+            #sample-6 #nav-6:has(li:nth-of-type(1) input:checked) ~ div .tab-content:nth-of-type(1),
+            #sample-6 #nav-6:has(li:nth-of-type(2) input:checked) ~ div .tab-content:nth-of-type(2),
+            #sample-6 #nav-6:has(li:nth-of-type(3) input:checked) ~ div .tab-content:nth-of-type(3) {
+                opacity: 1;
+                position: relative;
+                visibility: visible;
+                transform: translateY(0);
+            }
+
+            #sample-6 nav ul li input {
+                display: none;
+            }
+
+            #sample-6 nav ul li {
+                display: inline-block;
+            }
+
+            #sample-6 nav ul li label {
+                cursor: pointer;
+                transition: 0.25s;
+                border-radius: 99px;
+                padding: 0 1rem;
+            }
+        `}
+    </style>
+
+</div>
+<div
+    class="p-4 rounded-lg rounded-t-none"
+    style="background-color:#22272e;color:#adbac7;overflow-x:auto"
+>
+    ```css
+    nav {
+        padding: 0.5rem 0;
+    }
+
+    nav[aria-hidden="true"] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #22272e;
+        color: white;
+        z-index: 1;
+        pointer-events: none;
+        transition: 0.25s cubic-bezier(.5,.01,0,.97);
+    }
+
+    nav:has(li:nth-of-type(1) input:checked) ~ nav[aria-hidden="true"] {
+        clip-path: inset(0 66% 0 0 round 99px);
+    }
+
+    nav:has(li:nth-of-type(2) input:checked) ~ nav[aria-hidden="true"] {
+        clip-path: inset(0 33% 0 33% round 99px);
+    }
+
+    nav:has(li:nth-of-type(3) input:checked) ~ nav[aria-hidden="true"] {
+        clip-path: inset(0 0 0 66% round 99px);
+    }
+
+    #nav:has(li:nth-of-type(1) input:checked) ~ div .tab-content:nth-of-type(1),
+    #nav:has(li:nth-of-type(2) input:checked) ~ div .tab-content:nth-of-type(2),
+    #nav:has(li:nth-of-type(3) input:checked) ~ div .tab-content:nth-of-type(3) {
+        ...
+    }
+
+    ...
+
+    nav ul li label {
+        ...
+        padding: 0 1rem;
+    }
+    ```
+</div>
+<br />
+Como falei, o <Code>clip-path</Code> é utilizado para criar uma máscara. O valor <Code>inset</Code>
+define uma máscara retangular. A ordem dos valores é <Code>top right bottom left</Code>.
+O que eu considero aqui é que tenho três botões, então a máscara deve revelar um terço
+da largura da navegação. Para o primeiro botão, defino todos os valores como zero, exceto
+o <Code>right</Code> que é 66%. Isso faz com que a máscara inicie do 0 em todas as direções, mas
+a direita ela inicia em 66% da largura, que corresponde a dois terços da largura total.
+Para o segundo botão, a máscara inicia em 33% (à esquerda) e termina em 33% (à direita).
+Por fim, para o terceiro botão, a máscara inicia em 66% (à esquerda) e termina em 0 (à direita).
+<br />
+O <Code>round</Code> é utilizado para arredondar as bordas da máscara. O valor 99px, que se refere
+ao arrerondamento, é o valor que estava sendo utilizado anteriormente no <Code>border-radius</Code>.
+<br />
+Com o <Code>transition</Code> temos um efeito suave na transição da máscara. Utilizei um valor
+de <Code>cubic-bezier</Code> para deixar a transição mais suave.
+<br />
+Deixo abaixo o mesmo resultado 20x mais lento para que você possa ver o 
+funcionamento do efeito.
+<br />
+<div id="sample-7" class="p-4 rounded-lg border">
+    <div id="nav-7" style="position: relative;">
+        <nav>
+            <ul>
+                <li>
+                    <label>
+                        <input type="radio" name="tab-7" checked />
+                        <span>Tab 1</span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" name="tab-7" />
+                        <span>Tab 2</span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" name="tab-7" />
+                        <span>Tab 3</span>
+                    </label>
+                </li>
+            </ul>
+        </nav>
+        <nav aria-hidden="true">
+            <ul>
+                <li>
+                    <label>
+                        <input type="radio" disabled="true" />
+                        <span>Tab 1</span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" disabled="true" />
+                        <span>Tab 2</span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" disabled="true" />
+                        <span>Tab 3</span>
+                    </label>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div style="position: relative;">
+        <section class="tab-content">
+            <h3>Tab 1</h3>
+            <p>Conteúdo da aba 1</p>
+        </section>
+        <section class="tab-content">
+            <h3>Tab 2</h3>
+            <p>Conteúdo da aba 2</p>
+        </section>
+        <section class="tab-content">
+            <h3>Tab 3</h3>
+            <p>Conteúdo da aba 3</p>
+        </section>
+    </div>
+    <style>
+        {`
+            #sample-7 .tab-content {
+                opacity: 0;
+                visibility: hidden;
+                position: absolute;
+                top: 0;
+                transform: translateY(-1rem);
+                transition: transform 5s, opacity 10s;
+                margin-top: 1rem;
+            }
+
+            #sample-7 nav {
+                padding: 0.5rem 0;
+            }
+
+            #sample-7 nav[aria-hidden="true"] {
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: #22272e;
+                color: white;
+                z-index: 1;
+                pointer-events: none;
+                transition: 5s cubic-bezier(.5,.01,0,.97);
+            }
+
+            #sample-7 nav:has(li:nth-of-type(1) input:checked) ~ nav[aria-hidden="true"] {
+                clip-path: inset(0 66% 0 0 round 99px);
+            }
+
+            #sample-7 nav:has(li:nth-of-type(2) input:checked) ~ nav[aria-hidden="true"] {
+                clip-path: inset(0 33% 0 33% round 99px);
+            }
+
+            #sample-7 nav:has(li:nth-of-type(3) input:checked) ~ nav[aria-hidden="true"] {
+                clip-path: inset(0 0 0 66% round 99px);
+            }
+
+            #sample-7 #nav-7:has(li:nth-of-type(1) input:checked) ~ div .tab-content:nth-of-type(1),
+            #sample-7 #nav-7:has(li:nth-of-type(2) input:checked) ~ div .tab-content:nth-of-type(2),
+            #sample-7 #nav-7:has(li:nth-of-type(3) input:checked) ~ div .tab-content:nth-of-type(3) {
+                opacity: 1;
+                position: relative;
+                visibility: visible;
+                transform: translateY(0);
+            }
+
+            #sample-7 nav ul li input {
+                display: none;
+            }
+
+            #sample-7 nav ul li {
+                display: inline-block;
+            }
+
+            #sample-7 nav ul li label {
+                cursor: pointer;
+                transition: 0.25s;
+                border-radius: 99px;
+                padding: 0 1rem;
+            }
+        `}
+    </style>
+</div>
+<br />
+Quando a <a class="underline" target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API" rel="noopener noreferrer">
+View Transitions API</a> atingir um nível de suporte mais amplo, será possível fazer essas animações
+sem a necessidade de duplicar a navegação, com bem menos esforço.
