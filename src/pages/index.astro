@@ -67,6 +67,33 @@ const styles = {
         </section>
         <section>
             <a
+                href="#articles"
+                class="relative before:content-['#'] before:text-gray-400 before:hidden [&:hover::before]:block before:absolute before:-left-2 before:-translate-x-full text-xl font-semibold antialiased"
+            >
+                <h2 id="articles">Artigos</h2>
+            </a>
+            <div
+                class="mt-4 grid [grid-template-columns:repeat(auto-fit,minmax(242px,1fr))] gap-4"
+            >
+                <a
+                    href="/articles/tabs-without-js"
+                    class="border rounded-lg p-4 hover:bg-gray-50"
+                >
+                    <article class="grid gap-2">
+                        <h3 class="text-2xl font-semibold antialiased">
+                            Tabs sem JavaScript
+                        </h3>
+                        <p class="text-md text-gray-500 leading-relaxed">
+                            Criando um componente de abas para web com HTML e
+                            CSS.
+                        </p>
+                    </article>
+                </a>
+            </div>
+        </section>
+        <hr class="my-20" />
+        <section>
+            <a
                 href="#projects"
                 class="relative before:content-['#'] before:text-gray-400 before:hidden [&:hover::before]:block before:absolute before:-left-2 before:-translate-x-full text-xl font-semibold antialiased"
             >
