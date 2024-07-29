@@ -24,5 +24,22 @@ import Header from "components/header.astro";
     <body>
         <Header showBrandOnScroll={pathname === "/"} />
         <slot />
-    </body>
+    </body><!-- Google tag (gtag.js) -->
+    <script
+        is:inline
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-0TKEP0ZS0B"></script>
+    <script>
+        // @ts-expect-error
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            // @ts-expect-error
+            dataLayer.push(arguments);
+        }
+        // @ts-expect-error
+        gtag("js", new Date());
+
+        // @ts-expect-error
+        gtag("config", "G-0TKEP0ZS0B");
+    </script>
 </html>
