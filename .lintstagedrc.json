@@ -1,0 +1,4 @@
+{
+  "**/*.{js,ts,tsx}": ["pnpm prettier", "pnpm eslint"],
+  "**/*.{json,md,css,scss,html}": ["pnpm prettier"]
+}
