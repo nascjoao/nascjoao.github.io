@@ -20,7 +20,9 @@
     "precommit": "lint-staged"
   },
   "dependencies": {
+    "@radix-ui/react-select": "^2.1.7",
     "next": "15.2.5",
+    "next-intl": "^4.0.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
