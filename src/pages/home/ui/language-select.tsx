@@ -23,14 +23,14 @@ export default function LanguageSelect() {
         setUserLocale(value as Locale);
       }}
     >
-      <Select.Trigger className="focus:outline-none focus:bg-stone-200 dark:focus:bg-stone-800 rounded-md p-2 hover:bg-stone-200 dark:hover:bg-stone-800 transition-colors cursor-pointer">
+      <Select.Trigger className="text-black dark:text-white focus:outline-none focus:bg-stone-200 dark:focus:bg-stone-800 rounded-md p-2 hover:bg-stone-200 dark:hover:bg-stone-800 transition-colors cursor-pointer">
         <Select.Value />
       </Select.Trigger>
 
       <Select.Portal>
         <Select.Content
           onCloseAutoFocus={(e) => e.preventDefault()}
-          className="dark:bg-stone-900 p-4 rounded-md shadow-lg"
+          className="bg-stone-50 dark:bg-stone-900 p-4 rounded-md shadow-lg"
         >
           <Select.Viewport>
             {LANGUAGE_OPTIONS.map((option) => (

@@ -5,6 +5,10 @@
   },
   "home": {
     "welcome": "Olá, eu sou o João!",
-    "description": "Também conhecido como Nasc. Sou desenvolvedor de software, chef na cozinha da minha casa e amante de café. Gosto de fazer coisas funcionarem, seja um código ou um prato.\n\nEsse é o meu espaço, meu canto na internet. Por aqui você vai encontrar um pouco do meu trabalho, meus projetos e algumas coisas que me interessam."
+    "description": "Também conhecido como Nasc. Sou desenvolvedor de software, chef na cozinha da minha casa e amante de café. Gosto de fazer coisas funcionarem, seja um código ou um prato.\n\nEsse é o meu espaço, meu canto na internet. Por aqui você vai encontrar um pouco do meu trabalho, meus projetos e algumas coisas que me interessam.",
+    "quick-note": {
+      "title": "Um recado rápido",
+      "content": "Por enquanto, tudo parece um pouco vazio por aqui. Isso se deve a um processo de reestruturação que estou fazendo, e em breve compartilharei mais sobre o racional por trás disso.\n\nTe convido a voltar aqui em breve para conferir as novidades. Até logo! 👨🏻‍💻"
+    }
   }
 }
