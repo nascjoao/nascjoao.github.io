@@ -1,4 +1,4 @@
 {
-  "**/*.{js,ts,tsx}": ["pnpm prettier", "pnpm eslint"],
+  "**/*.{js,ts,tsx}": ["pnpm prettier", "pnpm eslint", "pnpm test:related"],
   "**/*.{json,md,css,scss,html}": ["pnpm prettier"]
 }

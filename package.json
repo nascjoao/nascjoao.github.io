@@ -17,7 +17,13 @@
     "prettier": "prettier --write",
     "steiger": "steiger ./src",
     "prepare": "husky",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "test": "vitest --config ./src/app/config/vitest.config.mts --run",
+    "test:watch": "vitest --config ./src/app/config/vitest.config.mts",
+    "test:related": "vitest related --config ./src/app/config/vitest.config.mts --run",
+    "coverage": "vitest --coverage --config ./src/app/config/vitest.config.mts --run",
+    "coverage:watch": "vitest --coverage --config ./src/app/config/vitest.config.mts",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@radix-ui/react-select": "^2.1.7",
@@ -29,16 +35,23 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^4.3.4",
+    "@vitest/coverage-v8": "^3.1.1",
     "eslint": "^9",
     "eslint-config-next": "15.2.5",
     "husky": "^9.1.7",
+    "jsdom": "^26.0.0",
     "lint-staged": "^15.5.0",
     "prettier": "^3.5.3",
     "steiger": "^0.5.6",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.1.1"
   }
 }
