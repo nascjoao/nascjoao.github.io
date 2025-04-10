@@ -1,1 +1,1 @@
-export { metadata, default } from "@/app/layouts";
+export { generateMetadata, default } from "@/app/layouts";
