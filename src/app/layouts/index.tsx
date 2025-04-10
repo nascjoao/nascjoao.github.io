@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "../styles/globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getTranslations } from "next-intl/server";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,6 +42,7 @@ export default async function RootLayout({
       >
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
       </body>
+      <GoogleAnalytics gaId="G-0TKEP0ZS0B" />
     </html>
   );
 }
