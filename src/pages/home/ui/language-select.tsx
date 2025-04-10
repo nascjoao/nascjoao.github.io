@@ -23,7 +23,7 @@ export default function LanguageSelect() {
         setUserLocale(value as Locale);
       }}
     >
-      <Select.Trigger className="focus:outline-none focus:bg-stone-200 dark:focus:bg-stone-800 rounded-md p-2">
+      <Select.Trigger className="focus:outline-none focus:bg-stone-200 dark:focus:bg-stone-800 rounded-md p-2 hover:bg-stone-200 dark:hover:bg-stone-800 transition-colors cursor-pointer">
         <Select.Value />
       </Select.Trigger>
 
