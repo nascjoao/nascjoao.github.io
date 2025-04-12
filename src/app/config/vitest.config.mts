@@ -1,9 +1,21 @@
 import { defineConfig } from "vitest/config";
 import tsConfigPaths from "vite-tsconfig-paths";
 import react from "@vitejs/plugin-react";
+import svgr from "vite-plugin-svgr";
 
 export default defineConfig({
-  plugins: [tsConfigPaths(), react()],
+  plugins: [
+    tsConfigPaths(),
+    react(),
+    svgr({
+      svgrOptions: {
+        ref: true,
+        svgo: false,
+        titleProp: true,
+      },
+      include: "**/*.svg",
+    }),
+  ],
   test: {
     workspace: [
       {
