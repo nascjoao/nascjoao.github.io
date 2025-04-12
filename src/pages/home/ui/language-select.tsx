@@ -4,6 +4,7 @@ import { Locale } from "@/shared/models";
 import { useLocale } from "next-intl";
 import React from "react";
 import * as Select from "@radix-ui/react-select";
+import { useIsMounted } from "@/shared/lib/client";
 
 const LANGUAGE_OPTIONS = [
   { value: "en", label: "🇺🇸 English" },
@@ -13,6 +14,18 @@ const LANGUAGE_OPTIONS = [
 export default function LanguageSelect() {
   const locale = useLocale();
   const [open, setOpen] = React.useState(false);
+  const { withClientMounted } = useIsMounted();
+
+  const SelectTrigger = withClientMounted(
+    () => (
+      <Select.Trigger className="text-sm text-black dark:text-white focus:outline-none p-2 with-hover">
+        <Select.Value />
+      </Select.Trigger>
+    ),
+    {
+      fallback: () => <div className="h-3.5 w-12 place-self-center skeleton" />,
+    },
+  );
 
   return (
     <Select.Root
@@ -23,33 +36,24 @@ export default function LanguageSelect() {
         setUserLocale(value as Locale);
       }}
     >
-      <Select.Trigger className="text-black dark:text-white focus:outline-none focus:bg-stone-200 dark:focus:bg-stone-800 rounded-md p-2 hover:bg-stone-200 dark:hover:bg-stone-800 transition-colors cursor-pointer">
-        <Select.Value />
-      </Select.Trigger>
-
+      <SelectTrigger />
       <Select.Portal>
         <Select.Content
+          position="popper"
           onCloseAutoFocus={(e) => e.preventDefault()}
-          className="bg-stone-50 dark:bg-stone-900 p-4 rounded-md shadow-lg"
+          className="data-[state=open]:animate-pop-in p-4 shadow-lg bg-neutral-50 border border-neutral-200 dark:bg-neutral-900 dark:border-neutral-700 w-52"
         >
           <Select.Viewport>
             {LANGUAGE_OPTIONS.map((option) => (
               <Select.Item
                 key={option.value}
                 value={option.value}
-                className="p-2 focus:outline-none focus:bg-stone-200 dark:focus:bg-stone-800 rounded-md cursor-pointer"
+                className="p-2 focus:outline-none with-hover"
               >
-                <Select.ItemText>
-                  {open
-                    ? option.label
-                    : option.label.split(" ")[0] +
-                      " " +
-                      option.value.toUpperCase()}
-                </Select.ItemText>
+                <Select.ItemText>{option.label}</Select.ItemText>
               </Select.Item>
             ))}
           </Select.Viewport>
-          <Select.Arrow />
         </Select.Content>
       </Select.Portal>
     </Select.Root>
