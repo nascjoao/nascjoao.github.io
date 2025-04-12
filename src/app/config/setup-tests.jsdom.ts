@@ -1,4 +1,27 @@
 import { vi } from "vitest";
+import * as mockRouter from "next-router-mock";
+const useRouter = mockRouter.useRouter;
+
+const MockNextNavigation = {
+  ...mockRouter,
+  notFound: vi.fn(),
+  redirect: vi.fn().mockImplementation((url: string) => {
+    mockRouter.memoryRouter.setCurrentUrl(url);
+  }),
+  usePathname: () => {
+    const router = useRouter();
+    return router.asPath;
+  },
+  useSearchParams: () => {
+    const router = useRouter();
+    const path = router.query;
+    return new URLSearchParams(
+      path as string[][] | Record<string, string> | string | URLSearchParams,
+    );
+  },
+};
+
+vi.mock("next/navigation", () => MockNextNavigation);
 
 class MockPointerEvent extends Event {
   button: number;

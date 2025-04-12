@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   env: {
     NEXT_PUBLIC_WEBSITE_VERSION: version,
   },
-  webpack(config) {
+  webpack(config, { isServer }) {
     // @ts-expect-error - nextjs/typescript#nextConfig.webpack
     const fileLoaderRule = config.module.rules.find((rule) =>
       rule.test?.test?.(".svg"),
@@ -25,6 +25,18 @@ const nextConfig: NextConfig = {
       },
     );
     fileLoaderRule.exclude = /\.svg$/i;
+
+    if (!isServer) {
+      config.module.rules.push({
+        test: /\.md$/,
+        use: [
+          {
+            loader: "frontmatter-markdown-loader",
+            options: { mode: ["frontmatter", "react"] },
+          },
+        ],
+      });
+    }
     return config;
   },
 };
