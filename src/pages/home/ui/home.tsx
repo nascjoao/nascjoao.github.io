@@ -12,9 +12,11 @@ export default async function Home() {
           </p>
         </div>
       </main>
-      <aside className="mx-auto max-w-xl px-4 py-8 bg-amber-500/10 border border-amber-500/20 rounded-xs">
-        <h2 className="text-2xl mb-4">{t("home.quick-note.title")}</h2>
-        <p>{t("home.quick-note.content")}</p>
+      <aside className="mx-auto max-w-xl flex-1">
+        <div className="px-4 py-8 bg-amber-500/10 border border-amber-500/20 rounded-xs">
+          <h2 className="text-2xl mb-4">{t("home.quick-note.title")}</h2>
+          <p>{t("home.quick-note.content")}</p>
+        </div>
       </aside>
     </>
   );
