@@ -49,6 +49,9 @@ export default defineConfig({
         "**/index.ts",
         "src/app/layouts/**",
         "**/config/**",
+        "src/widgets/footer/ui/footer.tsx",
+        "src/pages/home/ui/home.tsx",
+        "src/pages/privacy-policy/ui/privacy-policy.tsx",
       ],
       include: ["src/**"],
       thresholds: {
