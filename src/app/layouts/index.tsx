@@ -1,18 +1,23 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "../styles/globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getTranslations } from "next-intl/server";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { ThemeProvider } from "next-themes";
+import { STORAGE_THEME_KEY } from "@/shared/config";
+import { Nav } from "@/widgets/nav";
+import { Footer } from "@/widgets/footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const fontSans = IBM_Plex_Sans({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-sans",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const fontHeading = IBM_Plex_Mono({
   subsets: ["latin"],
+  weight: "700",
+  variable: "--font-heading",
 });
 
 export async function generateMetadata({
@@ -36,13 +41,30 @@ export default async function RootLayout({
 }>) {
   const locale = await getLocale();
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
+      {process.env.NODE_ENV === "production" && (
+        <head>
+          <script
+            defer
+            src="https://cloud.umami.is/script.js"
+            data-website-id="83dd86aa-f1b0-47f3-8603-836352b58173"
+          ></script>
+        </head>
+      )}
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${fontSans.variable} ${fontHeading.variable} antialiased bg-orange-100/50 dark:bg-neutral-950 min-h-svh flex flex-col`}
       >
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <ThemeProvider
+            disableTransitionOnChange
+            storageKey={STORAGE_THEME_KEY}
+          >
+            <Nav />
+            {children}
+            <Footer />
+          </ThemeProvider>
+        </NextIntlClientProvider>
       </body>
-      <GoogleAnalytics gaId="G-0TKEP0ZS0B" />
     </html>
   );
 }

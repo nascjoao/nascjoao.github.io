@@ -5,10 +5,18 @@
   },
   "home": {
     "welcome": "Olá, eu sou o João!",
-    "description": "Também conhecido como Nasc. Sou desenvolvedor de software, chef na cozinha da minha casa e amante de café. Gosto de fazer coisas funcionarem, seja um código ou um prato.\n\nEsse é o meu espaço, meu canto na internet. Por aqui você vai encontrar um pouco do meu trabalho, meus projetos e algumas coisas que me interessam.",
+    "description": "Também conhecido como Nasc. Sou desenvolvedor de software, chef na cozinha da minha casa e amante de café.\n\nGosto de fazer coisas funcionarem, seja um código ou um prato.\n\nEsse é o meu espaço, meu canto na internet. Por aqui você vai encontrar um pouco do meu trabalho, meus projetos e algumas coisas que me interessam.",
     "quick-note": {
       "title": "Um recado rápido",
       "content": "Por enquanto, tudo parece um pouco vazio por aqui. Isso se deve a um processo de reestruturação que estou fazendo, e em breve compartilharei mais sobre o racional por trás disso.\n\nTe convido a voltar aqui em breve para conferir as novidades. Até logo! 👨🏻‍💻"
     }
+  },
+  "privacy-policy": {
+    "title": "Sobre a privacidade",
+    "description": "Este site utiliza tecnologias mínimas para oferecer uma boa experiência:\n\nO <strong>tema (claro ou escuro)</strong> é salvo localmente no seu navegador.\nO idioma do site é armazenado em um <strong>cookie funcional</strong>, só para lembrar sua escolha. Métricas de acesso são coletadas anonimamente com o <analytics>Umami Analytics</analytics>, sem uso de cookies e sem rastreamento pessoal.\n\nNão compartilho nenhum dado com terceiros, e não utilizo serviços que rastreiem você.\n\nÉ um site pessoal e simples — só quero saber se alguém está por aqui. 😊"
+  },
+  "footer": {
+    "privacy-policy": "Política de privacidade",
+    "license": "Conteúdo licenciado sob <cc>CC BY-NC 4.0</cc>; Código licenciado sob <mit>MIT</mit>."
   }
 }

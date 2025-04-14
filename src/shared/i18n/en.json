@@ -5,10 +5,18 @@
   },
   "home": {
     "welcome": "Hello, I'm João!",
-    "description": "Also known as Nasc. I'm a software developer, chef in my home kitchen, and coffee lover. I enjoy making things work, whether it's code or a dish.\n\nThis is my space, my corner on the internet. Here you'll find a bit of my work, my projects, and some things that interest me.",
+    "description": "Also known as Nasc. I'm a software developer, chef in my home kitchen, and coffee lover.\n\nI enjoy making things work, whether it's code or a dish.\n\nThis is my space, my corner on the internet. Here you'll find a bit of my work, my projects, and some things that interest me.",
     "quick-note": {
       "title": "A quick note",
       "content": "For now, everything seems a bit empty here. This is due to a restructuring process I'm undergoing, and soon I'll share more about the rationale behind it.\n\nI invite you to come back here soon to check out the updates. See you later! 👨🏻‍💻"
     }
+  },
+  "privacy-policy": {
+    "title": "About privacy",
+    "description": "This site uses minimal technologies to provide a good experience:\n\nThe <strong>theme (light or dark)</strong> is saved locally in your browser.\nThe site's language is stored in a <strong>functional cookie</strong>, just to remember your choice. Access metrics are collected anonymously with <analytics>Umami Analytics</analytics>, without using cookies and without personal tracking.\n\nI don't share any data with third parties, and I don't use services that track you.\n\nIt's a personal and simple site — I just want to know if someone is here. 😊"
+  },
+  "footer": {
+    "privacy-policy": "Privacy policy",
+    "license": "Content licensed under <cc>CC BY-NC 4.0</cc>; Code licensed under <mit>MIT</mit>."
   }
 }
