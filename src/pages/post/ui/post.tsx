@@ -1,6 +1,5 @@
 import React from "react";
 import { notFound, redirect } from "next/navigation";
-import { Nav } from "@/widgets/nav";
 import { blogPostsSlugsIndex } from "@/shared/i18n";
 import { getAllPostSlugs, getPostContent } from "../lib";
 import { getLocale } from "next-intl/server";
@@ -30,7 +29,6 @@ export default async function Post({
 
   return (
     <>
-      <Nav />
       <article className="max-w-prose mx-auto grid gap-4 my-20">
         <h1 className="text-4xl">{post.title}</h1>
         <p className="text-2xl">{post.description}</p>

@@ -42,7 +42,6 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@next/third-parties": "^15.3.0",
     "@svgr/webpack": "^8.1.0",
     "@tailwindcss/postcss": "^4",
     "@testing-library/jest-dom": "^6.6.3",
