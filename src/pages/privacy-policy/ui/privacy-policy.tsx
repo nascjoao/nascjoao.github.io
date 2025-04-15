@@ -4,7 +4,7 @@ import React from "react";
 export default async function PrivacyPolicyPage() {
   const t = await getTranslations();
   return (
-    <main className="max-w-prose mx-auto flex flex-col gap-4 my-20 flex-1">
+    <main className="max-w-prose mx-auto flex flex-col gap-4 my-20 flex-1 px-4">
       <h1 className="text-4xl">{t("privacy-policy.title")}</h1>
       <p className="whitespace-pre-wrap">
         {t.rich("privacy-policy.description", {
