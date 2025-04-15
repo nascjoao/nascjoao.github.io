@@ -40,8 +40,9 @@ export default function LanguageSelect() {
       <Select.Portal>
         <Select.Content
           position="popper"
+          align="end"
           onCloseAutoFocus={(e) => e.preventDefault()}
-          className="data-[state=open]:animate-pop-in p-4 shadow-lg bg-neutral-50 border border-neutral-200 dark:bg-neutral-900 dark:border-neutral-700 w-52"
+          className="data-[state=open]:animate-pop-in p-4 shadow-lg bg-[#fdf2e2] border border-orange-900/10 dark:bg-neutral-900 dark:border-neutral-700 w-52"
         >
           <Select.Viewport>
             {LANGUAGE_OPTIONS.map((option) => (
