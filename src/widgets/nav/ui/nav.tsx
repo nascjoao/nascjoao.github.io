@@ -27,7 +27,7 @@ export default function Nav() {
           href={`https://github.com/${AUTHOR_GITHUB}/${REPO_NAME}/releases/tag/v${VERSION}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="place-self-center"
+          className="place-self-center with-hover px-1"
         >
           {VERSION}
         </a>
