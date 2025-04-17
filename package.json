@@ -15,7 +15,7 @@
     "start": "next start",
     "lint": "next lint",
     "prettier": "prettier --write",
-    "steiger": "steiger ./src",
+    "steiger": "steiger .",
     "prepare": "husky",
     "precommit": "lint-staged",
     "test": "vitest --config ./src/app/config/vitest.config.mts --run",
