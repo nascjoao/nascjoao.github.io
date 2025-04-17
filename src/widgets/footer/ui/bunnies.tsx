@@ -30,7 +30,10 @@ export default function Bunnies() {
   return (
     <>
       {showBunnies && (
-        <div className="absolute -z-10 overflow-hidden top-0 left-0 w-full h-80 -translate-y-full">
+        <div
+          data-testid="bunnies"
+          className="absolute -z-10 overflow-hidden top-0 left-0 w-full h-80 -translate-y-full"
+        >
           <div
             className="h-80 w-[120%] bg-repeat bg-center bg-contain"
             style={{
