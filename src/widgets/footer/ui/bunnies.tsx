@@ -9,6 +9,9 @@ export default function Bunnies() {
   const [showBunnies, setShowBunnies] = React.useState(false);
   const [ending, setEnding] = React.useState(false);
   const t = useTranslations();
+  const currentDate = new Date();
+  const easterDate2025 = new Date("2025-04-20 23:59:59");
+  const passedEaster = currentDate > easterDate2025;
 
   function setBunniesFree() {
     if (showBunnies) return;
@@ -21,6 +24,8 @@ export default function Bunnies() {
       }, 50000);
     }, 3000);
   }
+
+  if (passedEaster) return null;
 
   return (
     <>
