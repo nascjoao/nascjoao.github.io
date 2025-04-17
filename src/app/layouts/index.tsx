@@ -52,7 +52,7 @@ export default async function RootLayout({
         </head>
       )}
       <body
-        className={`${fontSans.variable} ${fontHeading.variable} antialiased bg-orange-100/50 dark:bg-neutral-950 min-h-svh flex flex-col`}
+        className={`${fontSans.variable} ${fontHeading.variable} antialiased bg-[#fff5e7] dark:bg-neutral-950 min-h-svh flex flex-col`}
       >
         <NextIntlClientProvider>
           <ThemeProvider

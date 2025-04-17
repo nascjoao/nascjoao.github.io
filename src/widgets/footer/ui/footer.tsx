@@ -3,10 +3,13 @@ import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import React from "react";
 
+import Bunnies from "./bunnies";
+
 export default async function Footer() {
   const t = await getTranslations();
   return (
-    <footer className="flex-col text-center md:text-left md:flex-row p-4 py-12 flex items-center mt-12 justify-center w-full bg-orange-200/40 dark:bg-neutral-900">
+    <footer className="relative mt-50 flex-col text-center md:text-left md:flex-row p-4 py-12 flex items-center justify-center w-full bg-orange-200/40 dark:bg-neutral-900">
+      <Bunnies />
       <Link
         href="/privacy-policy"
         className="text-sm text-neutral-500 dark:text-neutral-400 with-hover inline-block"
