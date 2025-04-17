@@ -29,6 +29,19 @@
   @apply animate-pulse bg-neutral-800/10 dark:bg-neutral-200/10 rounded-xs;
 }
 
+@keyframes bunny-runs-out {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.react-tooltip {
+  font-family: var(--font-heading), sans-serif;
+}
+
 body {
   font-family: var(--font-sans), sans-serif;
 }
