@@ -23,8 +23,7 @@
     "test:related": "vitest related --config ./src/app/config/vitest.config.mts --run",
     "coverage": "vitest --coverage --config ./src/app/config/vitest.config.mts --run",
     "coverage:watch": "vitest --coverage --config ./src/app/config/vitest.config.mts",
-    "type-check": "tsc --noEmit",
-    "generate:translations": "tsx scripts/generate-translations-map.ts"
+    "type-check": "tsc --noEmit"
   },
   "pnpm": {
     "overrides": {
