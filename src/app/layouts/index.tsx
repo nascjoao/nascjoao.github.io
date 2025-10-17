@@ -1,47 +1,33 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "../styles/globals.css";
-import { NextIntlClientProvider } from "next-intl";
-import { getLocale, getTranslations } from "next-intl/server";
-import { ThemeProvider } from "next-themes";
-import { STORAGE_THEME_KEY } from "@/shared/config";
-import { Nav } from "@/widgets/nav";
-import { Footer } from "@/widgets/footer";
+import Link from "next/link";
 
 const fontSans = IBM_Plex_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-sans",
+  variable: "--font-ibm-sans",
 });
 
 const fontHeading = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: "700",
-  variable: "--font-heading",
+  variable: "--font-ibm-mono",
 });
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "metadata" });
-
-  return {
-    title: t("title"),
-    description: t("description"),
-  };
-}
+export const metadata: Metadata = {
+  title: "nasc.dev",
+  description:
+    "My personal website where I share my projects, blog posts, and more.",
+};
 
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const locale = await getLocale();
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang="en" className={`${fontSans.variable} ${fontHeading.variable}`}>
       {process.env.NODE_ENV === "production" && (
         <head>
           <script
@@ -51,19 +37,63 @@ export default async function RootLayout({
           ></script>
         </head>
       )}
-      <body
-        className={`${fontSans.variable} ${fontHeading.variable} antialiased bg-[#fff5e7] dark:bg-neutral-950 min-h-svh flex flex-col`}
-      >
-        <NextIntlClientProvider>
-          <ThemeProvider
-            disableTransitionOnChange
-            storageKey={STORAGE_THEME_KEY}
-          >
-            <Nav />
-            {children}
-            <Footer />
-          </ThemeProvider>
-        </NextIntlClientProvider>
+      <body className="antialiased bg-[#fff5e7] dark:bg-neutral-950 min-h-svh flex flex-col text-neutral-900 dark:text-neutral-100">
+        {children}
+        <footer className="text-center text-sm p-4 mt-8 border-t border-neutral-300 dark:border-neutral-700 grid gap-4">
+          <h2 className="font-mono font-bold">nasc.dev</h2>
+          <ul className="space-x-4">
+            <li className="inline">
+              <a
+                href="mailto:oi@nasc.dev"
+                className="underline underline-offset-4 hover:text-orange-800 dark:hover:text-orange-200"
+              >
+                Email (check spam folder)
+              </a>
+            </li>
+            <li className="inline">
+              <a
+                href="https://github.com/nascjoao"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-4 hover:text-orange-800 dark:hover:text-orange-200"
+              >
+                GitHub
+              </a>
+            </li>
+            <li className="inline">
+              <a
+                href="https://linkedin.com/in/nascjoao"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-4 hover:text-orange-800 dark:hover:text-orange-200"
+              >
+                LinkedIn
+              </a>
+            </li>
+          </ul>
+          <p className="w-fit mx-auto">
+            <Link href="/privacy-policy">Privacy policy</Link> • Content
+            licensed under{" "}
+            <a
+              href="https://creativecommons.org/licenses/by-nc/4.0/deed"
+              className="underline underline-offset-4 hover:text-orange-800 dark:hover:text-orange-200"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              CC BY-NC 4.0
+            </a>
+            ; Code licensed under{" "}
+            <a
+              href="https://github.com/nascjoao/nascjoao.github.io/blob/main/LICENSE"
+              className="underline underline-offset-4 hover:text-orange-800 dark:hover:text-orange-200"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              MIT
+            </a>
+            .
+          </p>
+        </footer>
       </body>
     </html>
   );

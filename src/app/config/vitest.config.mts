@@ -1,21 +1,9 @@
 import { defineConfig } from "vitest/config";
 import tsConfigPaths from "vite-tsconfig-paths";
 import react from "@vitejs/plugin-react";
-import svgr from "vite-plugin-svgr";
 
 export default defineConfig({
-  plugins: [
-    tsConfigPaths(),
-    react(),
-    svgr({
-      svgrOptions: {
-        ref: true,
-        svgo: false,
-        titleProp: true,
-      },
-      include: "**/*.svg",
-    }),
-  ],
+  plugins: [tsConfigPaths(), react()],
   test: {
     workspace: [
       {
@@ -49,9 +37,6 @@ export default defineConfig({
         "**/index.ts",
         "src/app/layouts/**",
         "**/config/**",
-        "src/widgets/footer/ui/footer.tsx",
-        "src/pages/home/ui/home.tsx",
-        "src/pages/privacy-policy/ui/privacy-policy.tsx",
       ],
       include: ["src/**"],
       thresholds: {
