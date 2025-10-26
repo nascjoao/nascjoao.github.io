@@ -21,6 +21,7 @@ export default async function generateMetadata({
     const { data } = matter(fileContents);
 
     return {
+      metadataBase: new URL("https://nasc.dev"),
       title: data.title || "Untitled Post",
       description: data.description || "No description available.",
       openGraph: {
