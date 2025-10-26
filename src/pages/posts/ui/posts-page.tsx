@@ -1,8 +1,5 @@
 import { notFound } from "next/navigation";
-
-interface PostPageProps {
-  params: Promise<{ year: string; slug: string }>;
-}
+import PostPageProps from "../model/post-page-props";
 
 export default async function PostPage({ params }: PostPageProps) {
   const { year, slug } = await params;

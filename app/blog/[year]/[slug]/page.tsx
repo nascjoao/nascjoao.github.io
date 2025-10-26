@@ -1,1 +1,5 @@
-export { PostsPage as default, generateStaticParams } from "@/pages/posts";
+export {
+  PostsPage as default,
+  generateStaticParams,
+  generateMetadata,
+} from "@/pages/posts";
