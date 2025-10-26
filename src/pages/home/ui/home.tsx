@@ -1,44 +1,42 @@
+import getLatestPosts from "../lib/get-latest-posts";
 import Image from "next/image";
+import Link from "next/link";
+import dayjs from "dayjs";
 
 export default async function Home() {
   return (
     <main className="flex-1">
       <div className="max-w-lg mx-auto p-4">
-        <code>{process.env.NEXT_PUBLIC_WEBSITE_VERSION}</code>
-        <h1 className="text-4xl font-mono">nasc.dev</h1>
-        <p className="mt-4">
-          Welcome back to my website!
-          <br />
-          As you can see, things are different here, again.
-        </p>
-        <Image
-          src="/cj.jpg"
-          alt="CJ from GTA San Andreas: Ah shit, here we go again"
-          className="w-auto h-auto mx-auto"
-          width={300}
-          height={200}
-          priority
-        />
-        <p className="mt-4">
-          I&apos;ve been pretty tired of social media. Wanted to start something
-          new and then I thought it would be fun to care about my own space on
-          the internet.
-        </p>
-        <p className="mt-4">
-          Previously, this used to be a business card website, with just a few
-          links. Now, I&apos;m excited to turn it into a more personal and
-          expressive space.
-        </p>
-        <p className="mt-4">
-          Hence, beyond the professional aspects, you can expect to see more
-          personal projects, thoughts, and experiments showcased here.
-          <br />
-          (even those experiments I do in the kitchen)
-        </p>
-        <p className="mt-4">
-          Stay tuned for updates, and feel free to reach out if you want to
-          connect!
-        </p>
+        <section>
+          <h2 className="text-2xl font-mono mt-8 mb-4">Latest posts</h2>
+          <ul>
+            {getLatestPosts().map((post) => (
+              <li key={post.path} className="mb-2">
+                <Link
+                  href={post.path}
+                  className="hover:text-orange-800 dark:hover:text-orange-200 flex border-b dark:border-neutral-700 border-neutral-300 pb-2 mb-2"
+                >
+                  <Image
+                    src={post.cover}
+                    alt={post.title}
+                    className="bg-black/10 rounded-md object-cover"
+                    width={80}
+                    height={80}
+                    priority
+                  />
+                  <article className="w-full align-middle ml-4 @container">
+                    <p className="text-sm flex justify-between flex-col @3xs:flex-row">
+                      <span>{dayjs().to(post.date)}</span>
+                      <span>{dayjs(post.date).format("MMMM D, YYYY")}</span>
+                    </p>
+                    <h3 className="text-xl font-mono my-2">{post.title}</h3>
+                    <p className="text-sm line-clamp-2">{post.description}</p>
+                  </article>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
       </div>
     </main>
   );

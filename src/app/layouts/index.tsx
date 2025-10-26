@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "../styles/globals.css";
 import Link from "next/link";
+import relativeTime from "dayjs/plugin/relativeTime";
+import dayjs from "dayjs";
+
+dayjs.extend(relativeTime);
 
 const fontSans = IBM_Plex_Sans({
   subsets: ["latin"],
@@ -38,6 +42,12 @@ export default async function RootLayout({
         </head>
       )}
       <body className="antialiased bg-[#fff5e7] dark:bg-neutral-950 min-h-svh flex flex-col text-neutral-900 dark:text-neutral-100">
+        <nav className="max-w-lg w-full mx-auto p-4">
+          <code>{process.env.NEXT_PUBLIC_WEBSITE_VERSION}</code>
+          <h1 className="text-4xl font-mono">
+            <Link href="/">nasc.dev</Link>
+          </h1>
+        </nav>
         {children}
         <footer className="text-center text-sm p-4 mt-8 border-t border-neutral-300 dark:border-neutral-700 grid gap-4">
           <h2 className="font-mono font-bold">nasc.dev</h2>
