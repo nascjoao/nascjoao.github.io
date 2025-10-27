@@ -2,6 +2,7 @@ import getLatestPosts from "../lib/get-latest-posts";
 import Image from "next/image";
 import Link from "next/link";
 import dayjs from "dayjs";
+import ToPostDate from "./to-post-date";
 
 export default async function Home() {
   return (
@@ -26,7 +27,7 @@ export default async function Home() {
                   />
                   <article className="w-full align-middle ml-4 @container">
                     <p className="text-sm flex justify-between flex-col @3xs:flex-row">
-                      <span>{dayjs().to(post.date)}</span>
+                      <ToPostDate>{post.date}</ToPostDate>
                       <span>{dayjs(post.date).format("MMMM D, YYYY")}</span>
                     </p>
                     <h3 className="text-xl font-mono my-2">{post.title}</h3>
