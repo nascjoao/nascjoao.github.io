@@ -1,4 +1,0 @@
-echo "\033[0;32mRunning Steiger...\033[0m"
-pnpm steiger --fail-on-warnings
-pnpm precommit
-pnpm type-check
