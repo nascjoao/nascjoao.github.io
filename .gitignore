@@ -1,41 +1,27 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+/public/
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
+/resources/
 
-# testing
-/coverage
+.hugo_build.lock
 
-# next.js
-/.next/
-/out/
+.hugo_server.lock
 
-# production
-/build
+/node_modules/
+npm-debug.log
+yarn-error.log
 
-# misc
 .DS_Store
-*.pem
+.AppleDouble
+.LSOverride
 
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
 
-# env files (can opt-in for committing if needed)
-.env*
-
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*~
