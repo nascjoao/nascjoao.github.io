@@ -1,0 +1,31 @@
+{{ define "main" }}
+{{ .Content }}
+
+<div class="latest-posts">
+    <h2>Latest posts</h2>
+
+    {{ $latest := first 5 (where .Site.RegularPages "Section" "blog").ByDate.Reverse }}
+
+    {{ if $latest }}
+    <ul>
+        {{ range $latest }}
+        <li>
+            {{ $cover := .Resources.GetMatch "cover.*" }}
+            {{ $coverAlt := .Params.coverAlt }}
+            {{ with $cover }}
+            {{ $thumb := .Fill "150x150" }}
+            <img src="{{ $thumb.RelPermalink }}" width="80" height="80" alt="{{ $coverAlt }}" class="thumbnail-latest">
+            {{ end }}
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            <time class="time-ago" datetime="{{ .Date.Format " 2006-01-02T15:04:05Z" }}">
+                {{ .Date.Format "02/01/2006" }}
+            </time>
+            <time>{{ .Date.Format "January 2, 2006" }}</time>
+        </li>
+        {{ end }}
+    </ul>
+    {{ else }}
+    <p>Nenhum post encontrado ainda.</p>
+    {{ end }}
+</div>
+{{ end }}
