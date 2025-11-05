@@ -1,3 +1,6 @@
 baseURL = 'https://nasc.dev/'
 languageCode = 'en-us'
 title = 'João Nascimento – nasc.dev'
+
+[params]
+description = 'João Nascimento – Software developer, chef in my home kitchen, and coffee lover'
